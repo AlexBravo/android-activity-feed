@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.bandsintown.activityfeed.FeedItemViewHeader
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<android.support.percent.PercentRelativeLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		app:layout_aspectRatio="@fraction/sixteen_by_nine">
+
+		<ImageView
+			android:id="@+id/fipmc_map"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_widthPercent="100%"
+			app:layout_aspectRatio="@fraction/sixteen_by_nine"
+			android:scaleType="centerCrop"/>
+
+	</android.support.percent.PercentRelativeLayout>
+
+	<com.bandsintown.activityfeed.FeedItemGroupFooterView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+</LinearLayout>

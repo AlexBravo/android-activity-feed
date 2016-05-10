@@ -1,0 +1,822 @@
+<resources>
+    <string name="app_name">Bandsintown</string>
+
+    <string name="dot_dot_dot" translatable="false">…</string>
+
+    <!-- Common BIT Strings -->
+    <string name="interested">Interested</string>
+    <string name="going">Going</string>
+    <string name="im_going">I\'m Going</string>
+    <string name="tickets">Tickets</string>
+    <string name="details">Details</string>
+    <string name="more">More</string>
+    <string name="venue">Venue</string>
+    <string name="concert_location">Concert Location</string>
+    <string name="trackers">Trackers</string>
+    <string name="rsvps">RSVPs</string>
+    <string name="concerts">Concerts</string>
+    <string name="cloud">Cloud</string>
+    <string name="activity_feed">Activity Feed</string>
+    <string name="post">Post</string>
+    <string name="profile">Profile</string>
+    <string name="search">Search</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="toast_error">An error occurred, please try again.</string>
+    <string name="event_title_format">%1$s @ %2$s</string>
+    <string name="tracker_count">%1$s Trackers</string>
+    <string name="track">Track</string>
+    <string name="tracking">Tracking</string>
+    <string name="pager_dot" translatable="false">●</string>
+    <string name="delete">Delete</string>
+    <string name="selected_count">%s selected</string>
+    <string name="friends">Friends</string>
+    <string name="users">Users</string>
+    <string name="other">Other</string>
+	<string name="submit">Submit</string>
+	<string name="no">No</string>
+
+    <!-- Login -->
+    <string name="no_posting_wo_perms">We\'ll never post anything without permission.</string>
+    <string name="login_screen_terms">By proceeding, you agree with Bandsintown\'s %1$sTerms of Service%2$s and %3$sPrivacy Policy%4$s</string>
+    <string name="login_with_email">Log in with Email</string>
+    <string name="email_address">Email address</string>
+    <string name="log_in">Log in</string>
+    <string name="toast_invalid_email">Please enter a valid email to continue.</string>
+    <string name="check_for_verification">Check your inbox for an email with a confirmation link.</string>
+    <string name="logging_in">Logging in&#8230;</string>
+    <string name="resend_confirmation">Resend confirmation</string>
+    <string name="toast_resend_confirmation_failed">Failed to resend confirmation email. Check your address and try again.</string>
+    <string name="toast_confirmation_resent">Confirmation email resent.</string>
+
+    <!-- Terms -->
+    <string name="terms_and_privacy">Terms and Privacy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <!-- Cloud -->
+    <string name="slider_setting_recommended">RECOMMENDED</string>
+    <string name="slider_setting_tracked_artists">TRACKED ARTISTS</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="set_your_location">Set your location</string>
+    <string name="change_location">Location</string>
+    <string name="adjust_radius">Radius</string>
+    <string name="set_date_range">Date Range</string>
+    <string name="rescan_music">Rescan Music</string>
+    
+    <string name="change_location_menu">Change Location</string>
+    <string name="adjust_distance">Adjust Distance</string>
+    <string name="set_date_range_menu">Set Date Range</string>
+
+    <string name="linked_accounts">Linked Accounts</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="google_play">Google Play</string>
+    <string name="lastfm">last.fm</string>
+    <string name="pandora">Pandora</string>
+    <string name="spotify">Spotify</string>
+    <string name="rdio">Rdio</string> <!--TODO check analytics to see if this is even worth it -->
+    <string name="deezer">Deezer</string> <!--TODO check analytics to see if this is even worth it -->
+
+    <string name="purchases">Purchases</string> <!-- TODO the spec says "Ticket Purchase" it sounds like a non english speaker wrote it -->
+    <string name="credit_cards">Credit Cards</string>
+    <string name="past_purchases">Past Purchases</string>
+
+    <string name="account">Account</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="sharing">Sharing</string>
+    <string name="notifications">Notifications</string>
+    <string name="manager_app">Manager App</string>
+    <string name="terms">Terms</string>
+    <string name="logout">Log out</string>
+
+    <!-- Date filter -->
+    <string name="date_filter_both">From: %1$s%2$s%3$s to %4$s%5$s%6$s</string>
+    <string name="date_filter_from">From: %1$s%2$s%3$s</string>
+    <string name="date_filter_before">Before: %1$s%2$s%3$s</string>
+
+    <!-- Concerts tab names -->
+    <string name="all_concerts_tab">All</string>
+    <string name="recommended_concerts_tab">Recommended</string>
+    <string name="friends_concerts_tab">Friends</string>
+    <string name="popular_concerts_tab">Popular</string>
+    <string name="new_concerts_tab">New</string>
+
+    <!-- Artist activity -->
+    <string name="similar_artists">Similar Artists</string>
+    <string name="track_artist">Track Artist</string>
+    <string name="tracking_artist">Tracking Artist</string>
+    <string name="upcoming_event_count">%s Upcoming Events</string>
+    <string name="concerts_in_your_area">Concerts in your area</string>
+    <string name="tour_dates">Tour Dates</string>
+    <string name="no_upcoming_events">No upcoming events</string>
+    <string name="no_upcoming_rsvps">No upcoming RSVPs</string>
+    <string name="must_have_spotify">No music service was found.</string>
+
+    <!-- Event activity -->
+    <string name="lineup">Lineup</string>
+    <string name="from_price">From %s</string>
+    <string name="from_price_plus_fees">From %s + fees</string>
+    <string name="price_plus_fees">%s + fees</string>
+    <string name="more_starting_from_price">More starting from %s</string>
+    <string name="rsvp_count_with_friends_template">%1$s and %2$s</string>
+    <string name="more_options">More Options (%s)</string>
+
+    <!-- RSVP settings -->
+    <string name="share_rsvp">Share RSVP</string>
+
+    <!-- Activity feed -->
+    <string name="likes_count">%s likes</string>
+    <string name="like_count">%s like</string>
+    <string name="like">Like</string>
+    <string name="activity_feed_hint">What\'s up?</string> <!-- TODO figure out what this really is -->
+    <string name="rsvped_to">RSVP\'d to</string>
+    <string name="no_recent_activity">No recent activity</string>
+    <string name="no_notifications">No notifications</string>
+
+    <!-- Comment activity -->
+    <string name="tag_show">Tag a show&#8230;</string>
+    <string name="comment_activity_title">Post to your Feed</string>
+
+    <!-- Activity feed tab names -->
+    <string name="all_feeds_tab">All</string>
+    <string name="friends_feeds_tab">Friends</string>
+    <string name="artists_feeds_tab">Artists</string>
+
+    <!-- Manage feed tab names -->
+    <string name="rsvps_manage_tab">RSVPs</string>
+    <string name="artists_manage_tab">Artists</string>
+    <string name="friends_manage_tab">Friends</string>
+
+    <!-- Artist list -->
+    <string name="tracked_from">Tracked from: %s</string>
+    <string name="filter">Filter</string>
+
+    <!-- Location Radius activity -->
+    <string name="radius_title">Adjust Radius</string>
+    <string name="location_title">Change Location</string>
+    <string name="looking_up_location">Looking up location&#8230;</string>
+    <string name="change_radius_title">Change Radius</string>
+    <string name="change_radius_msg">Would you also like to change your search radius?</string>
+    <string name="radius_set_to">Radius set to %s</string>
+    <string name="adjust_your_radius">Adjust your radius</string>
+    <string name="updating_radius">Updating radius&#8230;</string>
+    <string name="updating_location">Updating location&#8230;</string>
+    <string name="location_not_found">Location not found, please try again.</string>
+
+    <!-- Sharing settings -->
+    <string name="share_concert_rsvps">Share your concert RSVPs</string>
+    <string name="share_tracked_artists">Share your tracked artists</string>
+    <string name="share_artist_listens">Share your artist listens</string>
+    <string name="invite_friends_after_rsvps">Invite friends after RSVPs</string>
+
+    <!-- Notification settings -->
+    <string name="just_announced">Just Announced</string>
+    <string name="on_sale">On Sale</string>
+    <string name="rsvp_reminders">RSVP Reminders</string>
+    <string name="rate_past_concerts">Rate past concerts</string>
+    <string name="friend_rsvps">Friends RSVPs</string>
+    <string name="artist_direct_message">Artist Direct Messages</string>
+    <string name="likes">Likes</string>
+    <string name="promotions">Promotions</string>
+    <string name="error_updating_settings">A network error occurred. Please try again later.</string>
+
+    <!-- Event List -->
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="past_events">Past Events</string>
+    <string name="friends_events_explanation_header">Popular among friends</string>
+    <string name="popular_events_explanation_header">Popular in your area</string>
+    <string name="new_events_explanation_header">Recently announced</string>
+
+    <!-- Transition titles -->
+    <string name="transition_toolbar">toolbar</string>
+    <string name="transition_friend_image">friend_image</string>
+    <string name="transition_image">image</string>
+    <string name="transition_top_event_section">transition_top_event_section</string>
+    <string name="transition_title">transition_title</string>
+    <string name="transition_description">transition_description</string>
+    <string name="transition_gradient">transition_gradient</string>
+    <string name="transition_root">transition_root</string>
+    
+    <string name="transition_event_title">event_event_title</string>
+    <string name="transition_event_name">transition_event_name</string>
+    <string name="transition_event_date">transition_event_date</string>
+    <string name="transition_interested_button">transition_interested_button</string>
+    <string name="transition_going_button">transition_going_button</string>
+    <string name="transition_facebook_switch">transition_facebook_switch</string>
+    <string name="transition_twitter_switch">transition_twitter_switch</string>
+    <string name="transition_break_line">transition_break_line</string>
+    <string name="transition_background_layout">transition_background_layout</string>
+
+    <!-- Edit Profile Settings -->
+    <string name="upload_photo">UPLOAD PHOTO</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="update">Update</string>
+    <string name="age">Age</string>
+    <string name="updating">Updating&#8230;</string>
+    <string name="pls_enter_valid_email">Please enter a valid email address</string>
+    <string name="info_was_updated">Update Complete</string>
+    <string name="update_failed">Updated failed, please try again later</string>
+
+    <!-- Date Range Activity -->
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="pls_sel_new_end">Please select an end date after the current start date</string>
+    <string name="pls_sel_new_start">Start date cannot have already passed</string>
+    <string name="reset">Reset</string>
+    <string name="done">Done</string>
+
+    <string name="dates_after">Dates after</string>
+    <string name="dates_before">Dates before</string>
+    <string name="to">to</string>
+    <string name="all_time">All time</string>
+
+    <!-- Linked Accounts Activity -->
+    <string name="linked_facebook_account">Linked Facebook Account</string>
+    <string name="linked_twitter_account">Twitter</string>
+    <string name="linked_lastfm_account">Linked Last.fm Account</string>
+    <string name="linked_pandora_account">Linked Pandora Account</string>
+    <string name="linked_spotify_account">Linked Spotify Account</string>
+    <string name="linked_rdio_account">Linked Rdio Account</string>
+    <string name="linked_google_play_account">Linked Google Play Account</string>
+    <string name="linked_deezer_account">Linked Deezer Account</string>
+    <string name="logged_in_with_facebook">Logged in with Facebook</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="pls_enter_a_username">Please enter a username</string>
+    <string name="pls_enter_a_password">Please enter a password</string>
+    <string name="pls_enter_a_email_and_pass">Please enter a valid email and password</string>
+    <string name="thanks">Thank You</string>
+    <string name="spotify_account_description">You must have Spotify Premium. We do not save your password.</string>
+    <string name="google_play_account_description">We do not save your password. Google Play is a trademark of Google Inc.</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="log_out">Sign Out</string>
+    <string name="connected_as">CONNECTED AS</string>
+    <string name="connected_as_template">Connected as %s</string>
+    <string name="linking_account">Linking account&#8230;</string>
+    <string name="link_dots">● ● ●</string>
+    <string name="connecting_to_lastfm">Connecting to last.fm&#8230;</string>
+
+    <string name="error_not_found">Error, username was not found, please try again.</string>
+    <string name="error_network">Error, could not connect, please try again.</string>
+    <string name="error_loading_rsvps">Could not load RSVPs, please try again.</string>
+
+    <!-- Install Flow -->
+    <string name="skip">Skip</string>
+    <string name="select_music_sources">Select Your Music Sources</string>
+    <string name="select_music_sources_desc">Connect your accounts so we can automatically find the artist you like, and list all upcoming concerts in your area.</string>
+    <string name="set_your_location_capitalized">Set Your Location</string>
+    <string name="location">Location</string>
+    <string name="looking_for_location">Finding your location&#8230;</string>
+    <string name="location_not_automatically_found">Location not automatically found. Please enter it above.</string>
+    <string name="next">Next</string>
+    <string name="enter_valid_username">Please enter a valid username.</string>
+    <string name="enter_password">Please enter your password.</string>
+    <string name="finding_user">Finding feedUser&#8230;</string>
+    <string name="user_not_found">User not found, please try again.</string>
+    <string name="we_dont_save_password">We don\'t save your password.</string>
+    <string name="getting_user_info">Getting feedUser info&#8230;</string>
+    <string name="we_are_scanning_music">We are scanning your music library</string>
+    <string name="scanned_artists">Scanned Artists:</string>
+    <string name="find_contacts_on_bit">Find your contacts that are already on Bandsintown</string>
+    <string name="continu">Continue</string> <!-- The string key continue is unusable so we use continu -->
+    <string name="we_wont_store_contacts">Your contacts are safe with us. We\'ll access your address book to find your friends on Bandsintown and suggest contacts you may want to invite. We won\'t store any of your contacts.</string>
+    <string name="add_friends">Add Friends</string>
+    <string name="you_have_friends_on_bit">You have %s friends on Bandsintown! Track them to see their concert activity.</string>
+    <string name="bandsintown_user">Bandsintown feedUser</string>
+    <string name="select_all">Select All</string>
+    <string name="deselect_all">Deselect All</string>
+    <string name="almost_there">You\'re almost there!</string>
+    <string name="not_enough_artists_founds">After scanning your music we didn\'t find many artists. Please track at least 10 artists to get better recommendations.</string>
+    <string name="track_10_artists">Track at least 10 artists</string>
+    <string name="track_number_more_artists">Track %s more artists</string>
+    <string name="invite_friends_to_track_you">Invite Friends to Track You</string>
+    <string name="invite_your_contacts">Invite your contacts and friends who aren\'t on Bandsintown to track you.</string>
+    <string name="find_friends">Find Friends</string>
+
+    <!-- Search -->
+    <string name="based_on">Based on: %1$s%2$s%3$s</string>
+
+    <!-- Tickets -->
+    <string name="official_ticket_label">Official %s</string>
+    <string name="official_tickets_default_label">Official Tickets</string>
+    <string name="get_tickets">Get Tickets</string>
+    <string name="on_sale_at">On Sale\n%s</string>
+
+    <!--Artist Menu-->
+    <string name="play_tour_trailer">Play Tour Trailer</string>
+    <string name="listen">Listen</string>
+    <string name="play_my_city">Play My City</string>
+    <string name="share_to_fb">Share To Facebook</string>
+    <string name="share_to_twitter">Share to Twitter</string>
+    <string name="share_via_message">Share via Message</string>
+    <string name="go_to_artist">Go to Artist Page</string>
+    <string name="edit_event">Edit Event</string>
+    <string name="add_missing_date">Add Missing Date</string>
+    <string name="block_artist">Block Artist</string>
+
+    <!-- Empty List Strings -->
+    <string name="not_tracking_any_artists">Not currently tracking any artists</string>
+    <string name="track_artists">Track Artists</string>
+    <string name="no_rsvps">No RSVPs</string>
+    <string name="no_friend_rsvps">No friend RSVPs</string>
+    <string name="no_friend_concerts">No upcoming events with friends attending</string>
+    <string name="no_new_events">No new events</string>
+    <string name="no_recommended_events">No upcoming recommended events</string>
+    <string name="no_friend_activity">No friend activity</string>
+    <string name="not_tracking_any_friends">Not tracking any friends</string>
+
+    <!--Toast Messages-->
+    <string name="your_request_was_made">Your request was made!</string>
+    <string name="error_try_again_later">Unfortunately an error has occurred, please try again later</string>
+    <string name="loading">Loading&#8230;</string>
+
+    <!--Calendar Abbreviations-->
+    <string name="month_abbreviation">m</string>
+    <string name="week_abbreviation">w</string>
+    <string name="day_abbreviation">d</string>
+    <string name="hour_abbreviation">h</string>
+    <string name="minute_abbreviation">m</string>
+    <string name="second_abbreviation">s</string>
+
+    <!-- Artist untracking -->
+    <string name="untracked_artists_count">Untracked %s artists</string>
+    <string name="tracked_artist_count">Tracked %s artists</string>
+    <string name="undo">Undo</string>
+
+    <!--Sharing Strings-->
+    <string name="post_to">Post to</string>
+    <string name="requested_to_play_in_city">Requested to play in\n%s</string>
+    <string name="number_of_upcoming_tour_dates">%s Upcoming Tour Dates</string>
+    <string name="date_and_city">%1$s - %2$s</string>
+    <string name="share">Share</string>
+    <string name="event_name_two_lines">%1$s @\n%2$s</string>
+
+    <!-- Find friends -->
+    <string name="adding_friends">Adding friends&#8230;</string>
+    <string name="invites_sent_successfully">Invites sent successfully</string>
+
+    <!-- Tracking sources -->
+    <string name="tracking_source_itunes">iTunes</string>
+    <string name="tracking_source_last_fm">Last.fm</string>
+    <string name="tracking_source_listens">Facebook Listens</string>
+    <string name="tracking_source_pandora">Pandora</string>
+    <string name="tracking_source_rsvp">RSVP</string>
+    <string name="tracking_source_spotify">Spotify</string>
+    <string name="tracking_source_android">Android</string>
+    <string name="tracking_source_google_play">Google Music</string>
+    <string name="tracking_source_rdio">Rdio</string>
+    <string name="tracking_source_bandsintown">Bandsintown</string>
+    <string name="tracking_source_facebook_likes">Facebook Likes</string>
+    <string name="tracking_source_deezer">Deezer</string>
+
+    <!--Attendees -->
+    <string name="rsvps_for_event">RSVPs for %s</string>
+    <string name="no_rsvps_found">No RSVPs were found for this event.</string>
+    <string name="no_trackers_found">No trackers were found for this artist.</string>
+
+    <!-- Activity Feed Notification Panel -->
+    <string name="user_likes_your_activity">%1$s likes your %2$s.</string>
+    <string name="user_rated_event">%1$s rated %2$s %3$s</string>
+    <string name="user_might_go_to_event">%1$s might go to %2$s.</string>
+    <string name="user_is_going_to_event">%1$s is going to %2$s.</string>
+    <string name="user_commented_on_event">%1$s commented on %2$s.</string>
+    <string name="user_tracked_you">%s tracked you.</string>
+    <string name="artist_announced_concert_at_venue">%1$s just announced a concert at %2$s.</string>
+    <string name="artist_sent_you_a_message">%s sent you a message.</string>
+    <string name="artist_commented_on_event">%1$s commented on %2$s.</string>
+
+    <string name="select_profile_photo">Select Profile Photo</string>
+    <string name="select_photo">Select Photo</string>
+
+    <!-- Notifications -->
+    <string name="just_announced_notification_title">Just Announced</string>
+    <string name="event_alert">Event Alert</string>
+    <string name="artist_alert">Artist Alert</string>
+    <string name="tickets_on_sale_for_event">Tickets are now on sale for %s</string>
+    <string name="rsvp_reminder">RSVP Reminder</string>
+    <string name="tomorrow">tomorrow</string>
+    <string name="today">today</string>
+    <string name="artist_playing_date_at_venue">%1$s playing %2$s at %3$s</string>
+    <string name="how_was_the_concert">How was the %s concert?</string>
+    <string name="rate_event">Rate Event</string>
+    <string name="friend_rsvp">Friend RSVP</string>
+    <string name="friend_rsvped_to_event">%1$s RSVP\'d to %2$s</string>
+
+    <string name="account_not_verified">Your account is not verified yet, check your inbox for a verification email, or click the resend button.</string>
+    <string name="your_rsvps">Your RSVPs</string>
+
+    <string name="posting_message">Posting message&#8230;</string>
+    <string name="comment_posted">Comment posted.</string>
+
+    <string name="scan_music">Scan Music</string>
+    
+    <!-- Notification Panel Strings -->
+    <string name="notification_likes_your_activity">%1$s liked your %2$s</string>
+    <string name="notification_rated_event">%1$s rated %2$s %3$s</string>
+    <string name="notification_rsvp_going">%1$s is going to %2$s</string>
+    <string name="notification_rsvp_maybe">%1$s might go to %2$s</string>
+    <string name="notification_commented">%1$s commented on %2$s</string>
+    <string name="notification_tracked">%1$s is tracking %2$s</string>
+    <string name="notification_just_announced">%1$s just announced a concert at %2$s</string>
+    <string name="notification_playing_tomorrow">%1$s playing today at %2$s %3$s</string>
+    <string name="notification_on_sale_tomorrow">On Sale Tomorrow! %1$s %2$s</string>
+    <string name="notification_playing_today">%1$s playing today at %2$s %3$s</string>
+    <string name="notification_on_sale_today">On Sale! %1$s %2$s</string>
+    <string name="notification_next_month">%1$s next month at %2$s %3$s</string>
+    <string name="notification_this_weekend">%1$s this weekend at %2$s %3$s</string>
+    <string name="notification_next_week">%1$s next week at %2$s %3$s</string>
+    <string name="notification_shared">%1$s shared %2$s %3$s</string>
+    <string name="notification_posted">%1$s posted</string>
+	<string name="notification_posted_a_message">%1$s posted a message</string>
+	<string name="notification_posted_a_photo">%s posted a photo</string>
+    <string name="notification_watched_trailer">%1$s watched a tour trailer</string>
+    <string name="notification_posted_trailer">%1$s posted a new tour trailer</string>
+    <string name="notification_message_rsvps">%1$s sent you a message</string>
+
+	<string name="notification_rated_event_hide_rating">%1$s rated %2$s</string>
+
+    <string name="notification_event_announcement_explanation_going">(You\'re Going)</string>
+    <string name="notification_event_announcement_explanation_maybe">(You\'re Interested)</string>
+
+    <!-- Activity names -->
+    <string name="activity_type_rsvp">RSVP</string>
+    <string name="activity_type_comment">comment</string>
+    <string name="activity_type_post">post</string>
+    <string name="activity_type_listen">listen</string>
+    <string name="activity_type_track">track</string>
+    <string name="activity_type_request">request</string>
+    <string name="activity_type_rate">rate</string>
+    <string name="activity_type_tour_trailer">tour trailer</string>
+    
+    <!-- Activity names plural -->
+    <string name="activity_plural_rsvps">RSVPs</string>
+    <string name="activity_plural_comment">comments</string>
+    <string name="activity_plural_post">posts</string>
+    <string name="activity_plural_listen">listens</string>
+    <string name="activity_plural_track">tracks</string>
+    <string name="activity_plural_request">requests</string>
+    <string name="activity_plural_rate">ratings</string>
+    <string name="activity_plural_watched_tour_trailer">watched tour trailers</string>
+	<string name="activity_plural_posted_trailers">posted tour trailers</string>
+	<string name="activity_plural_announcements">announcements</string>
+
+    <string name="star_icon">★</string>
+    <string name="half_character">½</string>
+
+    <string name="you">you</string>
+    
+    <!-- Descriptions -->
+    <string name="description_tracked">tracked</string>
+    <string name="description_likes_your_activity">likes your activity</string>
+    <string name="description_listened_to">listened to</string>
+    <string name="description_requested_play_city">requested %1$s to play in %2$s</string>
+    <string name="description_rated_event">rated %1$s\n%2$s</string>
+    <string name="description_rsvp_going">is going to</string>
+    <string name="description_rsvp__past_tense">RSVP\'d to</string>
+    <string name="description_rsvp_maybe">might go to</string>
+    <string name="description_commented">commented</string>
+    <string name="description_posted">posted</string>
+    <string name="description_playing_tomorrow">playing tomorrow</string>
+    <string name="description_on_sale_tomorrow">on sale tomorrow</string>
+    <string name="description_playing_today">playing today</string>
+    <string name="description_on_sale_today">on sale today</string>
+    <string name="description_just_announced">just announced</string>
+    <string name="description_next_month">next month</string>
+    <string name="description_this_weekend">this weekend</string>
+    <string name="description_next_week">next week</string>
+    <string name="description_watched_a_tour_trailer">watched a tour trailer</string>
+    <string name="description_posted_a_tour_trailer">posted a tour trailer</string>
+	<string name="description_rated_multiple_events">rated %s events</string>
+
+    <string name="post_was_shared">Your post was shared!</string>
+    <string name="error_sharing_post">An error occurred sharing your post, try again later.</string>
+    <string name="unable_to_disconnect_spotify_account">Unable to disconnect your Spotify account at this time. Please try again later.</string>
+    <string name="an_error_linking_spotify_account">An error occurred linking Spotify account, please try again or add it later by going to the Settings page.</string>
+    <string name="an_error_occurred_linking_spotify_pls_try_again">An error occurred linking your Spotify account, please try again.</string>
+
+    <string name="feedback">Feedback</string>
+    <string name="bandsintown_feedback">Bandsintown Feedback</string>
+
+    <string name="single_feed_item_title">%1$s\'s %2$s</string>
+    <string name="event_announcement">event announcement</string>
+    <string name="thank_your_for_your_feedback">Thank you for your feedback!</string>
+    <string name="start_time">Start Time</string>
+    <string name="city">City</string>
+    <string name="state_country">State/Country</string>
+    <string name="unfortunately_an_error_has_occurred">Unfortunately an error has occurred, please try again later</string>
+    <string name="thank_you_for_helping_improve_our_data">Thank you for helping us improve our data!</string>
+    <string name="error_location_not_found_pls_try_again">Error, location entered was not found. Please try again.</string>
+    <string name="error_unable_to_update_location_pls_try_again_later">Error, unable to update your location. Please try again later.</string>
+    <string name="you_have_not_connected_any_music_sources">You have not connected any music services so there is nothing to scan.</string>
+
+    <string name="venue_location_format">%1$s - %2$s</string>
+
+    <string name="rate_concert_hint">What did you think of the show?</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="uploading_photo">Uploading photo&#8230;</string>
+    <string name="rating_missing">Please enter a 0–5 star rating.</string>
+    <string name="please_select_at_least_one_friend">Please select at least one friend to invite</string>
+    <string name="unfortunately_location_could_not_be_updated">Unfortunately location could not be updated, please try again.</string>
+    <string name="report">Report</string>
+    <string name="unfortunately_unable_to_delete_your_post_please_try_again_later">Unfortunately we were unable to delete your post at this time. Please try again later.</string>
+    <string name="delete_post">Delete Post</string>
+    <string name="deleting_your_post">Deleting your post</string>
+    <string name="yes">Yes</string>
+
+    <string name="connect_to_facebook_dialog_title">Connect to Facebook</string>
+    <string name="connect_to_facebook_dialog_msg">Do you want to connect your Bandsintown account with Facebook? </string>
+
+    <string name="you_must_be_logged_in_to_do_this">You must be logged in to do this.</string>
+
+    <string name="incorrect_venue">Incorrect venue information</string>
+    <string name="incorrect_date_time">Incorrect date or time</string>
+    <string name="lineup_issue">Lineup issue</string>
+    <string name="event_doesnt_exist">This event doesn\'t exist</string>
+    <string name="other_problem">Another problem</string>
+
+    <string name="your_friend">Your Friend</string>
+    <string name="unknown_venue">Unknown Venue</string>
+
+    <string name="add_to_cal">Add To Calendar</string>
+    <string name="would_you_like_to_add_this_to_cal">Would you like to have your RSVPs automatically added or removed from your calendar when your RSVP status changes for an event?</string>
+    <string name="sync_calendar_description">Sync Bandsintown to your Google Calendar to automatically add your RSVPs to your schedule!</string>
+	<string name="sync_calendar">Sync Calendar</string>
+	<string name="disconnect_calendar">Disconnect Calendar</string>
+	<string name="calendar">Calendar</string>
+    <string name="current_calendar_description">Your RSVPs will be automatically added to the calendar</string>
+
+    <string name="describe_the_problem">Describe the problem</string>
+    <string name="please_describe_the_problem">Please describe the problem</string>
+    <string name="thanks_for_feedback_help_make_bit_better">Thank you for your feedback, it helps make Bandsintown better for everyone.</string>
+    <string name="missing_event">Missing Event</string>
+    <string name="would_you_like_to_be_prompted_to_invite_friends_post_rsvp">Would you like to be prompted to invite your friends to concerts you RSVP to? You can change this at anytime on the settings page.</string>
+    <string name="select_friends_to_invite">Select Friends To Invite</string>
+
+    <string name="it_is_annoying_or_not_interesting">It is annoying or not interesting</string>
+    <string name="it_is_abusive_offensive_or_malicious">It is abusive, offensive, or malicious</string>
+    <string name="this_information_is_incorrect">This information is incorrect</string>
+
+    <string name="report_issue">Report Issue</string>
+    <string name="submitting_report">Submitting Report…</string>
+
+    <string name="invite_to_event_sms_prompt">Check out this concert! %1$s on %2$s - %3$s</string> <!--Event title on Date - Url-->
+    <string name="invite_to_artist_sms_prompt">Check out this artist! %1$s - %2$s</string> <!--Artist - Url-->
+    <string name="invite_to_bit_sms">Check out this concert app! http://bnds.in/townAT</string>
+    <string name="creating_a_shareable_url">Creating a shareable url…</string>
+    <string name="error_but_you_can_still_invite_friends_to_bit">Unfortunately an error occurred generating a sharable link, but you can still invite your friends to join you on Bandsintown!</string>
+    <string name="share_bandsintown">Share Bandsintown</string>
+    <string name="invite_friends_title">Invite Friends</string>
+
+	<string name="awesome">Awesome!</string>
+	<string name="found_concerts_in_your_area">We\’ve found recommended artists playing in your area.</string>
+	<string name="view_concerts">View Concerts</string>
+
+    <string name="rate_app_dialog_title">Enjoying Bandsintown?</string>
+    <string name="rate_app_dialog_message">If so, please rate it 5 stars so we can keep it free!</string>
+	<string name="market_url_template">market://details?id=%s</string>
+
+    <!-- Showcase -->
+	<string name="got_it">GOT IT</string>
+	<string name="cloud_slider_showcase_msg">Use the slider to filter the cloud to include more recommendations, or only artists you track.</string>
+    <string name="error_try_logging_out_and_then_back_in">An error has occurred. If this continues to happen try logging out and then logging back in.</string>
+    <string name="event_notification">Event Notification</string>
+    <string name="number_of_trackers">%s Trackers</string>
+    <string name="suggested_artists">Suggested Artists</string>
+    <string name="tracking_artistname">Tracking %s</string>
+    <string name="artistname_trackers">"%s Trackers"</string>
+    <string name="number_likes">%s likes</string>
+    <string name="widget_settings">Widget Settings</string>
+    <string name="view_more_events">View more events</string>
+
+    <string name="edit_profile_dialog_message">Update your name and profile image so that your friends can recognize you on Bandsintown!</string>
+
+    <!--Voice Search Key Phrases-->
+    <string name="tonight" translatable="false">tonight</string>
+    <string name="my_rsvp" translatable="false">my rsvp</string>
+    <string name="weekend" translatable="false">weekend</string>
+    <string name="tracked_artist" translatable="false">tracked artist</string>
+    <string name="next_week" translatable="false">next week</string>
+
+    <!--These are parts of phrases which people might use voice search to search for like "Ok google, search Bandsintown for Who's in town tonight"-->
+    <!--"Ok google search Bandsintown for Tickets to see Maroon 5"-->
+    <!--TODO not sure if these should be translated since phrasing might be different in different languages-->
+
+    <string name="search_bandsintown_for" translatable="false">Search Bandsintown for</string>
+    <string name="search_bands_in_town_for" translatable="false">Search bands in town for</string>
+
+    <string name="whos_in_town" translatable="false">Who\'s in town</string>
+    <string name="who_is_in_town" translatable="false">Who is in town</string>
+    <string name="bands_playing" translatable="false">Bands playing</string>
+    <string name="bands_performing" translatable="false">Bands performing</string>
+    <string name="bands_in_town" translatable="false">Bands in town</string>
+    <string name="artist_performing" translatable="false">Artists performing</string>
+    <string name="artists_in_town" translatable="false">Artists in town</string>
+
+    <!--"Ok google search Bandsintown for (Tickets to see / Tickets for / Tickets to) Maroon 5"-->
+    <string name="tickets_to_see" translatable="false">Tickets to see</string>
+    <string name="tickets_for" translatable="false">Tickets for</string>
+    <string name="tickets_to" translatable="false">Tickets to</string>
+
+    <string name="date_dash_city" translatable="false">%1$s - %2$s</string>
+
+    <!-- Google Music -->
+    <string name="google_music" translatable="false">Google Music</string>
+
+	<string name="soundcloud" translatable="false">Soundcloud</string>
+
+	<string name="invalid_username_try_again">Invalid username, please try again.</string>
+    <string name="verifying_information">Verifying information&#8230;</string>
+
+    <string name="quantity">Quantity</string>
+	<string name="price">Price</string>
+	<string name="best_available">Best Available</string>
+	<string name="select_num_tickets">Select the number of tickets</string>
+	<string name="find_tickets">Find Tickets</string>
+	<string name="ticket_type">Ticket Type</string>
+	<string name="price_doesnt_match_area">The price level you selected is unavailable in the area(s) you selected. Please review the areas available at this price level.</string>
+	<string name="area_doesnt_match_price">The area you selected is unavailable in the price level you selected. Please review the price levels available in this area.</string>
+	<string name="two_strings_separated_by_hyphen" translatable="false">%1$s - %2$s</string>
+	<string name="section">Section</string>
+	<string name="row">Row</string>
+	<string name="seats">Seats</string>
+	<string name="description">Description</string>
+	<string name="type">Type</string>
+	<string name="timer_explanation">When this reaches 0, your cart will be emptied. Be sure to complete your purchase before then.</string>
+	<string name="ticket_price">Ticket Price</string>
+	<string name="facility_charge">Facility Charge</string>
+	<string name="service_fee">Service Fee</string>
+	<string name="processing_fee">Processing Fee</string>
+	<string name="subtotal">SUBTOTAL</string>
+	<string name="multiplication">%1$s x %2$s</string>
+	<string name="available_ticket_prices_ea">AVAILABLE TICKET PRICES (EA)</string>
+	<string name="available_for_price">Available for %s</string> <!-- TODO another phrasing? -->
+	<string name="other_areas_will_reset_your_price_selection">Other areas (this will reset your price selection)</string>
+	<string name="venue_map">Venue Map</string>
+	<string name="no_tickets_available_for_areas">There are no tickets that meet your search criteria. Please change your filters and try again.</string>
+
+    <string name="payment_methods">Payment Methods</string>
+	<string name="cc_summary">Ending in %1$s Exp %2$s</string>
+	<string name="your_cards">Your cards</string>
+	<string name="save_card_info">Save this information for future purchases.</string> <!-- TODO do we need to explicitly say in app like in spec? i didnt like that -->
+	<string name="name_on_card">Name on card</string>
+	<string name="cardholder_name">Cardholder Name</string>
+	<string name="card_number">Card number</string>
+	<string name="cvv">CVV</string>
+	<string name="exp_date">Exp date</string>
+	<string name="postal_code">Postal Code</string>
+	<string name="phone_number">Phone Number</string>
+	<string name="your_order">Your Order</string>
+	<string name="order_processing_fees">Order Processing Fees</string>
+	<string name="delivery">Delivery</string>
+	<string name="payment_method">Payment Method</string>
+	<string name="make_payment_of">Make payment of %s</string>
+    <string name="create_payment_method">Create Payment Method</string>
+
+	<string name="finding_tickets_title">Finding the perfect \nverified option.</string>
+	<string name="dont_go_back">Please don\'t leave this page, \nor you\'ll have to start over!</string>
+
+	<!--TODO lets get these messages right -->
+    <string name="session_expired">Session expired</string>
+	<string name="cart_expired_msg">Your cart has expired. Please try again, and keep in mind the expiration timer in the upper right.</string>
+	<string name="inactivity_msg">You were inactive for too long, so your session expired. Please stay in Bandsintown until you finish your purchase.</string>
+
+	<string name="start_over_dialog_title">Start Over?</string>
+	<string name="start_over_dialog_msg">This will undo all of your search filters.</string>
+
+	<string name="change_purchase_email">Change Purchase Email</string>
+	<string name="enter_your_email_msg">Enter your email address.</string>
+	<string name="change_purchase_email_confirmation_msg">Your tickets will be sent here:\n\n%s</string>
+	<string name="email_change">change</string>
+
+    <string name="card_expiration_date">Card expiration date</string>
+
+	<string name="add_new_card">Add New Card</string>
+
+    <string name="etickets">eTickets</string>
+	<string name="etickets_explanation">eTickets allows you the flexibility to choose your electronic delivery method when you’re ready. With eTickets, Mobile Entry is always available.</string>
+
+    <string name="miles_label">%s miles</string>
+	<string name="km_label">%s kilometers</string>
+
+	<string name="update_notification_text">Update to see unread concert alerts</string>
+	<string name="login_notification_text">Log in to see unread concert alerts</string>
+	
+	<string name="bandsintown_version_available">Bandsintown %s is now available!</string>
+	<string name="update_app_dialog_msg">Update now to get all of our latest features!</string>
+
+    <!--Tutorials Strings-->
+    <string name="sort_by_recommendations_popular_whats_new_or_who_your_friends_are_going_to_see">Explore concerts based on what’s recommended, what’s new, or who your friends are going to see.</string>
+    <string name="get_notified_when_friends_rsvp">Get notified when friends RSVP to shows or when your favorite artist announces a concert near you</string>
+    <string name="view_all_your_upcoming_concerts">View all your upcoming concerts</string>
+    <string name="manage_the_artists_you_track">Manage the artist you track to improve notifications and recommendations</string>
+    <string name="track_your_friends_and_people_who_are_into_the_same_music">Track your friends and people who are into the same music</string>
+    <string name="add_an_image_to_your_profile">Add an image to your profile</string>
+    <string name="awesome_weve_found_recommend_artists_playing_in_your_area">Awesome, We\'ve found recommended artists playing in your area. The artists you Track are dark and recommended concerts are lighter</string>
+    <string name="you_can_adjust_your_concert_cloud">You can adjust your concert cloud to show you all recommended concerts, or just the artists you track.</string>
+    <string name="adjust_how_far_you_are_willing_to_travel_to_see_a_concert">Adjust how far you are willing to travel to see a concert or change your location.</string>
+    <string name="access_the_the_sliding_menu_to_explore_more_concerts">Access the sliding menu to explore more concerts, see activity, or adjust your settings.</string>
+
+    <string name="widget_not_available_with_touch_wiz">Unfortunately the Bandsintown widget is not currently compatible with Samsung\'s Touch Wiz Home launcher. If you change your default launcher and restart Bandsintown the widget will become available.</string>
+
+    <string name="enter_the_cards_cvv">Enter the Card\'s CVV</string>
+    <string name="enter_the_cards_cvv_to_edit">Enter the Card\'s CVV to edit</string>
+    <string name="card_deleted_for_exceeding_tries_limit">For your security this card has been deleted</string>
+    <string name="card_data_corrupted">An error has occurred with your card data. Please enter it again.</string>
+    <string name="saving_card">Saving card…</string>
+
+	<string name="ticket_offer">Ticket Offer</string>
+	<string name="enter_payment_method">Enter Payment Method</string>
+	<string name="confirm_purchase">Confirm Purchase</string>
+	<string name="select_payment_method">Select Payment Method</string>
+    <string name="finalizing_purchase">Finalizing purchase&#8230;</string>
+	<string name="generating_captcha">Generating captcha&#8230;</string>
+
+    <string name="confirmation">Confirmation</string>
+	<string name="order_summary">Order Summary</string>
+	<string name="confirmation_token">Order Token</string>
+	<string name="total">Total</string>
+	<string name="token_copied_to_clipboard">Full order token copied to clipboard</string>
+	<string name="claim_your_tickets">Claim your tickets</string>
+	<string name="get_tickets_in_browser">Get Your Tickets in Browser</string> <!--TODO sounds funny to me -->
+	<string name="claim_your">Claim your</string>
+	<string name="tickets_email_confirmation_msg">Your ticket redemption link will be sent to %s shortly</string>
+	<string name="purchase_confirmation">Purchase Confirmation</string>
+    <string name="unfortunately_this_card_was_not_accepted">Unfortunately this card was not accepted, please double check your information and try again.</string>
+
+    <string name="purchased_on_date">Purchased on: %s</string>
+    <string name="card_format"><![CDATA[•••• •••• •••• %1$s - %2$s]]></string>
+    <string name="no_past_purchases">No past purchases</string>
+    <string name="purchase_date">Purchase Date</string>
+    <string name="order_reference_number">Order Reference Number</string>
+    <string name="number_of_tickets">No. of Tickets</string>
+    <string name="total_charges">Total Charges</string>
+    <string name="billed_to">Billed to</string>
+    <string name="order_details">Order details</string>
+    <string name="go_to_past_event">Go to Past Event</string>
+
+	<string name="no_tickets_found">No tickets found</string>
+	<string name="no_tickets_found_msg">The tickets you requested are either sold out or unavailable. Please modify your search and try again.</string>
+	<string name="error_finding_tickets">An error occurred while finding tickets. Please try again.</string>
+	<string name="oops">Oops!</string>
+	<string name="try_again_cart_not_dead">Looks like an error occurred. Don\'t worry, your tickets are still there! Please try again.</string>
+	<string name="payment_method_invalid">The payment method you submitted is invalid. Check for typos and try again.</string>
+	<string name="invalid_security_code">The security code you entered was invalid. Double check it and try again.</string>
+	<string name="ticket_quantity_changed">Ticket quantity changed</string>
+	<string name="ticket_quantity_changed_explanation_minimum">The ticket type you selected has a minimum quantity of %s. If you don\'t want this number of tickets, try changing your ticket type.</string>
+	<string name="ticket_quantity_changed_explanation_maximum">The ticket type you selected has a maximum quantity of %s. If you don\'t want this number of tickets, try changing your ticket type.</string>
+
+    <string name="the_name_on_the_card">The name on the card</string>
+    <string name="must_be_a_valid_card_number">Must be a valid card number (between 12 and 19 digits)</string>
+    <string name="the_last_three_digits_on_the_back">The last 3 digits on the back of the card, or the 4 digit code on the front of your American Express card</string>
+    <string name="the_date_on_the_front">The date on the front of the card</string>
+    <string name="must_be_a_valid_postal_code">Must be a valid postal code</string>
+
+	<string name="agreeing_to_tm_tos_pt1">By proceeding you agree to Ticketmaster\'s</string>
+	<string name="agreeing_to_tm_tos_pt2">privacy policy.</string>
+    <string name="and">and</string>
+    <string name="comma">,</string>
+    <string name="featuring">Featuring</string>
+
+    <string name="cart_will_be_destroyed_title">Are you sure?</string>
+	<string name="cart_will_be_destroyed_msg">By going back, you will lose your reserved tickets, and will have to start all over again.</string>
+
+	<string name="vibrate">Vibrate</string>
+	<string name="select_notification_tone">Select Notification Tone</string>
+	<string name="notification_tone">Notification Tone</string>
+	<string name="none">None</string>
+
+	<string name="view_all">View All</string>
+	<string name="liked">liked</string>
+
+	<string name="count_new_shows_in_your_area">%s new shows in your area!</string>
+	<string name="count_promoted_shows">shared %s shows!</string>
+	<string name="see_more_posts_from_actor">See more posts from %s</string>
+
+    <string name="tagged_name">\@%s</string>
+
+	<string name="previous">previous</string>
+    <string name="stop">stop</string>
+    <string name="play">play</string>
+    <string name="pause">pause</string>
+    <string name="preview_provided_by_spotify">Preview provided by Spotify</string>
+
+    <string name="actor_liked">%s liked</string>
+
+	<string name="posted">posted</string>
+	<string name="tracked">tracked</string>
+	<string name="commented">commented</string>
+	<string name="listened_to">listened to</string>
+	<string name="requested">requested</string>
+	<string name="rated">rated</string>
+	<string name="watched">watched</string>
+
+	<string name="people_count">%s people</string>
+
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/ListItemNoPaddingNoElevation">
+
+    <ImageView
+        android:id="@+id/lal_artist_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/transparent_box"
+        tools:background="@drawable/placeholder_artist_small_square"/>
+
+    <Button
+        android:id="@+id/lal_play_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/ic_play_arrow_white_24dp"/>
+
+
+    <ProgressBar
+        android:id="@+id/lal_progress"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        style="Widget.ProgressBar.Small"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/lal_artist_image"
+        android:layout_toEndOf="@+id/lal_artist_image">
+
+        <TextView
+            android:id="@+id/lal_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            style="@style/Widget.Bandsintown.TextAppearance.ArtistListens"
+            tools:text="Taylor Swift"/>
+
+        <TextView
+            android:id="@+id/lal_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            style="@style/Widget.Bandsintown.TextAppearance.ArtistListens.Subtitle"
+            tools:text="1,000,000 Trackers"/>
+
+    </LinearLayout>
+
+</merge>

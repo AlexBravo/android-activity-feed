@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="facebook_sharing" translatable="false">
+        <item>@string/share_concert_rsvps</item>
+        <item>@string/share_tracked_artists</item>
+        <item>@string/share_artist_listens</item>
+    </string>
+
+</resources>

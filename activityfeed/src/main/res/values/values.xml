@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <bool name="isTablet">false</bool>
+    <bool name="isLandscape">false</bool>
+
+    <integer name="landscape_list_weight">4</integer>
+    <integer name="landscape_content_weight">6</integer>
+    <integer name="landscape_content_weight_sum">10</integer>
+
+    <integer name="cloud_users_max">3</integer>
+
+    <bool name="shouldWidgetBeEnabled">true</bool>
+
+</resources>

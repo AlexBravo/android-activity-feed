@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="action_bar_height_guess">25dp</dimen>
+    <dimen name="zero">0dp</dimen>
+
+    <!-- Login activity -->
+    <dimen name="login_button_horizontal_margin">30dp</dimen>
+    <dimen name="logo_final_position_distance_from_top">60dp</dimen>
+    <dimen name="resend_link_horizontal_padding">12dp</dimen>
+
+    <!--Bubble button values -->
+    <dimen name="bubble_button_text_size">16dp</dimen>
+    <dimen name="bubble_button_horizontal_padding">12dp</dimen>
+    <dimen name="bubble_button_horizontal_margin">4dp</dimen>
+    <dimen name="bubble_button_vertical_margin">2dp</dimen>
+    <dimen name="bubble_button_vertical_padding">1dp</dimen>
+    <dimen name="bubble_corner_radius">15dp</dimen>
+    <dimen name="bubble_stroke_width">.5dp</dimen>
+
+    <dimen name="more_bubble_extra_margin">10dp</dimen>
+
+    <!-- Cloud values -->
+    <dimen name="cloud_slider_section_height">60dp</dimen>
+    <dimen name="cloud_slider_padding">12dp</dimen>
+
+    <!-- Cloud popup values -->
+    <dimen name="cloud_popup_corner_radius">2dp</dimen>
+    <dimen name="cloud_popup_horizontal_margin">20dp</dimen>
+
+    <dimen name="cloud_popup_height">314dp</dimen>
+    <dimen name="cloud_popup_image_height">200dp</dimen> <!--This is set in the code for tablets-->
+    <dimen name="cloud_popup_view_pager_indicator_bottom_margin">114dp</dimen> <!-- total popup height minus image height -->
+    <!-- The spacing on either side of children inside the cloud popup (not the image obviously) -->
+    <dimen name="cloud_popup_inner_child_horizontal_margins">8dp</dimen>
+    <dimen name="cloud_popup_starting_size">1dp</dimen>
+    <dimen name="cloud_popup_outer_child_horizontal_margins">4dp</dimen>
+    <dimen name="pager_dot_size">4dp</dimen>
+    <dimen name="pager_dot_margins">4dp</dimen>
+
+    <!-- Check button values -->
+    <dimen name="checkbutton_checkbox_margin_left">4dp</dimen>
+    <dimen name="checkbutton_text_size">14dp</dimen>
+    <dimen name="checkbutton_checkbox_size">24dp</dimen>
+    <dimen name="checkbutton_height">48dp</dimen>
+
+    <!-- The follow ripped from Android source code for material buttons -->
+    <dimen name="button_inset_vertical_material">6dp</dimen>
+    <dimen name="button_inset_horizontal_material">@dimen/control_inset_material</dimen>
+    <dimen name="control_inset_material">4dp</dimen>
+    <dimen name="button_padding_vertical_material">@dimen/control_padding_material</dimen>
+    <dimen name="button_padding_horizontal_material">8dp</dimen>
+    <dimen name="control_padding_material">4dp</dimen>
+    <dimen name="control_corner_material">2dp</dimen>
+
+    <!-- General dimensions -->
+    <dimen name="widget_image_text_section_horizontal_padding">8dp</dimen>
+    <dimen name="toolbar_backdrop_height">260dp</dimen>
+    <dimen name="breakline_height">0.5dp</dimen>
+    <dimen name="card_list_item_height">72dp</dimen>
+    <dimen name="card_list_item_horizontal_padding">8dp</dimen>
+    <dimen name="widget_image_text_section_top_padding">12dp</dimen>
+    <dimen name="widget_image_text_section_bottom_padding">4dp</dimen>
+    <dimen name="toolbar_title_expanded_text_size">20dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="toolbar_double_height">112dp</dimen>
+    <dimen name="toolbar_bottom_gradient_height">80dp</dimen>
+    <dimen name="toolbar_top_gradient_height">88dp</dimen>
+    <dimen name="drawer_width">280dp</dimen>
+    <dimen name="card_view_horizontal_margin">4dp</dimen>
+    <dimen name="card_view_top_margin">2dp</dimen>
+    <dimen name="card_view_content_padding">6dp</dimen>
+    <dimen name="tab_indicator_height">48dp</dimen>
+    <dimen name="tab_indicator_strip_height">3dp</dimen>
+    <dimen name="tab_indicator_section_translation">45dp</dimen> <!-- tab indicator height minus tab strip height -->
+    <dimen name="toolbar_elevation">2dp</dimen>
+    <dimen name="top_layer_elevation">3dp</dimen>
+    <dimen name="floating_action_button_size">56dp</dimen>
+    <dimen name="floating_action_button_margins">16dp</dimen>
+    <dimen name="card_item_more_height">48dp</dimen>
+    <dimen name="basic_elevation">1dp</dimen>
+    <dimen name="tab_indicator_swipe_refresh_pulldown">16dp</dimen>
+    <dimen name="drawer_peek_width">0dp</dimen>
+    <dimen name="navigation_up_bounds">56dp</dimen>
+    <dimen name="toolbar_title_left_margin">12dp</dimen>
+    <dimen name="toolbar_subtitle_text_size">18dp</dimen>
+    <dimen name="toolbar_title_bottom_margin">42dp</dimen>
+    <dimen name="date_filtering_section_size">46dp</dimen>
+    <dimen name="listitem_subtitle_text_size">14dp</dimen>
+    <dimen name="smaller_listitem_subtitle_text_size">12dp</dimen>
+    <dimen name="smallest_listitem_subtitle_text_size">10dp</dimen>
+    <dimen name="verified_badge_left_margin">8dp</dimen>
+
+    <!-- Activity feed dimens -->
+    <dimen name="activity_feed_header_image_size">48dp</dimen>
+    <dimen name="activity_feed_big_image_height">160dp</dimen>
+    <dimen name="activity_feed_footer_height">56dp</dimen>
+    <dimen name="activity_feed_card_horizontal_margin">7dp</dimen>
+    <dimen name="activity_feed_card_top_margin">10dp</dimen>
+    <dimen name="comment_section_height">48dp</dimen>
+
+    <!-- Comment activity -->
+    <dimen name="tag_show_area_height">48dp</dimen>
+
+    <!-- Main List item values -->
+    <dimen name="list_item_no_image_height">72dp</dimen>
+    <dimen name="list_item_padding">8dp</dimen>
+    <dimen name="header_item_padding">8dp</dimen>
+    <dimen name="event_list_item_height">108dp</dimen>
+    <dimen name="event_list_item_image_size">92dp</dimen> <!-- listitem height minus padding x2 -->
+    <dimen name="list_item_inner_person_image_size">24dp</dimen>
+    <dimen name="artist_list_item_height">96dp</dimen>
+    <dimen name="artist_list_item_image_size">80dp</dimen> <!-- listitem height minus padding x2 -->
+    <dimen name="friend_list_item_height">72dp</dimen>
+    <dimen name="friend_list_item_image_size">56dp</dimen> <!-- listitem height minus padding x2 -->
+    <dimen name="loading_list_item_height">64dp</dimen>
+    <dimen name="list_item_badge_size">40dp</dimen>
+    <dimen name="event_list_item_title_top_margin">12dp</dimen>
+
+    <dimen name="widget_event_list_item_height">88dp</dimen>
+    <dimen name="widget_event_list_item_image_size">72dp</dimen> <!-- widget listitem height minus padding x2 -->
+    <dimen name="widget_list_item_badge_size">28dp</dimen>
+
+    <!-- Nav drawer dimens -->
+    <dimen name="nav_drawer_item_height">56dp</dimen>
+
+    <!-- FeedUser profile dimens -->
+    <dimen name="user_profile_background_height">150dp</dimen>
+    <dimen name="user_profile_inset_image_size">84dp</dimen>
+    <dimen name="user_profile_inset_pic_top_margin">12dp</dimen>
+    <dimen name="user_profile_bottom_padding">10dp</dimen>
+    <dimen name="user_profile_name_size">18dp</dimen>
+
+    <!-- Manage activity -->
+    <dimen name="manage_image_section_height">192dp</dimen> <!-- if you change this be sure to change the values below based on relationship -->
+    <dimen name="manage_top_section_padding">177dp</dimen> <!-- image section height plus tab translation height minus toolbar height -->
+    <dimen name="manage_toolbar_total_height">248dp</dimen> <!-- toolbar backdrop (192) plus material toolbar height (56) -->
+
+    <!-- Person dimens -->
+    <dimen name="person_image_size">40dp</dimen>
+    <dimen name="person_item_horizontal_margins">2dp</dimen>
+    <dimen name="cloud_person_image_size">30dp</dimen>
+    <dimen name="list_person_image_size">24dp</dimen>
+
+    <!-- Event activity values -->
+    <dimen name="event_activity_horizontal_padding">8dp</dimen>
+    <dimen name="artist_card_cloud_margin_top">10dp</dimen>
+    <dimen name="ticket_bubble_text_size">16dp</dimen>
+    <dimen name="ticket_bubble_horizontal_padding">10dp</dimen>
+    <dimen name="ticket_bubble_vertical_padding">2dp</dimen>
+
+    <!-- Artist activity values -->
+    <dimen name="margin_between_date_event_name">24dp</dimen>
+
+    <!-- Settings activity values -->
+    <dimen name="settings_item_height">72dp</dimen>
+    <dimen name="settings_item_horizontal_margin">18dp</dimen>
+    <dimen name="settings_item_padding">8dp</dimen>
+    <dimen name="settings_header_height">35dp</dimen>
+    <dimen name="settings_header_text_size">14dp</dimen>
+
+    <!-- Location radius activity values -->
+    <dimen name="radius_section_height">60dp</dimen>
+
+    <!-- Edit profile values -->
+    <dimen name="update_button_bottom_margin">16dp</dimen>
+    <dimen name="update_button_default_top_margin">16dp</dimen>
+    <dimen name="ep_edit_text_margin">16dp</dimen>
+    <dimen name="ep_edit_text_margin_2x">32dp</dimen>
+    <dimen name="ep_edit_text_padding">16dp</dimen>
+    <dimen name="ep_button_margin">16dp</dimen>
+    <dimen name="ep_button_padding">16dp</dimen>
+    <dimen name="ep_profile_image_height">80dp</dimen>
+    <dimen name="ep_profile_image_width">80dp</dimen>
+
+    <!-- Date Range Activity values -->
+    <dimen name="dr_edit_text_margin">16dp</dimen>
+    <dimen name="dr_small_top_margin">16dp</dimen>
+    <dimen name="alab_linear_layout_tablet_width">400dp</dimen>
+
+    <!-- Install flow -->
+    <dimen name="progress_inset_edit_text_padding">10dp</dimen>
+    <dimen name="music_source_listitem_height">64dp</dimen>
+    <dimen name="music_source_listitem_logo_height">36dp</dimen>
+    <dimen name="install_flow_music_source_logo_top_margin">80dp</dimen>
+    <dimen name="install_flow_music_source_single_button_logo_top_margin">140dp</dimen>
+
+    <!-- Dimensions for menu -->
+    <dimen name="header_profile_icon_height_start">76dp</dimen>
+    <dimen name="header_left_margin">12dp</dimen>
+    <dimen name="drawer_recycler_view_starting_top_margin">152dp</dimen>
+
+    <!-- Dimensions for artist event list -->
+    <!--<dimen name="artist_event_list_header_margin">16dp</dimen>-->
+
+    <!--Dimensions for find contacts install pages-->
+    <dimen name="find_contacts_icon_size">80dp</dimen>
+    <dimen name="find_contacts_icon_margin">16dp</dimen>
+    <dimen name="find_contacts_layout_margin">32dp</dimen>
+    <dimen name="find_contacts_icon_and_button_divide_margin">60dp</dimen>
+    
+    <dimen name="add_friends_image_size">64dp</dimen>
+    
+    <dimen name="track_artist_grid_image_size">120dp</dimen>
+    <dimen name="install_bottom_padding_if_no_soft_nav">16dp</dimen>
+    <dimen name="install_safe_bottom_margin">32dp</dimen>
+
+    <dimen name="artist_event_list_header_margin">5.33dp</dimen>
+
+    <dimen name="off_sceen_offset_for_new_cloud_items">150dp</dimen>
+
+    <dimen name="status_bar_height_guess">25dp</dimen>
+
+    <!--Dimensions for tickets fragment-->
+    <dimen name="tickets_recycler_view_margin">0dp</dimen>
+    <dimen name="ticket_list_item_left_margin_title">14dp</dimen>
+
+    <!--Dimensions clock bubble-->
+    <dimen name="clock_bubble_horizontal_padding">6dp</dimen>
+    <dimen name="clock_bubble_clock_padding">2dp</dimen>
+    <dimen name="clock_image_size">12dp</dimen>
+    <dimen name="clock_bubble_text_size">12dp</dimen>
+
+    <dimen name="share_margin">8dp</dimen>
+
+    <dimen name="notifications_image_size">36dp</dimen>
+    <dimen name="header_sub_check_button_height">60dp</dimen>
+    <dimen name="linked_account_profile_image_size">86dp</dimen>
+
+    <dimen name="cloud_seekbar_padding_top">0dp</dimen>
+
+    <dimen name="rating_checkmark_size">32dp</dimen>
+
+    <dimen name="cloud_card_title_text_size">20dp</dimen>
+
+    <dimen name="cloud_slider_labels_margin_top">-6dp</dimen>
+
+    <dimen name="distance_scrolled_before_hide_fab">10dp</dimen>
+    <dimen name="ticket_filter_section_height">64dp</dimen>
+    <dimen name="ticket_filter_padding">12dp</dimen>
+	<dimen name="timer_margin">12dp</dimen>
+
+	<dimen name="price_bubble_text_size">18dp</dimen>
+
+    <dimen name="create_new_payment_method_text_size">16dp</dimen>
+    <dimen name="add_new_payment_method_item_height">72dp</dimen>
+
+    <dimen name="install_flow_music_source_icon_max_height">60dp</dimen>
+    <dimen name="single_feed_item_activity_margins">8dp</dimen>
+    <dimen name="play_button_size">64dp</dimen>
+
+    <dimen name="music_source_logo_size">32dp</dimen>
+    <dimen name="widget_ticket_info_height">64dp</dimen>
+    <dimen name="widget_ticket_info_height_with_lineup">80dp</dimen>
+    <dimen name="widget_ticket_info_max_width">112dp</dimen>
+
+    <dimen name="list_item_elevation">2dp</dimen>
+	
+	<dimen name="captcha_padding">8dp</dimen>
+
+    <dimen name="purchase_receipt_details_row_height">56dp</dimen>
+
+	<dimen name="ticket_bubble_height">26dp</dimen>
+
+	<dimen name="eight_dp">8dp</dimen>
+    <dimen name="sixteen_dp">16dp</dimen>
+    <dimen name="twenty_four_dp">24dp</dimen>
+    <dimen name="thirty_two_dp">32dp</dimen>
+
+    <dimen name="captcha_progress_size">64dp</dimen>
+	<dimen name="captcha_fragment_initial_width">192dp</dimen>
+    <dimen name="captcha_fragment_initial_height">96dp</dimen>
+
+    <dimen name="recylcer_view_margin_adjustment">6dp</dimen>
+    <dimen name="feed_width">500dp</dimen>
+
+    <fraction name="one_by_three">33.333333%</fraction>
+    <fraction name="one_by_two">50%</fraction>
+    <fraction name="four_by_three">133%</fraction>
+    <fraction name="sixteen_by_nine">178%</fraction>
+
+    <fraction name="group_image_post_ratio">178%</fraction>
+
+</resources>

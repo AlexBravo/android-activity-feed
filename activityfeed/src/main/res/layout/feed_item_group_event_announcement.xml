@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.bandsintown.activityfeed.FeedItemViewHeader
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+	<include
+		layout="@layout/widget_big_image_for_feed_item"
+		android:id="@+id/figea_image_section"/>
+
+	<com.bandsintown.activityfeed.FeedItemGroupFooterView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
+
+</LinearLayout>

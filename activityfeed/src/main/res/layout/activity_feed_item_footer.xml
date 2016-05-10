@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feed_item_footer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--image dimen are 20 by 20 but padding is added to expand clickable area-->
+
+    <ImageView
+        android:id="@+id/afif_like_button"
+        android:layout_width="60dp"
+        android:layout_height="52dp"
+		android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="8dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingRight="28dp"
+        android:layout_marginRight="-24dp"
+        android:src="@drawable/heart_like_button_selector"
+        tools:ignore="RelativeOverlap"/>
+
+    <TextView
+        android:id="@+id/afif_like_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        style="@style/Widget.Bandsintown.ActivityFeed.Subtitle"
+        android:layout_alignBaseline="@+id/afif_like_button"
+        android:layout_toRightOf="@+id/afif_like_button"
+        android:layout_toEndOf="@+id/afif_like_button"/>
+
+	<ImageView
+		android:id="@+id/afif_comment_button"
+		android:layout_width="52dp"
+		android:layout_height="52dp"
+		android:layout_centerVertical="true"
+		android:layout_marginLeft="-12dp"
+		android:layout_toRightOf="@id/afif_like_count"
+		android:paddingLeft="8dp"
+		android:paddingTop="16dp"
+		android:paddingBottom="16dp"
+		android:paddingRight="8dp"
+		android:visibility="gone"
+		android:src="@drawable/ic_comment"
+		tools:ignore="RelativeOverlap"/>
+
+    <View
+        android:id="@+id/afif_anchor_view"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/afif_menu_image"
+        android:layout_marginRight="32dp"
+        android:layout_alignBaseline="@+id/afif_menu_image"/>
+
+    <!--image dimen are 24 by 24 but padding is added to expand clickable area-->
+
+    <ImageView
+        android:id="@+id/afif_menu_image"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:src="@drawable/more_button_image"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingRight="8dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+</merge>

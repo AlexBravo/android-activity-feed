@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="InconsistentArrays">
+
+    <integer-array name="cloud_flags"/>
+
+    <integer-array name="concerts_flags"/>
+
+    <integer-array name="feed_flags"/>
+
+    <integer-array name="manage_flags"/>
+
+    <integer-array name="manage_activity_flags">
+        <item>@integer/no_toolbar</item>
+    </integer-array>
+
+    <integer-array name="base_fragment_activity_flags">
+        <item>@integer/no_toolbar</item>
+    </integer-array>
+
+    <integer-array name="base_main_activity_flags">
+        <item>@integer/no_toolbar</item>
+    </integer-array>
+
+    <integer-array name="base_activity_feed_fragment_flags">
+        <item>@integer/no_toolbar</item>
+    </integer-array>
+
+    <integer-array name="base_concerts_list_fragment_flags">
+        <item>@integer/no_toolbar</item>
+    </integer-array>
+
+    <integer-array name="base_manage_fragment_flags">
+        <item>@integer/no_toolbar</item>
+    </integer-array>
+
+    <integer-array name="login_flow_flags">
+        <item>@integer/no_toolbar</item>
+        <item>@integer/no_credentials_needed</item>
+    </integer-array>
+
+    <integer-array name="terms_activity_flags">
+        <item>@integer/no_credentials_needed</item>
+    </integer-array>
+    
+    <integer-array name="settings_flags"/>
+    
+    <integer-array name="base_linked_account_activity_flags"/>
+    
+    <integer-array name="video_view_fragment_flags">
+        <item>@integer/no_toolbar</item>
+    </integer-array>
+
+    <integer-array name="backup_credentials_flags">
+        <item>@integer/no_credentials_needed</item>
+    </integer-array>
+
+</resources>

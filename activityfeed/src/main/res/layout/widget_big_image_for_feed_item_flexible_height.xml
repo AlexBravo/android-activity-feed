@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="UnusedAttribute">
+
+    <ImageView
+        android:id="@+id/afibi_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:transitionName="@string/transition_image"/>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/afibi_event_image_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <!--This is here in case we need to display an event image at a specific aspect ratio instead.-->
+        <!--There has to be a better way of doing this, but it will work for now. -->
+
+        <ImageView
+            android:id="@+id/afibi_event_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_widthPercent="100%"
+            app:layout_aspectRatio="@fraction/sixteen_by_nine"
+            android:transitionName="@string/transition_image"/>
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/afibi_text_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:transitionName="@string/transition_gradient"
+        style="@style/BigImageTextSection">
+
+        <TextView
+            android:id="@+id/afibi_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="24dp"
+            style="@style/Widget.Bandsintown.ToolbarTitleTextAppearance"/>
+
+        <TextView
+            android:id="@+id/afibi_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginBottom="4dp"
+            style="@style/Widget.Bandsintown.ToolbarSubtitleTextAppearance"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
