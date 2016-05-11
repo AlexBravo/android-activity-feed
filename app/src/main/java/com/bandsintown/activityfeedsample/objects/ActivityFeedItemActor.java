@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.bandsintown.activityfeed.objects.FeedArtistStub;
 import com.bandsintown.activityfeed.objects.FeedItemActorInterface;
-import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeedsample.Constants;
 import com.bandsintown.activityfeedsample.FieldNames;
 import com.google.gson.annotations.SerializedName;
@@ -41,18 +39,6 @@ public class ActivityFeedItemActor implements Parcelable, FeedItemActorInterface
 
 	public User getUser() {
 		return mUser;
-	}
-
-	@Override
-	public void setArtist(FeedArtistStub feedArtistStub) {
-		if(feedArtistStub instanceof ArtistStub)
-			mArtist = (ArtistStub) feedArtistStub;
-	}
-
-	@Override
-	public void setUser(FeedUser feedUser) {
-		if(feedUser instanceof User)
-			mUser = (User) feedUser;
 	}
 
 	public void setArtist(ArtistStub artistStub) {

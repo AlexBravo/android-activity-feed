@@ -18,19 +18,13 @@ public interface FeedEventStub {
 
 	int getVenueId();
 
-	void setArtistId(int artistId);
-
 	int getArtistId();
 
 	String getBasedOn();
 
 	FeedArtistStub getArtistStub();
 
-	void setArtistStub(FeedArtistStub feedArtistStub);
-
 	FeedVenueStub getVenueStub();
-
-	void setVenueStub(FeedVenueStub venueStub);
 
 	int getRsvpStatus();
 
@@ -41,8 +35,6 @@ public interface FeedEventStub {
 	int getRsvpCount();
 
 	ArrayList<? extends FeedUser> getFriendAttendees();
-
-	void addAttendee(FeedUser attendee);
 
 	void clearAttendees();
 

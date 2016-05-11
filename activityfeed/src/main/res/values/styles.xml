@@ -146,19 +146,6 @@
     <style name="Widget.Bandsintown.EmptyList.TextAppearance" parent="Widget.Bandsintown.TextAppearance">
         <item name="android:textSize">18dp</item>
     </style>
-
-    <style name="Widget.Bandsintown.TextAppearance.SettingsListItem">
-        <item name="android:textSize">15dp</item>
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:fontFamily">@string/roboto_medium</item>
-        <item name="android:layout_marginLeft">@dimen/settings_item_horizontal_margin</item>
-    </style>
-
-    <style name="Widget.Bandsintown.TextAppearance.SettingsListItem.Subtitle">
-        <item name="android:textSize">13dp</item>
-        <item name="android:textColor">@color/grey_text_color</item>
-        <item name="android:fontFamily">@string/roboto_regular</item>
-    </style>
     
     <style name="Widget.Bandsintown.DividerHeaderTextAppearance" parent="@android:style/TextAppearance">
         <item name="android:textSize">14dp</item>
@@ -221,11 +208,6 @@
         <item name="android:background">@drawable/bit_button</item>
     </style>
 
-    <style name="CloudPopupButton">
-        <item name="android:textColor">@color/bit_teal</item>
-        <item name="android:background">@null</item>
-    </style>
-
     <style name="Widget.Bandsintown.PersonNameTextAppearance" parent="@android:style/TextAppearance">
         <item name="android:textSize">10dp</item>
         <item name="android:textColor">@color/bit_teal</item>
@@ -235,12 +217,6 @@
     <style name="Widget.Bandsintown.CardSubTitleTextAppearance" parent="@android:style/TextAppearance">
         <item name="android:textSize">12dp</item>
         <item name="android:textColor">@color/grey_text_color</item>
-        <item name="android:fontFamily">@string/roboto_light</item>
-    </style>
-
-    <style name="Widget.Bandsintown.NavDrawerListItemTextAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textSize">16dp</item>
-        <item name="android:textColor">@color/nav_item_text_color</item>
         <item name="android:fontFamily">@string/roboto_light</item>
     </style>
     
@@ -268,13 +244,6 @@
         <item name="android:textSize">16dp</item>
     </style>
 
-    <style name="CloudSliderSubtitleText" parent="@android:style/TextAppearance">
-        <item name="android:textSize">12dp</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:fontFamily">@string/roboto_regular</item>
-    </style>
-
     <style name="BlueEditText">
         <item name="colorControlNormal">@color/bit_teal</item>
         <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
@@ -283,21 +252,6 @@
     <style name="Widget.Bandsintown.TextAppearance.UserFragment.Toolbar.ExpandedToolbarStyle" parent="@android:style/TextAppearance">
         <item name="android:visibility">gone</item>
         <item name="android:textColor">@android:color/transparent</item>
-    </style>
-
-    <style name="Widget.Bandsintown.TextAppearance.InstallFlow">
-        <item name="android:textColor">@color/transparent_white</item>
-        <item name="android:textSize">14dp</item>
-    </style>
-
-    <style name="Widget.Bandsintown.TextAppearance.InstallFlow.SmallText">
-        <item name="android:textColor">@color/transparent_white</item>
-        <item name="android:textSize">12dp</item>
-    </style>
-
-    <style name="Widget.Bandsintown.TextAppearance.InstallFlow.Title">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">24dp</item>
     </style>
 
     <style name="WhiteCheckboxBorder" parent="Theme.Bandsintown">
@@ -318,24 +272,9 @@
         <item name="android:textSize">18dp</item>
     </style>
 
-    <style name="Widget.Bandsintown.TicketListItem.TextAppearance" parent="Widget.Bandsintown.TextAppearance">
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">18dp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="Widget.Bandsintown.RsvpCountCircleStyle" parent="Widget.Bandsintown.TextAppearance">
         <item name="android:textSize">14dp</item>
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="Theme.Bandsintown.TransparentActivity" parent="BandsintownBaseTheme">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
     <style name="SpinnerWithNoArrow" parent="@android:style/Widget.Spinner">
@@ -353,34 +292,7 @@
         <item name="android:fontFamily">@string/roboto_medium</item>
     </style>
 
-	<style name="PaymentFinalItemTextStyle">
-		<item name="android:textColor">@android:color/black</item>
-		<item name="android:fontFamily">@string/roboto_medium</item>
-		<item name="android:textSize">16dp</item>
-	</style>
-
-    <style name="PurchaseFlowEmailTextStyle">
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:fontFamily">@string/roboto_light</item>
-        <item name="android:textSize">16dp</item>
-    </style>
-
-    <style name="Theme.Bandsintown.DialogActivity" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-
-        <item name="android:windowMinWidthMajor">100%</item>
-        <item name="android:windowMinWidthMinor">100%</item>
-    </style>
-
     <string name="accessibility_overflow" translatable="false">overflow</string>
-
-    <style name="PurchaseReceiptListItemTextStyle" parent="Widget.Bandsintown.TextAppearance">
-        <item name="android:textSize">14dp</item>
-    </style>
 
     <style name="Widget.Bandsintown.TextAppearance.ArtistListens" parent="Widget.Bandsintown.TextAppearance">
         <item name="android:textColor">@color/black</item>

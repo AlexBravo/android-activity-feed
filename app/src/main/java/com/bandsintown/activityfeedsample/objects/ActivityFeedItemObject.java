@@ -6,13 +6,7 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.bandsintown.activityfeed.objects.FeedArtistStub;
-import com.bandsintown.activityfeed.objects.FeedEventStub;
-import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.FeedItemObjectInterface;
-import com.bandsintown.activityfeed.objects.FeedPost;
-import com.bandsintown.activityfeed.objects.FeedUser;
-import com.bandsintown.activityfeed.objects.FeedVenueStub;
 import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Print;
 import com.bandsintown.activityfeedsample.Constants;
@@ -81,7 +75,7 @@ public class ActivityFeedItemObject implements Parcelable, FeedItemObjectInterfa
 	}
 
 	//TODO put this back when we support object venues, right now we do not.
-//	public FeedVenueStub getVenueStub() {
+//	public VenueStub getVenueStub() {
 //		return mVenueStub;
 //	}
 
@@ -311,42 +305,6 @@ public class ActivityFeedItemObject implements Parcelable, FeedItemObjectInterfa
 
 	public void setLongitude(double longitude) {
 		mLongitude = longitude;
-	}
-
-	@Override
-	public void setPost(FeedPost post) {
-		if(post instanceof Post)
-			mPost = (Post) post;
-	}
-
-	@Override
-	public void setEventStub(FeedEventStub feedEventStub) {
-		if(feedEventStub instanceof EventStub)
-			mEventStub = (EventStub) feedEventStub;
-	}
-
-	@Override
-	public void setArtistStub(FeedArtistStub feedArtistStub) {
-		if(feedArtistStub instanceof ArtistStub)
-			mArtistStub = (ArtistStub) feedArtistStub;
-	}
-
-	@Override
-	public void setVenueStub(FeedVenueStub venueStub) {
-		if(venueStub instanceof VenueStub)
-			mVenueStub = (VenueStub) venueStub;
-	}
-
-	@Override
-	public void setLikedItem(FeedItemInterface item) {
-		if(item instanceof ActivityFeedItem)
-			mLikedItem = (ActivityFeedItem) item;
-	}
-
-	@Override
-	public void setUser(FeedUser feedUser) {
-		if(feedUser instanceof User)
-			mUser = (User) feedUser;
 	}
 
 	protected ActivityFeedItemObject(Parcel in) {

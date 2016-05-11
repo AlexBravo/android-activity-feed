@@ -4,10 +4,8 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.bandsintown.activityfeed.objects.FeedArtistStub;
 import com.bandsintown.activityfeed.objects.FeedEventStub;
 import com.bandsintown.activityfeed.objects.FeedUser;
-import com.bandsintown.activityfeed.objects.FeedVenueStub;
 import com.bandsintown.activityfeedsample.Constants;
 import com.bandsintown.activityfeedsample.FieldNames;
 import com.bandsintown.activityfeedsample.R;
@@ -46,7 +44,7 @@ public class EventStub implements Parcelable, FeedEventStub {
 	@SerializedName(FieldNames.BASED_ON)
 	private String mBasedOn;
 
-	@SerializedName(Tables.EventStubs.CALENDAR_EVENT_URI)
+	@SerializedName("event_calendar_uri")
 	private String mCalendarEventUri;
 
 	//Just convenience, not stored in JSON or DB
@@ -118,24 +116,12 @@ public class EventStub implements Parcelable, FeedEventStub {
 		return mArtistStub;
 	}
 
-	@Override
-	public void setArtistStub(FeedArtistStub feedArtistStub) {
-		if(feedArtistStub instanceof ArtistStub)
-			mArtistStub = (ArtistStub) feedArtistStub;
-	}
-
 	public void setArtistStub(ArtistStub artistStub) {
 		mArtistStub = artistStub;
 	}
 
 	public VenueStub getVenueStub() {
 		return mVenueStub;
-	}
-
-	@Override
-	public void setVenueStub(FeedVenueStub venueStub) {
-		if(venueStub instanceof VenueStub)
-			mVenueStub = (VenueStub) venueStub;
 	}
 
 	public void setVenueStub(VenueStub venueStub) {
@@ -160,12 +146,6 @@ public class EventStub implements Parcelable, FeedEventStub {
 
 	public ArrayList<? extends FeedUser> getFriendAttendees() {
 		return mFriendAttendees;
-	}
-
-	@Override
-	public void addAttendee(FeedUser attendee) {
-		if(attendee instanceof User)
-			mFriendAttendees.add((User) attendee);
 	}
 
 	public void addAttendee(User attendee) {

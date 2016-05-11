@@ -43,29 +43,6 @@ public class FieldNames {
     public static final String FRIENDED = "friended";
     public static final String UNFRIENDED = "unfriended";
 
-    public static final String TWITTER_USERNAME = "twitter_username";
-    public static final String TWITTER_TOKEN = "twitter_token";
-    public static final String TWITTER_SECRET = "twitter_secret";
-    public static final String TWITTER_PROFILE_IMG_URL = "twitter_profile_img_url";
-    public static final String TRACKED_ARTISTS_COUNT = "tracked_artists_count";
-    public static final String ANDROID_REGISTRATION_ID = "android_registration_id";
-    public static final String BANDSINTOWN_MANAGER = "bandsintown_manager";
-    public static final String EMAIL = "email";
-    public static final String EMAILS = "emails";
-    public static final String ACCOUNT_STATUS = "account_status";
-    public static final String PANDORA_USERNAME = "pandora_username";
-    public static final String LASTFM_USERNAME = "lastfm_username";
-    public static final String LASTFM_PROFILE_IMG_URL = "lastfm_profile_img_url";
-    public static final String GOOGLE_PLUS_AUTH_TOKEN = "google_plus_auth_token";
-    public static final String NEW_USER = "new_user";
-    public static final String SPOTIFY_USERNAME = "spotify_username";
-    //	public static final String SPOTIFY_AUTH_BLOB = "spotify_auth_blob";
-    public static final String SPOTIFY_REFRESH_TOKEN = "spotify_refresh_token";
-    public static final String RDIO_USERNAME = "rdio_username";
-    public static final String DEEZER_USERNAME = "deezer_username";
-    public static final String SHARING = "sharing";
-    public static final String NOTIFICATIONS = "notifications";
-
     public static final String CITY = "city";
     public static final String REGION = "region";
     public static final String COUNTRY = "country";

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.bandsintown.activityfeed.ApiListener;
 import com.bandsintown.activityfeed.BandsintownApi;
@@ -50,10 +51,12 @@ public class FeedActivity extends NaviAppCompatActivity {
 
         setContentView(R.layout.fragment_basic_recycler_view);
 
+        findViewById(R.id.toolbar).setVisibility(View.GONE);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        SpotifyPreviewHelper.initiate(this, mSpotifyApi);
+        SpotifyPreviewHelper.bindMediaController(this, mSpotifyApi);
 
         mAdapter = new TestFeedAdapter(this, this, mRecyclerView, mBandsintownApi, mFeedDatabase, mIntentRouter);
 
@@ -62,8 +65,18 @@ public class FeedActivity extends NaviAppCompatActivity {
         loadAdapter();
     }
 
+    @Override
+    protected void onStop() {
+        if(getSupportMediaController() != null)
+            getSupportMediaController().getTransportControls().stop();
+
+        SpotifyPreviewHelper.unbindMediaController(this);
+
+        super.onStop();
+    }
+
     private void loadAdapter() {
-        FeedApi api = new Api().create(this);
+        FeedApi api = Api.create();
         api.getActivities(null, null).enqueue(new Callback<FeedResponse>() {
 
             @Override
@@ -134,8 +147,24 @@ public class FeedActivity extends NaviAppCompatActivity {
         }
 
         @Override
-        public void getSpotifyTrackForArtistId(String id, ApiListener<SpotifyArtistResponse> apiListener) {
-            apiListener.onErrorResponse(new Exception("Not implemented yet"));
+        public void getSpotifyTrackForArtistId(String id, final ApiListener<SpotifyArtistResponse> apiListener) {
+            Api.createSpotify().getActivities(id, 3).enqueue(new Callback<SpotifyArtistResponse>() {
+
+                @Override
+                public void onResponse(Call<SpotifyArtistResponse> call, Response<SpotifyArtistResponse> response) {
+                    if(response.isSuccessful()) {
+                        apiListener.onResponse(response.body());
+                    }
+                    else
+                        apiListener.onErrorResponse(new Exception(response.message()));
+                }
+
+                @Override
+                public void onFailure(Call<SpotifyArtistResponse> call, Throwable t) {
+                    apiListener.onErrorResponse(new Exception(t));
+                }
+
+            });
         }
     };
 

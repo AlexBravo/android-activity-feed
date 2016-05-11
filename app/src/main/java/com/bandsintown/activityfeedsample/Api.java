@@ -1,7 +1,5 @@
 package com.bandsintown.activityfeedsample;
 
-import android.content.Context;
-
 import com.bandsintown.activityfeedsample.gson.GsonFactory;
 
 import java.io.IOException;
@@ -20,12 +18,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Api {
 
     private static final String BIT_API_BASE = "https://app.bandsintown.com/v2.2/";
+    public static final String SPOTIFY_BASE_URL = "https://api.spotify.com/v1/";
 
     private static final String RJS_AUTH = "Token token=CAABwvx9igq8BAPdl6t7jEuqkMLgZBRlIWoZAnbrgj7DoeDZB3qGSiZCH" +
             "Byqyxg2FPbsWmRL69li5gwDxUJAPyFJoMTx91uFXMpIMNm9zked7vAGUDMyAajHdcQdwqTDOpugaY190foq9rqLGxumGkJO0Hp2rLl" +
             "lWztK9PdAysp4adZCzo7uYjtFhxvgjuwG0ZD, auth_method=facebook, auth_login=550118100";
 
-    public FeedApi create(Context context) {
+    public static FeedApi create() {
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
         builder.readTimeout(10, TimeUnit.SECONDS);
         builder.connectTimeout(5, TimeUnit.SECONDS);
@@ -47,4 +46,18 @@ public class Api {
         return retrofit.create(FeedApi.class);
     }
 
+    public static SpotifyApi createSpotify() {
+        OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+        builder.readTimeout(10, TimeUnit.SECONDS);
+        builder.connectTimeout(5, TimeUnit.SECONDS);
+
+        OkHttpClient client = builder.build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(SPOTIFY_BASE_URL).client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(SpotifyApi.class);
+    }
 }

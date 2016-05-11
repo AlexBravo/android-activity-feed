@@ -9,10 +9,6 @@ public interface FeedItemActorInterface {
 
 	FeedUser getUser();
 
-	void setArtist(FeedArtistStub feedArtistStub);
-
-	void setUser(FeedUser feedUser);
-
 	String getActorName();
 
 	String getActorImageUrl(boolean thumb);
@@ -21,14 +17,8 @@ public interface FeedItemActorInterface {
 
 	int getActivityItemId();
 
-	void setActivityId(int activityItemId);
-
 	int getArtistId();
 
-	void setArtistId(int artistId);
-
 	int getUserId();
-
-	void setUserId(int userId);
 
 }

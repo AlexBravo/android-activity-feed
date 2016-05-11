@@ -4,9 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.bandsintown.activityfeed.objects.FeedItemActorInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
-import com.bandsintown.activityfeed.objects.FeedItemObjectInterface;
 import com.bandsintown.activityfeed.util.FeedPrefs;
 import com.bandsintown.activityfeedsample.Constants;
 import com.bandsintown.activityfeedsample.FieldNames;
@@ -125,24 +123,12 @@ public class ActivityFeedItem implements FeedItemInterface, Parcelable {
 		return mActor;
 	}
 
-	@Override
-	public void setActor(FeedItemActorInterface actor) {
-		if(actor instanceof ActivityFeedItemActor)
-			mActor = (ActivityFeedItemActor) actor;
-	}
-
 	public void setActor(ActivityFeedItemActor actor) {
 		mActor = actor;
 	}
 
 	public ActivityFeedItemObject getObject() {
 		return mObject;
-	}
-
-	@Override
-	public void setObject(FeedItemObjectInterface object) {
-		if(object instanceof ActivityFeedItemObject)
-			mObject = (ActivityFeedItemObject) object;
 	}
 
 	public void setObject(ActivityFeedItemObject object) {

@@ -9,8 +9,6 @@ public interface FeedUser {
 
     String getFirstName();
 
-    void setFirstName(String firstName);
-
     String getLastName();
 
     String getFacebookId();
@@ -20,8 +18,6 @@ public interface FeedUser {
     String getLocation();
 
     int getFriendStatus();
-
-    void setFriendStatus(int isFriend);
 
     long getExpiration();
 
@@ -33,17 +29,9 @@ public interface FeedUser {
 
     String getFullName();
 
-    void setContactImageUri(String contactImageUri);
-
-    void setContactImageUri(long id);
-
     String getEmail();
 
-    void setEmail(String email);
-
     String getPhoneNumber();
-
-    void setPhoneNumber(String phoneNumber);
 
     boolean getHasMoreActivities();
 

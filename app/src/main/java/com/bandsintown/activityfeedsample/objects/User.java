@@ -34,13 +34,13 @@ public class User implements Parcelable, FeedUser {
 	@SerializedName(FieldNames.EXPIRATION_DATE)
 	private long mExpiration;
 
-	@SerializedName(Tables.Users.LATEST_ACTIVITY_ITEM_STREAM_ID)
+	@SerializedName("latest_activity_item_stream_id")
 	private String mLatestActivityItemStreamId;
 
-	@SerializedName(Tables.Users.OLDEST_ACTIVITY_ITEM_STREAM_ID)
+	@SerializedName("oldest_activity_item_stream_id")
 	private String mOldestActivityStreamId;
 
-	@SerializedName(Tables.Users.HAS_MORE_ACTIVITIES)
+	@SerializedName(Constants.HAS_MORE_ACTIVITIES)
 	private boolean mHasMoreActivities;
 
 	//Not stored on users table, just helper
