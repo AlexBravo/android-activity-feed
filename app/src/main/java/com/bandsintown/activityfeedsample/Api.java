@@ -2,6 +2,8 @@ package com.bandsintown.activityfeedsample;
 
 import android.content.Context;
 
+import com.bandsintown.activityfeedsample.gson.GsonFactory;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -39,7 +41,7 @@ public class Api {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BIT_API_BASE).client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(GsonFactory.createBandsintownGsonObject()))
                 .build();
 
         return retrofit.create(FeedApi.class);

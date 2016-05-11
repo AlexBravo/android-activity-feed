@@ -42,7 +42,7 @@ public class ActivityFeedItemObject implements Parcelable, FeedItemObjectInterfa
 	@SerializedName(Tables.ActivityFeedObjects.OBJECT_ACTIVITY_ID)
 	private int mLikedItemId;
 
-	@SerializedName(Tables.ActivityFeedObjects.ACTIVITY_ID)
+	@SerializedName(FieldNames.ACTIVITY_ID)
 	private int mActivityId;
 
 	@SerializedName(Tables.ActivityFeedObjects.OBJECT_PLACE_LOCATION)
