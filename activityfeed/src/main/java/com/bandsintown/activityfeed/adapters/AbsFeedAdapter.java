@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bandsintown.activityfeed.ApiListener;
-import com.bandsintown.activityfeed.BandsintownApi;
+import com.bandsintown.activityfeed.BitFeedApi;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.EventAnnouncementGroupView;
 import com.bandsintown.activityfeed.FeedDatabase;
@@ -26,6 +26,7 @@ import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEvent;
 import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEventFlexibleHeight;
 import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
 import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupFeedItemMiniList;
 import com.bandsintown.activityfeed.GroupTextPostView;
 import com.bandsintown.activityfeed.R;
@@ -81,8 +82,9 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     protected RecyclerView mRecyclerView;
     protected Handler mHandler;
     protected IntentRouter mRouter;
-    protected BandsintownApi mApi;
+    protected BitFeedApi mApi;
     protected FeedDatabase mFeedDatabase;
+    protected FeedViewOptions mOptions;
 
     protected ArrayList<FeedListItem> mItems = new ArrayList<>();
     protected HashSet<Integer> mIndexOfItemsWithMediaControls = new HashSet<>();
@@ -91,18 +93,20 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     protected OnLikeClickedListener<FeedGroupInterface> mOnGroupLikeListener;
 
     protected FeedListItem mItemToDelete;
+    protected FeedListItem mLoading;
 
     protected int CHECK_LISTEN_ITEMS_ONLY = 4; //just some arbitrary object to add to the notifyItemChanged payload
     protected int CHECK_ALL_FOR_LISTEN_ITEMS = 5; //just some arbitrary object to add to the notifyItemChanged payload
     protected int UPDATE_LIKE_STATUS = 6;
 
     public AbsFeedAdapter(AppCompatActivity activity, NaviComponent component, RecyclerView recyclerView,
-                          BandsintownApi api, FeedDatabase database, IntentRouter router) {
+                          BitFeedApi api, FeedDatabase database, IntentRouter router) {
         mActivity = activity;
         mRecyclerView = recyclerView;
         mRouter = router;
         mApi = api;
         mFeedDatabase = database;
+        mOptions = getFeedViewOptions();
 
         mOnLikeClickListener = new OnLikeClickedListener<FeedItemInterface>() {
 
@@ -175,6 +179,9 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             });
 
         AudioStateManager.getInstance().addListener(this, mActivity.getClass().getCanonicalName());
+
+        mLoading = new FeedListItem();
+        mLoading.setTypeLoading();
     }
 
     public void syncMediaControlStates(boolean checkAll) {
@@ -194,6 +201,8 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
         }
     }
 
+    protected abstract FeedViewOptions getFeedViewOptions();
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch(viewType) {
@@ -207,46 +216,46 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             case FeedValues.VERB_CODE_RATE :
             case FeedValues.VERB_CODE_PROMOTE :
             case FeedValues.VERB_CODE_MESSAGE_RSVPS :
-                return new FeedItemMessageWIthTaggedEventSingleViewHolder(mActivity,
+                return new FeedItemMessageWIthTaggedEventSingleViewHolder(mActivity, mOptions,
                         new FeedItemSingleMessageWithTaggedEvent(mActivity, getAverageFeedItemImageSizeEstimate()));
             case FeedValues.VERB_CODE_USER_POST :
             case FeedValues.VERB_CODE_ARTIST_POST :
-                return new FeedItemMessageWIthTaggedEventSingleViewHolder(mActivity,
+                return new FeedItemMessageWIthTaggedEventSingleViewHolder(mActivity, mOptions,
                         new FeedItemSingleMessageWithTaggedEventFlexibleHeight(mActivity, getAverageFeedItemImageSizeEstimate()));
             case FeedValues.VERB_CODE_USER_TRACKING :
-                return new UserProfileFeedItemSingleViewHolder(mActivity, new FeedItemSingleUserProfile(mActivity));
+                return new UserProfileFeedItemSingleViewHolder(mActivity, mOptions, new FeedItemSingleUserProfile(mActivity));
             case FeedValues.VERB_CODE_WATCH_TRAILER :
             case FeedValues.VERB_CODE_POST_TRAILER :
-                return new WatchTrailerFeedItemSingleViewHolder(mActivity,
+                return new WatchTrailerFeedItemSingleViewHolder(mActivity, mOptions,
                         new FeedItemSingleWatchTrailer(mActivity, getAverageFeedItemImageSizeEstimate()));
             //group view holders...
             case FeedValues.VERB_CODE_GROUP_USER_TRACKING :
-                return new GroupTrackUsersViewHolder(mActivity, new GroupFeedItemMiniList(mActivity));
+                return new GroupTrackUsersViewHolder(mActivity, mOptions, new GroupFeedItemMiniList(mActivity));
             case FeedValues.VERB_CODE_GROUP_RATE :
-                return new GroupRatingsViewHolder(mActivity, new GroupFeedItemMiniList(mActivity));
+                return new GroupRatingsViewHolder(mActivity, mOptions, new GroupFeedItemMiniList(mActivity));
             case FeedValues.VERB_CODE_GROUP_LISTEN :
-                return new GroupListensFeedItemViewHolder(mActivity, new GroupFeedItemMiniList(mActivity));
+                return new GroupListensFeedItemViewHolder(mActivity, mOptions, new GroupFeedItemMiniList(mActivity));
             case FeedValues.VERB_CODE_GROUP_REQUEST :
-                return new PlayMyCityActivityGroupViewHolder(mActivity, new FeedItemPlayMyCityView(mActivity, getAverageFeedItemImageSizeEstimate()));
+                return new PlayMyCityActivityGroupViewHolder(mActivity, mOptions, new FeedItemPlayMyCityView(mActivity, getAverageFeedItemImageSizeEstimate()));
             case FeedValues.VERB_CODE_GROUP_ARTIST_TRACKING :
-                return new ArtistTrackingGroupViewHolder(mActivity, new FeedItemImageGroupView(mActivity));
+                return new ArtistTrackingGroupViewHolder(mActivity, mOptions, new FeedItemImageGroupView(mActivity));
             case FeedValues.VERB_CODE_GROUP_RSVP :
-                return new RsvpGroupViewHolder(mActivity, new FeedItemImageGroupView(mActivity));
+                return new RsvpGroupViewHolder(mActivity, mOptions, new FeedItemImageGroupView(mActivity));
             case FeedValues.VERB_CODE_GROUP_EVENT_ANNOUNCEMENT :
-                return new EventAnnouncementGroupViewHolder(mActivity, new EventAnnouncementGroupView(mActivity));
+                return new EventAnnouncementGroupViewHolder(mActivity, mOptions, new EventAnnouncementGroupView(mActivity));
             case FeedValues.VERB_CODE_GROUP_ARTIST_POST_ALL_IMAGES :
             case FeedValues.VERB_CODE_GROUP_USER_POST_ALL_IMAGES :
-                return new PostedPhotosGroupViewHolder(mActivity, new FeedItemImageGroupView(mActivity));
+                return new PostedPhotosGroupViewHolder(mActivity, mOptions, new FeedItemImageGroupView(mActivity));
             case FeedValues.VERB_CODE_GROUP_USER_POST :
             case FeedValues.VERB_CODE_GROUP_ARTIST_POST :
             case FeedValues.VERB_CODE_GROUP_MESSAGE_RSVPS :
-                return new GroupTextPostViewHolder(mActivity, new GroupTextPostView(mActivity));
+                return new GroupTextPostViewHolder(mActivity, mOptions, new GroupTextPostView(mActivity));
             case FeedValues.VERB_CODE_GROUP_PROMOTE :
-                return new PromoteGroupViewHolder(mActivity, new EventAnnouncementGroupView(mActivity));
+                return new PromoteGroupViewHolder(mActivity, mOptions, new EventAnnouncementGroupView(mActivity));
             case FeedValues.VERB_CODE_GROUP_WATCH_TRAILER :
-                return new GroupWatchTrailerViewHolder(mActivity, new FeedItemImageGroupView(mActivity));
+                return new GroupWatchTrailerViewHolder(mActivity, mOptions, new FeedItemImageGroupView(mActivity));
             case FeedValues.VERB_CODE_LIKE :
-                return new LikedActivityViewHolder(mActivity, new FeedItemSingleLikedActivity(mActivity),
+                return new LikedActivityViewHolder(mActivity, mOptions, new FeedItemSingleLikedActivity(mActivity),
                         new ActivityViewBuilder(mActivity, mApi, mFeedDatabase, getAverageFeedItemImageSizeEstimate()));
             default :
                 if(FeedValues.IS_DEBUG_MODE)
@@ -524,6 +533,22 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
         }
         catch(Exception e) {
             Print.log("Error notifying likes changed", e.getMessage());
+        }
+    }
+
+    public void hideLoadingSpinner() {
+        int currentSize = mItems.size() - 1;
+
+        if(currentSize > 0) {
+            try {
+                FeedListItem lastItem = mItems.get(currentSize);
+                if(lastItem.isTypeLoading()) {
+                    mItems.remove(currentSize);
+                    notifyItemRemoved(currentSize);
+                }
+            } catch(ArrayIndexOutOfBoundsException e) {
+                Print.exception(e);
+            }
         }
     }
 }

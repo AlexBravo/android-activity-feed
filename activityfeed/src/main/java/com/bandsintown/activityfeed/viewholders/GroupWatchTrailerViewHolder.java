@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bandsintown.activityfeed.FeedValues;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 
@@ -13,8 +14,8 @@ import java.util.ArrayList;
 
 public class GroupWatchTrailerViewHolder extends AbsImageGroupViewHolder {
 
-	public GroupWatchTrailerViewHolder(AppCompatActivity context, View itemView) {
-		super(context, itemView);
+	public GroupWatchTrailerViewHolder(AppCompatActivity context, FeedViewOptions options, View itemView) {
+		super(context, options, itemView);
 
 		PercentRelativeLayout bodyContainer = (PercentRelativeLayout) itemView.findViewById(R.id.fiigs_body_container);
 

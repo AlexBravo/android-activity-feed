@@ -1,10 +1,10 @@
 package com.bandsintown.activityfeed.viewholders;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEvent;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
@@ -17,14 +17,14 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 
 	private FeedItemSingleMessageWithTaggedEvent mItem;
 
-	public FeedItemMessageWIthTaggedEventSingleViewHolder(AppCompatActivity activity, View itemView) {
-		super(activity, itemView);
+	public FeedItemMessageWIthTaggedEventSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+		super(activity, options, itemView);
 		mItem = (FeedItemSingleMessageWithTaggedEvent) mView;
 	}
 
 	@Override
 	public void buildItem(final FeedItemInterface feedItem, boolean lastItem, final OnLikeClickedListener<FeedItemInterface> onLikeClickListener,
-						  OnFeedMenuItemAdapterClickListener feedMenuItemAdapterClickListener, IntentRouter router) {
+						  OnFeedMenuItemAdapterClickListener feedMenuItemAdapterClickListener, final IntentRouter router) {
 		super.buildItem(feedItem, lastItem, onLikeClickListener, feedMenuItemAdapterClickListener, router);
 
 		String imageUrl = feedItem.getObject().getObjectImageUrl();
@@ -58,11 +58,7 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 			@Override
 			public void onClick(View v) {
 				AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.OBJECT);
-				Intent intent = feedItem.getObject().buildOnClickIntent(mActivity);
-
-//				Bundle bundle = ActivityOptionsCompat.makeCustomAnimation(mActivity, R.anim.slide_from_right, R.anim.shrink_into_background).toBundle();
-				if(intent != null)
-					mActivity.startActivity(intent);
+				router.onObjectClicked(feedItem);
 			}
 
 		});

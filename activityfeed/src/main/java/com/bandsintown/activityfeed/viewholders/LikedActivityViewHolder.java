@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.bandsintown.activityfeed.AbsFeedItemSingleView;
 import com.bandsintown.activityfeed.FeedItemSingleLikedActivity;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
@@ -18,8 +19,8 @@ public class LikedActivityViewHolder extends AbsActivityFeedSingleViewHolder {
     private FeedItemSingleLikedActivity mFeedItemLikedActivityView;
     private ActivityViewBuilder mActivityViewBuilder;
 
-    public LikedActivityViewHolder(AppCompatActivity context, View itemView, ActivityViewBuilder viewBuilder) {
-        super(context, itemView);
+    public LikedActivityViewHolder(AppCompatActivity context, FeedViewOptions options, View itemView, ActivityViewBuilder viewBuilder) {
+        super(context, options, itemView);
 
         mFeedItemLikedActivityView = (FeedItemSingleLikedActivity) itemView;
         mActivityViewBuilder = viewBuilder;

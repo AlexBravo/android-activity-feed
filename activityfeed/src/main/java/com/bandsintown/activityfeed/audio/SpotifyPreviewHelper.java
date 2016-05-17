@@ -16,7 +16,7 @@ import com.bandsintown.activityfeed.audio.spotify.SpotifyArtistResponse;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyArtistSearchResponse;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyTrack;
 import com.bandsintown.activityfeed.interfaces.OnCompleteListener;
-import com.bandsintown.activityfeed.objects.SpotifyApi;
+import com.bandsintown.activityfeed.objects.SpotifyProvider;
 import com.bandsintown.activityfeed.util.Print;
 
 import java.util.LinkedHashMap;
@@ -31,7 +31,7 @@ import java.util.Map;
  */
 public class SpotifyPreviewHelper {
 
-    private SpotifyApi mApiHelper;
+    private SpotifyProvider mApiHelper;
     private Context mApplicationContext;
 
     MaxSizeHashMap<String, AudioTrackInfo> mNameUrlCache = new MaxSizeHashMap<>(20);
@@ -41,8 +41,8 @@ public class SpotifyPreviewHelper {
 
     private static SpotifyPreviewHelper instance;
 
-    public static SpotifyPreviewHelper initiate(AppCompatActivity activity, SpotifyApi spotifyApi) {
-        instance = new SpotifyPreviewHelper(activity, spotifyApi);
+    public static SpotifyPreviewHelper initiate(AppCompatActivity activity, SpotifyProvider spotifyProvider) {
+        instance = new SpotifyPreviewHelper(activity, spotifyProvider);
 
         return instance;
     }
@@ -68,7 +68,7 @@ public class SpotifyPreviewHelper {
             return null;
     }
 
-    public static void bindMediaController(AppCompatActivity activity, SpotifyApi api) {
+    public static void bindMediaController(AppCompatActivity activity, SpotifyProvider api) {
         if(instance == null)
             instance = new SpotifyPreviewHelper(activity, api);
 
@@ -92,7 +92,7 @@ public class SpotifyPreviewHelper {
             Print.log("failed to release the media session");
     }
 
-    private SpotifyPreviewHelper(AppCompatActivity activity, SpotifyApi api) {
+    private SpotifyPreviewHelper(AppCompatActivity activity, SpotifyProvider api) {
         mApplicationContext = activity.getApplicationContext();
         //creates a new volley context instead of holding reference to the Activity to prevent leaks
         mApiHelper = api;

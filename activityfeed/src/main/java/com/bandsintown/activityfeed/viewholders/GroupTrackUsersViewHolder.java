@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.view.View;
 
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupFeedItemMiniList;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
@@ -30,8 +31,8 @@ public class GroupTrackUsersViewHolder extends AbsActivityFeedGroupViewHolder im
     private static final int ITEM_CLICK = 0;
     private static final int IMAGE_CLICK = 1;
 
-    public GroupTrackUsersViewHolder(AppCompatActivity activity, View itemView) {
-        super(activity, itemView);
+    public GroupTrackUsersViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+        super(activity, options, itemView);
 
         mView = (GroupFeedItemMiniList) itemView;
     }

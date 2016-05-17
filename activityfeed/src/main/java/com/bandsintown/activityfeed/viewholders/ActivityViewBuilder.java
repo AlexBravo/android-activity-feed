@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.bandsintown.activityfeed.AbsFeedItemSingleView;
 import com.bandsintown.activityfeed.ApiListener;
-import com.bandsintown.activityfeed.BandsintownApi;
+import com.bandsintown.activityfeed.BitFeedApi;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedDatabase;
 import com.bandsintown.activityfeed.FeedItemSingleFooterView;
@@ -41,11 +41,11 @@ import com.google.gson.JsonObject;
 public class ActivityViewBuilder {
 
     private AppCompatActivity mActivity;
-    private BandsintownApi mApi;
+    private BitFeedApi mApi;
     private FeedDatabase mDatabase;
     private SizeEstimate mAverageImageSizeEstimate;
 
-    public ActivityViewBuilder(AppCompatActivity activity, BandsintownApi api, FeedDatabase database, SizeEstimate feedItemImageSizeEstimate) {
+    public ActivityViewBuilder(AppCompatActivity activity, BitFeedApi api, FeedDatabase database, SizeEstimate feedItemImageSizeEstimate) {
         mActivity = activity;
         mApi = api;
         mDatabase = database;
@@ -302,8 +302,6 @@ public class ActivityViewBuilder {
         view.getHeader().setPosterImage(ImageProvider.getInstance(mActivity), item.getActor().getActorImageUrl(true));
         view.getHeader().setDescription(buildDescription(item));
 
-        view.getFooter().setInitialState(item, router);
-
         view.getHeader().setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -320,6 +318,7 @@ public class ActivityViewBuilder {
             view.getFooter().setVisibility(View.GONE);
         }
         else {
+            view.getFooter().setInitialState(feedItem, router);
             view.getFooter().setLikeClickListener(new View.OnClickListener() {
 
                 @Override

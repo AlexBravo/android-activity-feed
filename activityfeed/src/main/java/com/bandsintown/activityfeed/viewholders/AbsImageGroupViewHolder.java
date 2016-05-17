@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bandsintown.activityfeed.FeedItemImageGroupView;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
@@ -22,8 +23,8 @@ public abstract class AbsImageGroupViewHolder extends AbsActivityFeedGroupViewHo
 
 	protected FeedGroupInterface mGroup;
 
-	public AbsImageGroupViewHolder(AppCompatActivity activity, View itemView) {
-		super(activity, itemView);
+	public AbsImageGroupViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+		super(activity, options, itemView);
 		mFeedItemImageGroupView = (FeedItemImageGroupView) mView;
 	}
 

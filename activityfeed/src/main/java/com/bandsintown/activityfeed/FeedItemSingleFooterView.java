@@ -69,6 +69,15 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 		setMinimumHeight(R.dimen.activity_feed_footer_height);
 	}
 
+	public void setOptions(FeedViewOptions options) {
+		if(options != null) {
+			mLikeButton.setVisibility(options.isEnableLiking() ? VISIBLE : INVISIBLE);
+			mComment.setVisibility(options.isCommentingEnabled() ? VISIBLE : INVISIBLE);
+			mReportItem.setVisible(mReportItem.isVisible() && options.isEnableReporting());
+			mDeleteItem.setVisible(mDeleteItem.isVisible() && options.isEnableDeleting());
+		}
+	}
+
 	public void setLikeCount(int count) {
 		mLikeCount.setText(getContext().getResources().getQuantityString(R.plurals.like_count, count, count));
 		if(count > 0)

@@ -205,7 +205,7 @@ public class FeedUtil {
 
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 1; i < item.getObject().getPost().getRating(); i++)
+        for(int i = 0; i < item.getObject().getPost().getRating(); i++)
             builder.append(star);
 
         if(item.getObject().getPost().getRating() % 1 != 0) {

@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedItemSinglePost;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
@@ -14,8 +15,8 @@ public class PostFeedItemSingleViewHolder extends AbsActivityFeedSingleViewHolde
 
 	private FeedItemSinglePost mItem;
 
-	public PostFeedItemSingleViewHolder(AppCompatActivity activity, View itemView) {
-		super(activity, itemView);
+	public PostFeedItemSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+		super(activity, options, itemView);
 		mItem = (FeedItemSinglePost) mView;
 	}
 

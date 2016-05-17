@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bandsintown.activityfeed.FeedItemPlayMyCityView;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
@@ -16,8 +17,8 @@ public class PlayMyCityActivityGroupViewHolder extends AbsActivityFeedGroupViewH
 
     private FeedItemPlayMyCityView mFeedItemPlayMyCityView;
 
-    public PlayMyCityActivityGroupViewHolder(AppCompatActivity activity, View itemView) {
-        super(activity, itemView);
+    public PlayMyCityActivityGroupViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+        super(activity, options, itemView);
         mFeedItemPlayMyCityView = (FeedItemPlayMyCityView) mView;
     }
 

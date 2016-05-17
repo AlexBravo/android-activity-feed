@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bandsintown.activityfeed.FeedValues;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupTextPostView;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
@@ -15,8 +16,8 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder {
 
 	private GroupTextPostView mGroupTextPostView;
 
-	public GroupTextPostViewHolder(AppCompatActivity context, View itemView) {
-		super(context, itemView);
+	public GroupTextPostViewHolder(AppCompatActivity context, FeedViewOptions options, View itemView) {
+		super(context, options, itemView);
 
 		mGroupTextPostView = (GroupTextPostView) itemView;
 	}

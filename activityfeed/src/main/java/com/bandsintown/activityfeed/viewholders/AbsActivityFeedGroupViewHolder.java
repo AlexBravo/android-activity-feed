@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.bandsintown.activityfeed.AbsFeedItemGroupView;
 import com.bandsintown.activityfeed.FeedValues;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
@@ -23,10 +24,11 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 
 	protected AppCompatActivity mContext;
 	protected AbsFeedItemGroupView mView;
+	protected FeedViewOptions mOptions;
 
 	private int mVerticalMargins;
 
-	public AbsActivityFeedGroupViewHolder(AppCompatActivity activity, View itemView) {
+	public AbsActivityFeedGroupViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(itemView);
 
 		mContext = activity;
@@ -34,6 +36,8 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 
 		int horizontalMargins = (int) mContext.getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
 		mVerticalMargins = (int) mContext.getResources().getDimension(R.dimen.activity_feed_card_top_margin);
+
+		mOptions = options;
 
 		RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 		params.setMargins(horizontalMargins, mVerticalMargins, horizontalMargins, 0); //Don't place a bottom margin here, only for last item in buildItem
@@ -53,6 +57,8 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 		mView.getHeader().setTimestamp(timestamp);
 
 		updateLikeStatus(group);
+
+		mView.getFooter().setOptions(mOptions);
 
 		mView.getHeader().setOnClickListener(new View.OnClickListener() {
 

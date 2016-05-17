@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
@@ -22,8 +23,8 @@ public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleVi
 
 	private RenderScript mRenderScript;
 
-	public UserProfileFeedItemSingleViewHolder(AppCompatActivity activity, View itemView) {
-		super(activity, itemView);
+	public UserProfileFeedItemSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+		super(activity, options, itemView);
 
 		mFeedItem = (FeedItemSingleUserProfile) itemView;
 

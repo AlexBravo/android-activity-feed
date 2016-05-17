@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.bandsintown.activityfeed.AbsFeedItemSingleView;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedItemSingleFooterView;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
@@ -24,14 +25,17 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 
 	protected AppCompatActivity mActivity;
 	protected AbsFeedItemSingleView mView;
+	protected FeedViewOptions mOptions;
 
 	private int mVerticalMargins;
 
-	public AbsActivityFeedSingleViewHolder(AppCompatActivity activity, View itemView) {
+	public AbsActivityFeedSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(itemView);
 
 		mActivity = activity;
 		mView = (AbsFeedItemSingleView) itemView;
+
+		mOptions = options;
 
 		int horizontalMargins = (int) mActivity.getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
 		mVerticalMargins = (int) mActivity.getResources().getDimension(R.dimen.activity_feed_card_top_margin);
@@ -65,6 +69,8 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			}
 
 		});
+
+		mView.getFooter().setOptions(mOptions);
 
 		mView.getFooter().setLikeClickListener(new View.OnClickListener() {
 

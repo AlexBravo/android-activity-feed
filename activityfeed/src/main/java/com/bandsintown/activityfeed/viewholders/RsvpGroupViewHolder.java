@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bandsintown.activityfeed.FeedValues;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 
 import java.util.ArrayList;
@@ -13,8 +14,8 @@ import java.util.ArrayList;
  */
 public class RsvpGroupViewHolder extends AbsImageGroupViewHolder {
 
-    public RsvpGroupViewHolder(AppCompatActivity activity, View itemView) {
-        super(activity, itemView);
+    public RsvpGroupViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+        super(activity, options, itemView);
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
@@ -19,8 +20,8 @@ public class WatchTrailerFeedItemSingleViewHolder extends AbsActivityFeedSingleV
 
     private FeedItemSingleWatchTrailer mItem;
 
-    public WatchTrailerFeedItemSingleViewHolder(AppCompatActivity activity, View itemView) {
-        super(activity, itemView);
+    public WatchTrailerFeedItemSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+        super(activity, options, itemView);
 
         if(itemView instanceof FeedItemSingleWatchTrailer)
             mItem = (FeedItemSingleWatchTrailer) itemView;

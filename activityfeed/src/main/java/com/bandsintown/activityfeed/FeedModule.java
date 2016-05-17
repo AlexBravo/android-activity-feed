@@ -10,7 +10,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 /**
  * Created by rjaylward on 5/11/16 for Bandsintown
  */
-public class Feed {
+public class FeedModule {
 
     public static void initialize(Context context) {
         FeedPrefs.initialize(context.getApplicationContext());

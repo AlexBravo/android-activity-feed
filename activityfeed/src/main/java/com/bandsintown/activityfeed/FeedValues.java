@@ -134,6 +134,12 @@ public class FeedValues {
 
     public static final String IN_ACTIVITY = "in_activity";
 
+    public static final String CATEGORY_ARTIST = "artist";
+    public static final String CATEGORY_FRIENDS = "friends";
+    public static final String CATEGORY_NONE = "none";
+    public static final String CATEGORY_USER = "user";
+    public static final String CATEGORY_ME = "me";
+
     //Activity list names
     public static final String MY_ACTIVITY_FEED = "my_activity_feed";
     public static final String USERS_ACTIVITIES = "users_activities";

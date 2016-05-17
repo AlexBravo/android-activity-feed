@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.bandsintown.activityfeed.audio.AudioStateManager;
 import com.bandsintown.activityfeed.audio.SpotifyPreviewHelper;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
-import com.bandsintown.activityfeed.objects.SpotifyApi;
+import com.bandsintown.activityfeed.objects.SpotifyProvider;
 import com.bandsintown.activityfeed.util.FeedPrefs;
 import com.bandsintown.activityfeed.util.Print;
 import com.trello.navi.NaviComponent;
@@ -23,9 +23,9 @@ public class ActivityFeedManager {
         AudioStateManager.reset();
     }
 
-    public void onActivityCreated(AppCompatActivity activity, NaviComponent component, SpotifyApi spotifyApi) {
-        SpotifyPreviewHelper.initiate(activity, spotifyApi);
-        SpotifyPreviewHelper.bindMediaController(activity, spotifyApi);
+    public void onActivityCreated(AppCompatActivity activity, NaviComponent component, SpotifyProvider spotifyProvider) {
+        SpotifyPreviewHelper.initiate(activity, spotifyProvider);
+        SpotifyPreviewHelper.bindMediaController(activity, spotifyProvider);
 
 //        component.addListener();
     }

@@ -27,6 +27,12 @@ public class FeedItemGroupFooterView extends RelativeLayout {
 		initLayout();
 	}
 
+	public void setOptions(FeedViewOptions options) {
+		if(options != null) {
+			mLikeButton.setVisibility(options.isEnableLiking() ? VISIBLE : GONE);
+		}
+	}
+
 	private void initLayout() {
 		LayoutInflater.from(getContext()).inflate(R.layout.activity_feed_item_group_footer, this, true);
 

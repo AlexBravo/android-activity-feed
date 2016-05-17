@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.view.View;
 
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupFeedItemMiniList;
 import com.bandsintown.activityfeed.GroupFeedItemMiniListItem;
 import com.bandsintown.activityfeed.R;
@@ -37,8 +38,8 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
     private static final int ITEM_CLICK = 0;
     private static final int IMAGE_CLICK = 1;
 
-    public GroupListensFeedItemViewHolder(AppCompatActivity activity, View itemView) {
-        super(activity, itemView);
+    public GroupListensFeedItemViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+        super(activity, options, itemView);
 
         mView = (GroupFeedItemMiniList) itemView;
         mTransportControls = activity.getSupportMediaController().getTransportControls();

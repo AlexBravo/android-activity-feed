@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by rjaylward on 5/6/16 for Bandsintown
  */
-public interface BandsintownApi {
+public interface BitFeedApi {
 
     void deleteActivityFeedItem(int id, ApiListener listener);
     void updatedLikeStatus(int id, boolean isLiked, ApiListener<JsonObject> listener);

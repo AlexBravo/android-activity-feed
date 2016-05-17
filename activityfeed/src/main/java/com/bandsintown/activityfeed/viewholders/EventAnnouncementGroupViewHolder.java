@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bandsintown.activityfeed.EventAnnouncementGroupView;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
@@ -18,8 +19,8 @@ public class EventAnnouncementGroupViewHolder extends AbsActivityFeedGroupViewHo
 	private FeedGroupInterface mGroup;
 	private OnItemClickAtIndexAtSubIndex<FeedGroupInterface> mOnItemClickAtIndex;
 
-	public EventAnnouncementGroupViewHolder(AppCompatActivity activity, View itemView) {
-		super(activity, itemView);
+	public EventAnnouncementGroupViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
+		super(activity, options, itemView);
 
 		mEventAnnouncementGroupView = (EventAnnouncementGroupView) itemView;
 	}
