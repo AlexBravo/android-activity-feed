@@ -71,10 +71,10 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 
 	public void setOptions(FeedViewOptions options) {
 		if(options != null) {
-			mLikeButton.setVisibility(options.isEnableLiking() ? VISIBLE : INVISIBLE);
 			mComment.setVisibility(options.isCommentingEnabled() ? VISIBLE : INVISIBLE);
 			mReportItem.setVisible(mReportItem.isVisible() && options.isEnableReporting());
 			mDeleteItem.setVisible(mDeleteItem.isVisible() && options.isEnableDeleting());
+			mLikeButton.setVisibility(options.isEnableLiking() ? VISIBLE : INVISIBLE);
 		}
 	}
 
