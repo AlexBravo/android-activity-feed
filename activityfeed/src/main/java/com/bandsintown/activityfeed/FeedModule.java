@@ -3,8 +3,9 @@ package com.bandsintown.activityfeed;
 import android.content.Context;
 
 import com.bandsintown.activityfeed.util.FeedPrefs;
+import com.bandsintown.kahlo.image.provider.Kahlo;
+import com.bandsintown.kahlo.image.provider.UILImgProvider;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 /**
@@ -18,7 +19,7 @@ public class FeedModule {
                 .memoryCache(new WeakMemoryCache())
                 .build();
 
-        ImageLoader.getInstance().init(imageConfig);
+        Kahlo.initialize(new UILImgProvider(), imageConfig);
     }
 
 }

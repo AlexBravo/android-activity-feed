@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.kahlo.BitmapHelper;
 import com.bandsintown.kahlo.image.callback.BitImageCallback;
-import com.bandsintown.kahlo.image.provider.BitImgProvider;
+import com.bandsintown.kahlo.image.provider.Kahlo;
 import com.bandsintown.kahlo.image.transformation.BitTransformation;
 import com.bandsintown.kahlo.image.transformation.BlurTransformation;
 import com.bandsintown.kahlo.image.transformation.MaxWidthTransformation;
@@ -35,47 +35,47 @@ public class ImageProvider {
     }
 
     //Do not add any callbacks to these without checking everything since ordering is important for those
-    public static BitImgProvider.Displayer selfSizingDisplayer(Context context) {
-        return BitImgProvider.with(context)
+    public static Kahlo.Displayer selfSizingDisplayer(Context context) {
+        return Kahlo.with(context)
                 .config(Bitmap.Config.RGB_565)
                 .selfSize()
                 .placeholderResId(R.drawable.transparent_box);
     }
 
-    public static BitImgProvider.Displayer activityFeedUserPostDisplayer(Context context, int maxWidth) {
-        return BitImgProvider.with(context)
+    public static Kahlo.Displayer activityFeedUserPostDisplayer(Context context, int maxWidth) {
+        return Kahlo.with(context)
                 .config(Bitmap.Config.RGB_565)
                 .placeholderResId(R.drawable.transparent_box)
                 .addTransformation(new MaxWidthTransformation(context, maxWidth));
     }
 
-    public static BitImgProvider.Displayer activityFeedImageDisplayer(Context context) {
-        return BitImgProvider.with(context)
+    public static Kahlo.Displayer activityFeedImageDisplayer(Context context) {
+        return Kahlo.with(context)
                 .config(Bitmap.Config.RGB_565)
                 .placeholderResId(R.drawable.transparent_box);
     }
 
-    public static BitImgProvider.Displayer activityFeedBlurImageDisplayer(Context context, RenderScript rs, ImageView iv) {
-        return BitImgProvider.with(context)
+    public static Kahlo.Displayer activityFeedBlurImageDisplayer(Context context, RenderScript rs, ImageView iv) {
+        return Kahlo.with(context)
                 .config(Bitmap.Config.ARGB_8888)
                 .placeholderResId(R.drawable.transparent_box)
                 .addTransformation(new BlurTransformation(context, rs, iv));
     }
 
-    public static BitImgProvider.Displayer blurImageDisplayer(Context context, RenderScript rs, ImageView iv) {
-        return BitImgProvider.with(context)
+    public static Kahlo.Displayer blurImageDisplayer(Context context, RenderScript rs, ImageView iv) {
+        return Kahlo.with(context)
                 .config(Bitmap.Config.ARGB_8888)
                 .addTransformation(new BlurTransformation(context, rs, iv));
     }
 
-    public static BitImgProvider.Displayer cloudCardImageDisplayer(Context context) {
-        return BitImgProvider.with(context)
+    public static Kahlo.Displayer cloudCardImageDisplayer(Context context) {
+        return Kahlo.with(context)
                 .config(Bitmap.Config.RGB_565)
                 .errorResId(R.drawable.placeholder_big_image);
     }
 
-    public static BitImgProvider.Displayer listImageDisplayer(Context context) {
-        return BitImgProvider.with(context)
+    public static Kahlo.Displayer listImageDisplayer(Context context) {
+        return Kahlo.with(context)
                 .config(Bitmap.Config.RGB_565)
                 .placeholderResId(R.drawable.transparent_box);
     }
@@ -102,7 +102,7 @@ public class ImageProvider {
         displayBigImage(imageUri, iv, isMultipaneLayout, null);
     }
 
-    public void displayBigImage(String imageUri, ImageView iv, boolean isMultipaneLayout, BitImgProvider.Displayer displayer) {
+    public void displayBigImage(String imageUri, ImageView iv, boolean isMultipaneLayout, Kahlo.Displayer displayer) {
         int width;
         if(isMultipaneLayout) {
             //Calculate width by taking right % of screen width
@@ -123,7 +123,7 @@ public class ImageProvider {
         displayBigImage(imageUri, iv, width, height, displayer);
     }
 
-    public void displayBigImage(String imageUri, ImageView iv, float width, float height, BitImgProvider.Displayer displayer) {
+    public void displayBigImage(String imageUri, ImageView iv, float width, float height, Kahlo.Displayer displayer) {
         displayImage(imageUri, iv, width, height, null, new FadeInCallback(imageUri, iv), displayer);
     }
 
@@ -157,7 +157,7 @@ public class ImageProvider {
             return;
         }
 
-        BitImgProvider.with(mContext)
+        Kahlo.with(mContext)
                 .source(imageUri)
                 .targetSize((int) desiredWidth, (int) desiredHeight)
                 .noDefaultAnimations()
@@ -208,9 +208,9 @@ public class ImageProvider {
      * @param displayer the image displayer to use when loading, if null falls back to default
      */
     public void displayImage(final String imageUri, final ImageView iv, final float desiredWidth, final float desiredHeight,
-                             final BitTransformation transformation, final BitImageCallback listener, BitImgProvider.Displayer displayer) {
+                             final BitTransformation transformation, final BitImageCallback listener, Kahlo.Displayer displayer) {
         if(displayer == null)
-            displayer = BitImgProvider.with(mContext).noDefaultAnimations().config(Bitmap.Config.RGB_565);
+            displayer = Kahlo.with(mContext).noDefaultAnimations().config(Bitmap.Config.RGB_565);
 
         displayer.source(imageUri)
                 .targetSize((int) desiredWidth, (int) desiredHeight)
@@ -222,10 +222,10 @@ public class ImageProvider {
                 .display(iv);
     }
 
-    public void displayImageDirect(final String imageUri, final ImageView iv, @Nullable BitImgProvider.Displayer displayer,
+    public void displayImageDirect(final String imageUri, final ImageView iv, @Nullable Kahlo.Displayer displayer,
                                    @Nullable final BitImageCallback listener) {
         if(displayer == null)
-            displayer = BitImgProvider.with(mContext).noDefaultAnimations().config(Bitmap.Config.RGB_565);
+            displayer = Kahlo.with(mContext).noDefaultAnimations().config(Bitmap.Config.RGB_565);
 
         displayer.callback(listener).source(imageUri).display(iv);
     }

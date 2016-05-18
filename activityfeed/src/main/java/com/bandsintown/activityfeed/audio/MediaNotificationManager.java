@@ -23,7 +23,7 @@ import android.support.v7.app.NotificationCompat;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.util.Print;
 import com.bandsintown.kahlo.OnActionCompleteListener;
-import com.bandsintown.kahlo.image.provider.BitImgProvider;
+import com.bandsintown.kahlo.image.provider.Kahlo;
 
 /**
  * Mostly copied from google samples
@@ -371,7 +371,7 @@ public class MediaNotificationManager extends BroadcastReceiver {
 
     private void fetchBitmapFromURLAsync(final String bitmapUrl, final NotificationCompat.Builder builder) {
 
-        BitImgProvider.with(mContext).source(bitmapUrl).fetch(new OnActionCompleteListener<Bitmap>() {
+        Kahlo.with(mContext).source(bitmapUrl).fetch(new OnActionCompleteListener<Bitmap>() {
 
             @Override
             public void onComplete(Bitmap data) {

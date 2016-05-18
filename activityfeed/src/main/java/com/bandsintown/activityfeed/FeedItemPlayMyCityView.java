@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Print;
-import com.bandsintown.kahlo.image.provider.BitImgProvider;
+import com.bandsintown.kahlo.image.provider.Kahlo;
 
 public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
 
@@ -71,7 +71,7 @@ public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
 
 			if(mGuess.x > 0 && mGuess.y > 0) {
 				String mapUrl = FeedUtil.buildStaticMapUrl(lat, lng, mGuess.x, mGuess.y);
-				BitImgProvider.with(getContext()).source(mapUrl)
+				Kahlo.with(getContext()).source(mapUrl)
 						.targetSize(mGuess.x, mGuess.y)
 						.placeholderResId(R.drawable.transparent_box)
 						.display(mMapImage);
@@ -96,7 +96,7 @@ public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
 		}
 		else {
 			String mapUrl = FeedUtil.buildStaticMapUrl(lat, lng, mWidth, mHeight);
-			BitImgProvider.with(getContext()).source(mapUrl)
+			Kahlo.with(getContext()).source(mapUrl)
 					.targetSize(mWidth, mHeight)
 					.placeholderResId(R.drawable.transparent_box)
 					.display(mMapImage);

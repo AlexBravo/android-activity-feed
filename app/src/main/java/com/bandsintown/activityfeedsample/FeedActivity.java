@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bandsintown.activityfeed.ApiListener;
-import com.bandsintown.activityfeed.BandsintownApi;
+import com.bandsintown.activityfeed.BitFeedApi;
 import com.bandsintown.activityfeed.FeedDatabase;
 import com.bandsintown.activityfeed.audio.SpotifyPreviewHelper;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyArtistResponse;
@@ -18,7 +18,7 @@ import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.activityfeed.objects.SpotifyApi;
+import com.bandsintown.activityfeed.objects.SpotifyProvider;
 import com.bandsintown.activityfeed.util.Print;
 import com.bandsintown.activityfeedsample.objects.ActivityFeedGroup;
 import com.bandsintown.activityfeedsample.objects.ActivityFeedItem;
@@ -56,7 +56,7 @@ public class FeedActivity extends NaviAppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        SpotifyPreviewHelper.bindMediaController(this, mSpotifyApi);
+        SpotifyPreviewHelper.bindMediaController(this, mSpotifyProvider);
 
         mAdapter = new TestFeedAdapter(this, this, mRecyclerView, mBandsintownApi, mFeedDatabase, mIntentRouter);
 
@@ -139,7 +139,7 @@ public class FeedActivity extends NaviAppCompatActivity {
         });
     }
 
-    SpotifyApi mSpotifyApi = new SpotifyApi() {
+    SpotifyProvider mSpotifyProvider = new SpotifyProvider() {
 
         @Override
         public void getSpotifyArtistSearch(String artistName, ApiListener<SpotifyArtistSearchResponse> apiListener) {
@@ -168,7 +168,7 @@ public class FeedActivity extends NaviAppCompatActivity {
         }
     };
 
-    BandsintownApi mBandsintownApi = new BandsintownApi() {
+    BitFeedApi mBandsintownApi = new BitFeedApi() {
 
         @Override
         public void deleteActivityFeedItem(int id, ApiListener apiListener) {

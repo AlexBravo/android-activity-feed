@@ -8,8 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.bandsintown.activityfeed.BandsintownApi;
+import com.bandsintown.activityfeed.BitFeedApi;
 import com.bandsintown.activityfeed.FeedDatabase;
+import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.adapters.AbsFeedAdapter;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedListItem;
@@ -26,8 +27,13 @@ import java.util.ArrayList;
 public class TestFeedAdapter extends AbsFeedAdapter {
 
     public TestFeedAdapter(AppCompatActivity activity, NaviComponent component, RecyclerView recyclerView,
-                           BandsintownApi api, FeedDatabase database, IntentRouter router) {
+                           BitFeedApi api, FeedDatabase database, IntentRouter router) {
         super(activity, component, recyclerView, api, database, router);
+    }
+
+    @Override
+    protected FeedViewOptions getFeedViewOptions() {
+        return new FeedViewOptions.Builder().build();
     }
 
     public void setItems(@NonNull ArrayList<ActivityFeedGroup> items) {
