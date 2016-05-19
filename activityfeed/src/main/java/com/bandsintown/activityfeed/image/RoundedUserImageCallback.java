@@ -2,7 +2,6 @@ package com.bandsintown.activityfeed.image;
 
 import android.widget.ImageView;
 
-import com.bandsintown.activityfeed.util.FeedPrefs;
 import com.bandsintown.activityfeed.util.Print;
 import com.bandsintown.kahlo.image.callback.BitImageCallback;
 
@@ -45,7 +44,7 @@ public class RoundedUserImageCallback extends BitImageCallback {
     @Override
     public void onFailure(String url, ImageView iv, Exception e) {
 
-        if(FeedPrefs.getInstance().getProfileImageLocalUri() != null)
+        if(mErrorUrl != null)
             mProvider.displayPersonImage(mErrorUrl, iv, mDesiredWidth, mDesiredHeight, mErrorResId);
         else if(mErrorResId > 0)
             mProvider.systemDisplayPersonImage(mErrorResId, iv);

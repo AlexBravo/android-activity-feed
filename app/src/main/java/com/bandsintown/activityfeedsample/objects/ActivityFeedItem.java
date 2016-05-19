@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.bandsintown.activityfeed.FeedModule;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
-import com.bandsintown.activityfeed.util.FeedPrefs;
 import com.bandsintown.activityfeedsample.Constants;
 import com.bandsintown.activityfeedsample.FieldNames;
 import com.bandsintown.activityfeedsample.R;
@@ -83,7 +83,7 @@ public class ActivityFeedItem implements FeedItemInterface, Parcelable {
 		if(mActor.getArtist() != null)
 			return Constants.CATEGORY_ARTIST;
 		else if(mActor.getUser() != null) {
-			if(mActor.getUser().getId() == FeedPrefs.getInstance().getUserId())
+			if(mActor.getUser().getId() == FeedModule.getPreferences().getUserId())
 				return Constants.CATEGORY_ME;
 			else if(mActor.getUser().getFriendStatus() == Constants.FRIEND_FRIENDED) {
 				return Constants.CATEGORY_FRIENDS;
