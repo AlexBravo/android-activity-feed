@@ -51,7 +51,11 @@ public class FeedActivity extends NaviAppCompatActivity {
 
         setContentView(R.layout.fragment_basic_recycler_view);
 
-        findViewById(R.id.toolbar).setVisibility(View.GONE);
+        try {
+            findViewById(R.id.toolbar).setVisibility(View.GONE);
+        } catch(Exception e) {
+            com.bandsintown.kahlo.Print.log("no toolbar");
+        }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

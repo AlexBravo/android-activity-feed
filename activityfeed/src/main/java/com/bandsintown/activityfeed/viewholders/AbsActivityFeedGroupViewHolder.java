@@ -15,7 +15,7 @@ import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.AnalyticsTags;
+import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Print;
 
@@ -63,7 +63,7 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 
 			@Override
 			public void onClick(View v) {
-				AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.ACTOR);
+				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.ACTOR);
 				router.onHeaderClicked(mContext, group);
 			}
 
@@ -74,7 +74,7 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 			@Override
 			public void onClick(View v) {
 				mView.getFooter().onLikeClick(group.isGroupLikedByUser());
-				AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.LIKE);
+				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.LIKE);
 
 				if(onLikeClickListener != null) {
 					if(group.isGroupLikedByUser()) // unlike the post

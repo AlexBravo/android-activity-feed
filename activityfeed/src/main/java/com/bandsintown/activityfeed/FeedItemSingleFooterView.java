@@ -59,7 +59,8 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 				if(mFeedMenuButtonClickListener != null)
 					mFeedMenuButtonClickListener.onMenuButtonClick();
 
-				popupMenu.show();
+				if(popupMenu.getMenu().hasVisibleItems())
+					popupMenu.show();
 			}
 
 		});
@@ -123,7 +124,7 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 			mLikeButton.setVisibility(GONE);
 		}
 
-		int id = feedItem.getActor().getUser() != null ? feedItem.getActor().getUser().getId() : 0;
+		int id = feedItem.getActor().getUserId() > 0 ? feedItem.getActor().getUser().getId() : feedItem.getActor().getArtistId();
 
 		if(id == FeedModule.getPreferences().getUserId()) {
 			mDeleteItem.setVisible(true);

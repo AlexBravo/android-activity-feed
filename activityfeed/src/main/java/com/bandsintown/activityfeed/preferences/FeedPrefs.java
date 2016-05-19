@@ -5,12 +5,12 @@ import android.content.Context;
 /**
  * Created by rjaylward on 5/19/16 for Bandsintown
  */
-public class Preference {
+public class FeedPrefs {
 
     private Context mContext;
     private UserPrefs mUserPrefs;
 
-    public Preference(Context context, UserPrefs userPrefs) {
+    public FeedPrefs(Context context, UserPrefs userPrefs) {
         mContext = context;
         mUserPrefs = userPrefs;
     }

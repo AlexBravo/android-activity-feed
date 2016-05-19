@@ -11,7 +11,7 @@ import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.AnalyticsTags;
+import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 
 /**
  * Created by rjaylward on 12/10/15 for Bandsintown
@@ -60,7 +60,7 @@ public class WatchTrailerFeedItemSingleViewHolder extends AbsActivityFeedSingleV
                 @Override
                 public void onClick(View v) {
                     //TODO probably need different analytics for this
-                    AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.OBJECT);
+                    AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
                     router.onPlayTrailerClicked(feedItem);
                 }
 

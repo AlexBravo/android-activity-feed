@@ -30,7 +30,7 @@ import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.AnalyticsTags;
+import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Print;
 import com.google.gson.JsonObject;
@@ -130,7 +130,7 @@ public class ActivityViewBuilder {
             @Override
             public void onClick(View v) {
                 //TODO do we have 2 separate click actions here, 1 for the artist and another for the video or should both go to the video?
-                AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.OBJECT);
+                AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
                 router.onObjectClicked(activityFeedItem);
             }
 
@@ -141,7 +141,7 @@ public class ActivityViewBuilder {
             @Override
             public void onClick(View v) {
                 //TODO probably need different analytics for this
-                AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.OBJECT);
+                AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
                 router.onPlayTrailerClicked(activityFeedItem);
             }
 
@@ -324,7 +324,7 @@ public class ActivityViewBuilder {
                 @Override
                 public void onClick(View v) {
                     view.getFooter().onLikeClick(feedItem.isLikedByUser(), feedItem.getLikeCount());
-                    AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.LIKE);
+                    AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.LIKE);
 
                     if(feedItem.isLikedByUser()) // unlike the post
                         makeLikeItemRequest(feedItem, false, view.getFooter(), router);

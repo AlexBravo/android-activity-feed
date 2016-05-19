@@ -14,7 +14,7 @@ import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.AnalyticsTags;
+import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 import com.bandsintown.activityfeed.util.Print;
 
 public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleViewHolder {
@@ -63,7 +63,7 @@ public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleVi
 
 			@Override
 			public void onClick(View v) {
-				AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.OBJECT);
+				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
 				router.onObjectClicked(feedItem);
 			}
 

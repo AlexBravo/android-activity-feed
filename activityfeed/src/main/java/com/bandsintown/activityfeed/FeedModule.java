@@ -3,7 +3,7 @@ package com.bandsintown.activityfeed;
 import android.content.Context;
 
 import com.bandsintown.activityfeed.preferences.UserPrefs;
-import com.bandsintown.activityfeed.preferences.Preference;
+import com.bandsintown.activityfeed.preferences.FeedPrefs;
 import com.bandsintown.kahlo.image.provider.Kahlo;
 import com.bandsintown.kahlo.image.provider.UILImgProvider;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -14,7 +14,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  */
 public class FeedModule {
 
-    private static Preference mUserPrefs;
+    private static FeedPrefs mUserPrefs;
 
     public static void initialize(Context context, UserPrefs userPrefs) {
         ImageLoaderConfiguration imageConfig = new ImageLoaderConfiguration.Builder(context.getApplicationContext())
@@ -22,10 +22,10 @@ public class FeedModule {
                 .build();
 
         Kahlo.initialize(new UILImgProvider(), imageConfig);
-        mUserPrefs = new Preference(context.getApplicationContext(), userPrefs);
+        mUserPrefs = new FeedPrefs(context.getApplicationContext(), userPrefs);
     }
 
-    public static Preference getPreferences() {
+    public static FeedPrefs getPreferences() {
         return mUserPrefs;
     }
 

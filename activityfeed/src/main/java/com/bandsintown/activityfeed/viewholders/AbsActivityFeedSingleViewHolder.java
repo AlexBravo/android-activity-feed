@@ -16,7 +16,7 @@ import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.AnalyticsTags;
+import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Print;
 
@@ -63,7 +63,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 
 			@Override
 			public void onClick(View v) {
-				AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.ACTOR);
+				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.ACTOR);
 				router.onHeaderClicked(mActivity, feedItem);
 			}
 
@@ -76,7 +76,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			@Override
 			public void onClick(View v) {
 				mView.getFooter().onLikeClick(feedItem.isLikedByUser(), feedItem.getLikeCount());
-				AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.LIKE);
+				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.LIKE);
 
 				if(feedItem.isLikedByUser()) // unlike the post
 					onLikeClickListener.onLike(feedItem, false);
@@ -102,7 +102,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			@Override
 			public void onReportClick(int feedId) {
 				if(feedMenuItemClickListener != null) {
-					AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.MORE_OPTIONS_ICON);
+					AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.MORE_OPTIONS_ICON);
 					feedMenuItemClickListener.onReportClick(feedId, getAdapterPosition());
 				}
 			}
@@ -110,7 +110,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			@Override
 			public void onDeleteClick(int feedId) {
 				if(feedMenuItemClickListener != null) {
-					AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.MORE_OPTIONS_ICON);
+					AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.MORE_OPTIONS_ICON);
 					feedMenuItemClickListener.onDeleteClick(feedId, getAdapterPosition());
 				}
 			}
@@ -121,7 +121,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 
 			@Override
 			public void onMenuButtonClick() {
-				AnalyticsHelper.trackEvent(AnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, AnalyticsTags.MORE_OPTIONS_ICON);
+				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.MORE_OPTIONS_ICON);
 			}
 
 		});

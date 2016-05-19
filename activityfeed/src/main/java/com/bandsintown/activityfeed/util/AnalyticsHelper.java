@@ -39,7 +39,7 @@ public class AnalyticsHelper {
     }
 
     public static void trackButtonClick(String action, String label) {
-        trackEvent(AnalyticsTags.BUTTON_CLICK, action, label, 0L);
+        trackEvent(FeedAnalyticsTags.BUTTON_CLICK, action, label, 0L);
     }
 
     public static void trackEvent(String category) {
