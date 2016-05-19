@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.bandsintown.activityfeed.AbsFeedItemGroupView;
 import com.bandsintown.activityfeed.FeedValues;
@@ -26,28 +25,15 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 	protected AbsFeedItemGroupView mView;
 	protected FeedViewOptions mOptions;
 
-	private int mVerticalMargins;
-
 	public AbsActivityFeedGroupViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(itemView);
 
 		mContext = activity;
 		mView = (AbsFeedItemGroupView) itemView;
-
-		int horizontalMargins = (int) mContext.getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
-		mVerticalMargins = (int) mContext.getResources().getDimension(R.dimen.activity_feed_card_top_margin);
-
-		mOptions = options;
-
-		RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-		params.setMargins(horizontalMargins, mVerticalMargins, horizontalMargins, 0); //Don't place a bottom margin here, only for last item in buildItem
-		mView.setLayoutParams(params);
 	}
 
 	public void buildItem(final FeedGroupInterface group, boolean lastItem, final OnLikeClickedListener<FeedGroupInterface> onLikeClickListener,
 						  final OnItemClickAtIndexAtSubIndex<FeedGroupInterface> itemOrViewMoreListener, final IntentRouter router) {
-		RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) mView.getLayoutParams();
-		params.bottomMargin = lastItem ? mVerticalMargins : 0;
 
 		String timestamp = DateUtils.getRelativeTimeSpanString(FeedUtil.convertDatetimeToMillis(group.getLatestDatetime())).toString();
 

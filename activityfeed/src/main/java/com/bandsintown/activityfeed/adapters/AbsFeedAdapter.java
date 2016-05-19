@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.bandsintown.activityfeed.ApiListener;
 import com.bandsintown.activityfeed.BitFeedApi;
-import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.EventAnnouncementGroupView;
 import com.bandsintown.activityfeed.FeedDatabase;
 import com.bandsintown.activityfeed.FeedItemImageGroupView;
@@ -26,6 +25,7 @@ import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEvent;
 import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEventFlexibleHeight;
 import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
 import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
+import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupFeedItemMiniList;
 import com.bandsintown.activityfeed.GroupTextPostView;
@@ -33,6 +33,7 @@ import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.audio.AudioStateItem;
 import com.bandsintown.activityfeed.audio.AudioStateManager;
 import com.bandsintown.activityfeed.audio.OnAudioStateChangeListener;
+import com.bandsintown.activityfeed.decoration.FeedSpacingDecoration;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
@@ -95,14 +96,27 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     protected FeedListItem mItemToDelete;
     protected FeedListItem mLoading;
 
+    protected FeedSpacingDecoration mFeedSpacingDecoration;
+
     protected int CHECK_LISTEN_ITEMS_ONLY = 4; //just some arbitrary object to add to the notifyItemChanged payload
     protected int CHECK_ALL_FOR_LISTEN_ITEMS = 5; //just some arbitrary object to add to the notifyItemChanged payload
     protected int UPDATE_LIKE_STATUS = 6;
 
     public AbsFeedAdapter(AppCompatActivity activity, NaviComponent component, RecyclerView recyclerView,
                           BitFeedApi api, FeedDatabase database, IntentRouter router) {
+
+        this(activity, component, recyclerView, api, database, router, new FeedSpacingDecoration(
+                (int) activity.getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin),
+                (int) activity.getResources().getDimension(R.dimen.activity_feed_card_top_margin))
+        );
+    }
+
+    public AbsFeedAdapter(AppCompatActivity activity, NaviComponent component, RecyclerView recyclerView,
+                          BitFeedApi api, FeedDatabase database, IntentRouter router, FeedSpacingDecoration decoration) {
+
         mActivity = activity;
         mRecyclerView = recyclerView;
+        mFeedSpacingDecoration = decoration;
         mRouter = router;
         mApi = api;
         mFeedDatabase = database;
