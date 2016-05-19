@@ -17,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class Api {
 
+    public static final int USER_ID = 19620369;
     private static final String BIT_API_BASE = "https://app.bandsintown.com/v2.2/";
     public static final String SPOTIFY_BASE_URL = "https://api.spotify.com/v1/";
 
