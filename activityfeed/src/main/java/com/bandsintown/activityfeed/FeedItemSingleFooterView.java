@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
+import com.bandsintown.kahlo.Print;
 
 public class FeedItemSingleFooterView extends RelativeLayout {
 
@@ -125,6 +126,7 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 		}
 
 		int id = feedItem.getActor().getUserId() > 0 ? feedItem.getActor().getUser().getId() : feedItem.getActor().getArtistId();
+		Print.log("Current id", FeedModule.getPreferences().getUserId(), "Actor id", id);
 
 		if(id == FeedModule.getPreferences().getUserId()) {
 			mDeleteItem.setVisible(true);
