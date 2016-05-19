@@ -117,6 +117,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
         mActivity = activity;
         mRecyclerView = recyclerView;
         mFeedSpacingDecoration = decoration;
+        mRecyclerView.addItemDecoration(decoration);
         mRouter = router;
         mApi = api;
         mFeedDatabase = database;

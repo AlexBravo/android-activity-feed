@@ -26,6 +26,8 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 	protected AbsFeedItemSingleView mView;
 	protected FeedViewOptions mOptions;
 
+//	private int mVerticalMargins;
+
 	public AbsActivityFeedSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(itemView);
 
@@ -33,10 +35,20 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 		mView = (AbsFeedItemSingleView) itemView;
 
 		mOptions = options;
+
+//		int horizontalMargins = (int) mActivity.getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
+//		mVerticalMargins = (int) mActivity.getResources().getDimension(R.dimen.activity_feed_card_top_margin);
+//
+//		RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//		params.setMargins(horizontalMargins, mVerticalMargins, horizontalMargins, 0); //Don't place a bottom margin here, only for last item in buildItem
+//		mView.setLayoutParams(params);
 	}
 
 	public void buildItem(final FeedItemInterface feedItem, boolean lastItem, final OnLikeClickedListener<FeedItemInterface> onLikeClickListener,
 						  final OnFeedMenuItemAdapterClickListener feedMenuItemClickListener, final IntentRouter router) {
+		//Set bottom margin for last item
+//		RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) mView.getLayoutParams();
+//		params.bottomMargin = lastItem ? mVerticalMargins : 0;
 
 		String timestamp = DateUtils.getRelativeTimeSpanString(FeedUtil.convertDatetimeToMillis(feedItem.getDatetime())).toString();
 
