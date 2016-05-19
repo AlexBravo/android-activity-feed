@@ -127,6 +127,9 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 
 		int id = feedItem.getActor().getUserId() > 0 ? feedItem.getActor().getUser().getId() : feedItem.getActor().getArtistId();
 		Print.log("Current id", FeedModule.getPreferences().getUserId(), "Actor id", id);
+		Print.log("Current", feedItem.getActor().getUserId(), feedItem.getActor().getArtistId(),
+				feedItem.getActor().getUser(), feedItem.getActor().getArtist(),
+				feedItem.getIdentifier());
 
 		if(id == FeedModule.getPreferences().getUserId()) {
 			mDeleteItem.setVisible(true);
