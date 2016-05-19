@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.kahlo.Print;
 
 public class FeedItemSingleFooterView extends RelativeLayout {
 
@@ -125,11 +124,14 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 			mLikeButton.setVisibility(GONE);
 		}
 
-		int id = feedItem.getActor().getUserId() > 0 ? feedItem.getActor().getUser().getId() : feedItem.getActor().getArtistId();
-		Print.log("Current id", FeedModule.getPreferences().getUserId(), "Actor id", id);
-		Print.log("Current", feedItem.getActor().getUserId(), feedItem.getActor().getArtistId(),
-				feedItem.getActor().getUser(), feedItem.getActor().getArtist(),
-				feedItem.getIdentifier());
+		int id;
+		try {
+			id = feedItem.getActor().getUser() != null ? feedItem.getActor().getUser().getId() :
+					feedItem.getActor().getArtist() != null ? feedItem.getActor().getArtist().getId() : 0;
+		}
+		catch(Exception e) {
+			id = 0;
+		}
 
 		if(id == FeedModule.getPreferences().getUserId()) {
 			mDeleteItem.setVisible(true);
