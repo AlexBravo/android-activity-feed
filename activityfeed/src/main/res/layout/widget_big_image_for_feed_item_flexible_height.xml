@@ -7,19 +7,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="UnusedAttribute">
 
-    <ImageView
-        android:id="@+id/afibi_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:transitionName="@string/transition_image"/>
-
     <android.support.percent.PercentRelativeLayout
-        android:id="@+id/afibi_event_image_layout"
+        android:id="@+id/afibi_images_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/afibi_big_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            android:adjustViewBounds="true"
+            android:transitionName="@string/transition_image"/>
 
         <!--This is here in case we need to display an event image at a specific aspect ratio instead.-->
         <!--There has to be a better way of doing this, but it will work for now. -->
@@ -29,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_widthPercent="100%"
+            android:visibility="gone"
             app:layout_aspectRatio="@fraction/sixteen_by_nine"
             android:transitionName="@string/transition_image"/>
 

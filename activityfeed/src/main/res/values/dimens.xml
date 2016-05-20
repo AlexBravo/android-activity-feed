@@ -151,6 +151,7 @@
     <fraction name="one_by_two">50%</fraction>
     <fraction name="four_by_three">133%</fraction>
     <fraction name="sixteen_by_nine">178%</fraction>
+    <fraction name="one_by_one">100%</fraction>
 
     <fraction name="group_image_post_ratio">178%</fraction>
 

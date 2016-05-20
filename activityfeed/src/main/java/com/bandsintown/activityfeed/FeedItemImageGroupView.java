@@ -66,7 +66,8 @@ public class FeedItemImageGroupView extends AbsFeedItemGroupView {
 
 		mMoreImageGroup.setVisibility(GONE);
 
-		//TODO maybe do a clever for loop to remove the ones that dont have urls instead of setting them all to gone first like i did above, idk if that makes anything faster
+		//TODO maybe do a clever for loop to remove the ones that don't have urls instead of setting
+		//TODO them all to gone first like i did above, idk if that makes anything faster
 
 		//Since the mapping of all image views don't match URLs, we do a new array with mapping
 		final ArrayList<ImageView> usedImageViews = new ArrayList<>();
@@ -74,7 +75,7 @@ public class FeedItemImageGroupView extends AbsFeedItemGroupView {
 
 		switch(urls.size()) {
 			case 1 :
-				//TODO shouldnt happen
+				//TODO shouldn't happen
 				break;
 			case 2 :
 				usedImageViews.add(mImageViews[0]);

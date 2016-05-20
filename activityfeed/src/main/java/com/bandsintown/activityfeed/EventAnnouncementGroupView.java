@@ -31,7 +31,7 @@ public class EventAnnouncementGroupView extends AbsFeedItemGroupView {
 
 	@Override
 	protected void initLayout() {
-		mBigImage = (ImageView) findViewById(R.id.afibi_image);
+		mBigImage = (ImageView) findViewById(R.id.afibi_event_image);
 		mArtistName = (TextView) findViewById(R.id.afibi_title);
 		mDescription = (TextView) findViewById(R.id.afibi_desc);
 	}
@@ -47,8 +47,8 @@ public class EventAnnouncementGroupView extends AbsFeedItemGroupView {
 		int width =  metrics.widthPixels - (getResources().getDimensionPixelSize(R.dimen.recylcer_view_margin_adjustment) * 2);
 		int height = width * 9 / 16; //Enforced 16:9 ratio
 
-		ImageProvider.getInstance(getContext()).displayBigImage(group.getGroupActor().getActorImageUrl(false), mBigImage, width, height,
-				ImageProvider.activityFeedImageDisplayer(getContext()));
+		ImageProvider.getInstance(getContext()).displayBigImage(group.getGroupActor().getActorImageUrl(false),
+				mBigImage, width, height, ImageProvider.activityFeedImageDisplayer(getContext()));
 
 		mArtistName.setText(group.getGroupActor().getActorName());
 

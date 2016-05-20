@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
@@ -15,18 +14,16 @@ import com.bandsintown.activityfeed.util.Print;
  */
 public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItemSingleMessageWithTaggedEvent {
 
-    private RelativeLayout mEventImageLayout;
-    private ImageView mEventImageView;
+    private ImageView mBigImageView;
 
-    public FeedItemSingleMessageWithTaggedEventFlexibleHeight(Context context, SizeEstimate imageSizeEstimage) {
-        super(context, imageSizeEstimage);
+    public FeedItemSingleMessageWithTaggedEventFlexibleHeight(Context context, SizeEstimate imageSizeEstimate) {
+        super(context, imageSizeEstimate);
     }
 
     @Override
     protected void initLayout() {
         super.initLayout();
-
-        mEventImageLayout = (RelativeLayout) findViewById(R.id.afibi_event_image_layout);
+        mBigImageView = (ImageView) findViewById(R.id.afibi_big_image);
         mEventImageView = (ImageView) findViewById(R.id.afibi_event_image);
     }
 
@@ -43,8 +40,8 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
 
     @Override
     public void setDefaultImage(int resId) {
-        mEventImageLayout.setVisibility(VISIBLE);
-        mBigImage.setVisibility(GONE);
+        mEventImageView.setVisibility(VISIBLE);
+        mBigImageView.setVisibility(GONE);
 
         mEventImageView.setImageResource(resId);
         mEventImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -54,11 +51,33 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
     public void setImage(final AppCompatActivity context, final String url, boolean isUserImage) {
         if(context != null && url != null) {
             if(isUserImage) {
-                mEventImageLayout.setVisibility(GONE);
-                mBigImage.setVisibility(VISIBLE);
-                ImageProvider.getInstance(getContext()).displayImageDirect(url, mBigImage,
-                        ImageProvider.activityFeedUserPostDisplayer(getContext(),
-                                context.getResources().getDisplayMetrics().widthPixels), null);
+                mImageSection.setVisibility(VISIBLE);
+                mEventImageView.setVisibility(GONE);
+                mBigImageView.setVisibility(VISIBLE);
+                final int width = mEstimate.getEstimate().x;
+                Print.log("Set Image Called", url);
+                Print.log(url, "Setting image");
+                ImageProvider.activityFeedUserPostDisplayer(getContext(), width)
+                        .source(url)
+//                        .callback(new BitImageCallback(url, mBigImageView) {
+//
+//                            @Override
+//                            public void onFailure(String url, ImageView imageView, Exception e) {
+//                                Print.log(url, "Failed to load image", mBigImageView.getWidth(), mBigImageView.getHeight());
+//                                Print.exception(e);
+//                            }
+//
+//                            @Override
+//                            public void onSuccess(String url, ImageView imageView) {
+//                                Print.log(url, "Loaded image", mBigImageView.getWidth(), mBigImageView.getHeight());
+//                                Print.log(url, "drawable intrinsic size", mBigImageView.getDrawable().getIntrinsicWidth(),
+//                                        mBigImageView.getDrawable().getIntrinsicHeight());
+//                                Print.log("is visible?", mBigImageView.getVisibility() == VISIBLE);
+//                            }
+//
+//                        })
+                        .display(mBigImageView);
+
             }
             else
                 setEventImage(url);
@@ -66,8 +85,9 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
     }
 
     public void setEventImage(final String url) {
-        mEventImageLayout.setVisibility(VISIBLE);
-        mBigImage.setVisibility(GONE);
+        mImageSection.setVisibility(VISIBLE);
+        mEventImageView.setVisibility(VISIBLE);
+        mBigImageView.setVisibility(GONE);
 
         if(mHeight == 0 && mWidth == 0) {
 
@@ -76,7 +96,6 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
             if(mGuess.x > 0 && mGuess.y > 0) {
                 ImageProvider.getInstance(getContext()).displayBigImage(url, mEventImageView, mGuess.x, mGuess.y,
                         ImageProvider.activityFeedImageDisplayer(getContext()));
-                mEventSection.setVisibility(VISIBLE);
             }
 
             mEventImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -101,8 +120,8 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
         else {
             ImageProvider.getInstance(getContext()).displayBigImage(url, mEventImageView, mWidth, mHeight,
                     ImageProvider.activityFeedImageDisplayer(getContext()));
-            mEventSection.setVisibility(VISIBLE);
         }
 
     }
+
 }

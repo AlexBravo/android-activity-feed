@@ -216,7 +216,7 @@ public class ActivityViewBuilder {
         else if(activityFeedItem.getObject().getArtistStub() != null && activityFeedItem.getObject().getArtistStub().getImageId() > 0)
             item.setImage(mActivity, String.format(FeedValues.BIT_MEDIA_IMAGE_URL, activityFeedItem.getObject().getArtistStub().getImageId()), activityFeedItem.getObject().isObjectImageUrlAUserPost());
         else
-            item.hideEventSection();
+            item.hideImageSection();
 
         if(activityFeedItem.getObject().getPost() != null && activityFeedItem.getObject().getPost().getMessage() != null)
             item.setUserMessage(activityFeedItem.getObject().getPost().getMessage());

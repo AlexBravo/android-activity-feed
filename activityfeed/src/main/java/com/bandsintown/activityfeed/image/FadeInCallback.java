@@ -5,7 +5,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
-import com.bandsintown.activityfeed.util.Print;
 import com.bandsintown.kahlo.image.callback.BitImageCallback;
 
 /**
@@ -28,7 +27,7 @@ public class FadeInCallback extends BitImageCallback {
 //            boolean firstDisplay = !BaseActivity.displayedListImages.contains(url);
 //
 //            if(firstDisplay) {
-                fadeIn(iv, 250);
+                fadeIn(iv, 200);
 //                BaseActivity.displayedListImages.add(url);
 //            }
         }
@@ -36,7 +35,6 @@ public class FadeInCallback extends BitImageCallback {
 
     public static void fadeIn(View view, int durationMillis) {
         if(view != null) {
-            Print.log("Fading in view", view);
             AlphaAnimation fadeImage = new AlphaAnimation(0, 1);
             fadeImage.setDuration(durationMillis);
             fadeImage.setInterpolator(new DecelerateInterpolator());

@@ -31,7 +31,7 @@ public class FeedResponse {
     protected ArrayList<User> mUsers;
 
     @SerializedName(FieldNames.LIKED_ACTIVITIES)
-    private ArrayList<ActivityFeedItem> mLikedActivities;
+    protected ArrayList<ActivityFeedItem> mLikedActivities;
 
     public ArrayList<ActivityFeedGroup> getGroups() {
         return mGroups;
