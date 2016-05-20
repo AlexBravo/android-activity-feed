@@ -1,6 +1,7 @@
 package com.bandsintown.activityfeedsample;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +30,7 @@ import com.bandsintown.activityfeedsample.objects.VenueStub;
 import com.google.gson.JsonObject;
 import com.trello.navi.component.support.NaviAppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +46,7 @@ public class FeedActivity extends NaviAppCompatActivity {
 
     RecyclerView mRecyclerView;
     TestFeedAdapter mAdapter;
+    SwipeRefreshLayout mRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,16 @@ public class FeedActivity extends NaviAppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                loadAdapter();
+            }
+
+        });
 
         SpotifyPreviewHelper.bindMediaController(this, mSpotifyProvider);
 
@@ -81,14 +94,16 @@ public class FeedActivity extends NaviAppCompatActivity {
 
     private void loadAdapter() {
         FeedApi api = Api.create();
-        api.getActivities(null, null).enqueue(new Callback<FeedResponse>() {
+        api.getArtistActivities(Api.ARTIST_ID, null, null).enqueue(new Callback<FeedResponse>() {
 
             @Override
             public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
+                mRefreshLayout.setRefreshing(false);
                 if(response.isSuccessful()) {
                     Map<Integer, User> mUsers = new HashMap<>();
                     Map<Integer, ArtistStub> mArtistStubs = new HashMap<>();
                     Map<Integer, VenueStub> mVenueStubs = new HashMap<>();
+                    Map<Integer, ActivityFeedItem> mLikedItems = new HashMap<>();
 
                     for(User user : response.body().mUsers) {
                         mUsers.put(user.getId(), user);
@@ -100,6 +115,10 @@ public class FeedActivity extends NaviAppCompatActivity {
 
                     for(VenueStub venue : response.body().mVenues) {
                         mVenueStubs.put(venue.getId(), venue);
+                    }
+
+                    for(ActivityFeedItem likedItems : response.body().mLikedActivities) {
+                        mLikedItems.put(likedItems.getId(), likedItems);
                     }
 
                     Map<Integer, EventStub> mEventStubs = new HashMap<>();
@@ -128,16 +147,24 @@ public class FeedActivity extends NaviAppCompatActivity {
                                 item.getObject().setVenueStub(mVenueStubs.get(item.getObject().getVenueId()));
                             if(item.getObject().getEventId() > 0)
                                 item.getObject().setEventStub(mEventStubs.get(item.getObject().getEventId()));
+                            if(item.getObject().getLikedItemId() > 0)
+                                item.getObject().setLikedItem(mLikedItems.get(item.getObject().getLikedItemId()));
                         }
                     }
 
-                    mAdapter.setItems(response.body().getGroups());
+                    ArrayList<ActivityFeedGroup> groups = new ArrayList<>();
+                    for(ActivityFeedGroup activityFeedGroup : response.body().getGroups()) {
+                        if(!activityFeedGroup.getActivities().isEmpty())
+                            groups.add(activityFeedGroup);
+                    }
+                    mAdapter.setItems(groups);
                 }
             }
 
             @Override
             public void onFailure(Call<FeedResponse> call, Throwable t) {
-
+                mRefreshLayout.setRefreshing(false);
+                Print.exception(new Exception(t));
             }
 
         });

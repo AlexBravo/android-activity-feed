@@ -47,7 +47,7 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 				mItem.setDefaultImage(R.drawable.placeholder_big_image);
 		}
 		else if(imageUrl == null)
-			mItem.hideEventSection();
+			mItem.hideImageSection();
 		else {
 			//This is to prevent a recycling problem where this occasionally shows up even though it isn't supposed to.
 			mItem.hideTextSection();

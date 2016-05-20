@@ -18,11 +18,11 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	protected TextView mMessage;
 
-	protected View mEventSection;
-	protected ImageView mBigImage;
+	protected View mImageSection;
+	protected ImageView mEventImageView;
 	protected TextView mTitle;
 	protected TextView mDescription;
-	protected View mBigImageTextSection;
+	protected View mEventImageTextSection;
 
 	protected SizeEstimate mEstimate;
 
@@ -36,35 +36,36 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	public FeedItemSingleMessageWithTaggedEvent(Context context, @Nullable SizeEstimate imageViewSize) {
 		super(context);
-		mEstimate = imageViewSize;
-	}
 
-//	private void calculateImageViewSizeGuess() {
-//		float fraction = getResources().getFraction(R.fraction.sixteen_by_nine, 1, 1);
-//		float horizontalMargin = getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
-//
-//		if(getResources().getBoolean(R.bool.isTablet)) {
-//			mTableMainFeedWidthGuess = (int) (getResources().getDimension(R.dimen.feed_width) - horizontalMargin * 2);
-//			mTableMainFeedHeightGuess = (int) (mTableMainFeedWidthGuess / fraction);
-//		}
-//
-//		//this assumes feed fills the screen, if we change the layout we need to change this
-//		WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-//		Display display = wm.getDefaultDisplay();
-//		Point size = new Point();
-//		display.getSize(size);
-//
-//		mWidthGuess = (int) (size.x - 2 * horizontalMargin);
-//		mHeightGuess = (int) (mWidthGuess / fraction);
-//	}
+		mEstimate = imageViewSize;
+
+		if(mEstimate == null)
+			mEstimate = new SizeEstimate() {
+
+				@Override
+				protected Point estimateSize() {
+					return new Point(0,0);
+				}
+
+				@Override
+				protected Point estimateTabletSize() {
+					return new Point(0,0);
+				}
+
+				@Override
+				protected boolean useTabletEstimate() {
+					return false;
+				}
+			};
+	}
 
 	@Override
 	protected void initLayout() {
-		mEventSection = findViewById(R.id.fir_event_section);
-		mBigImage = (ImageView) findViewById(R.id.afibi_image);
+		mImageSection = findViewById(R.id.fir_event_section);
+		mEventImageView = (ImageView) findViewById(R.id.afibi_event_image);
 		mTitle = (TextView) findViewById(R.id.afibi_title);
 		mDescription = (TextView) findViewById(R.id.afibi_desc);
-		mBigImageTextSection = findViewById(R.id.afibi_text_section);
+		mEventImageTextSection = findViewById(R.id.afibi_text_section);
 
 		mMessage = (TextView) findViewById(R.id.fir_message);
 	}
@@ -81,18 +82,18 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 			mGuess = mEstimate.getEstimate();
 
 			if(mGuess.x > 0 && mGuess.y > 0) {
-				ImageProvider.getInstance(getContext()).displayBigImage(url, mBigImage, mGuess.x, mGuess.y,
+				ImageProvider.getInstance(getContext()).displayBigImage(url, mEventImageView, mGuess.x, mGuess.y,
 						ImageProvider.activityFeedImageDisplayer(getContext()));
-				mEventSection.setVisibility(VISIBLE);
+				mImageSection.setVisibility(VISIBLE);
 			}
 
-			mBigImage.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+			mEventImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
 				@Override
 				public void onGlobalLayout() {
-					mHeight = mBigImage.getHeight();
-					mWidth = mBigImage.getWidth();
-					mBigImage.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+					mHeight = mEventImageView.getHeight();
+					mWidth = mEventImageView.getWidth();
+					mEventImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
 					if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
 						//depending on screen density the estimate can be slightly off but still acceptable
@@ -104,23 +105,23 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 			});
 		}
 		else {
-			ImageProvider.getInstance(getContext()).displayBigImage(url, mBigImage, mWidth, mHeight,
+			ImageProvider.getInstance(getContext()).displayBigImage(url, mEventImageView, mWidth, mHeight,
 					ImageProvider.activityFeedImageDisplayer(getContext()));
-			mEventSection.setVisibility(VISIBLE);
+			mImageSection.setVisibility(VISIBLE);
 		}
 	}
 
 	public void setObjectTitle(String title) {
 		if(FeedUtil.stringHasContent(title)) {
 			mTitle.setText(title);
-			mEventSection.setVisibility(VISIBLE);
+			mImageSection.setVisibility(VISIBLE);
 		}
 	}
 
 	public void setObjectDescription(String description) {
 		if(FeedUtil.stringHasContent(description)) {
 			mDescription.setText(description);
-			mEventSection.setVisibility(VISIBLE);
+			mImageSection.setVisibility(VISIBLE);
 		}
 	}
 
@@ -134,24 +135,24 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 	}
 
 	public void setOnImageClickListener(View.OnClickListener listener) {
-		mBigImage.setOnClickListener(listener);
+		mEventImageView.setOnClickListener(listener);
 	}
 
 	public void setDefaultImage(int resId) {
-		mBigImage.setImageResource(resId);
-		mBigImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+		mEventImageView.setImageResource(resId);
+		mEventImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 	}
 
-	public void hideEventSection() {
-		mEventSection.setVisibility(GONE);
+	public void hideImageSection() {
+		mImageSection.setVisibility(GONE);
 	}
 
 	public void hideTextSection() {
-		mBigImageTextSection.setVisibility(GONE);
+		mEventImageTextSection.setVisibility(GONE);
 	}
 
 	public void showTextSection() {
-		mBigImageTextSection.setVisibility(VISIBLE);
+		mEventImageTextSection.setVisibility(VISIBLE);
 	}
 
 }

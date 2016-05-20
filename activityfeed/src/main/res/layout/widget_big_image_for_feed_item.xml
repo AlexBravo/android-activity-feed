@@ -14,7 +14,7 @@
         app:layout_aspectRatio="@fraction/sixteen_by_nine">
 
         <ImageView
-            android:id="@+id/afibi_image"
+            android:id="@+id/afibi_event_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:transitionName="@string/transition_image"/>

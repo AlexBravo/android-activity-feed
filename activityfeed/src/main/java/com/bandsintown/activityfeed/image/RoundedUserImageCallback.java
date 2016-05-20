@@ -59,6 +59,6 @@ public class RoundedUserImageCallback extends BitImageCallback {
     }
 
     private void fadeInIfNecessary(String imageUri, ImageView iv) {
-        AnimationHelper.fadeIn(iv, 250);
+        AnimationHelper.fadeIn(iv, 200);
     }
 }
