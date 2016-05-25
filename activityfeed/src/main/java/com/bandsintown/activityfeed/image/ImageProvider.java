@@ -10,7 +10,7 @@ import android.support.v8.renderscript.RenderScript;
 import android.widget.ImageView;
 
 import com.bandsintown.activityfeed.R;
-import com.bandsintown.kahlo.BitmapHelper;
+import com.bandsintown.kahlo.BitmapTransformer;
 import com.bandsintown.kahlo.image.callback.BitImageCallback;
 import com.bandsintown.kahlo.image.provider.Kahlo;
 import com.bandsintown.kahlo.image.transformation.BitTransformation;
@@ -237,6 +237,6 @@ public class ImageProvider {
 
     public void systemDisplayPersonImage(int resId, ImageView iv) {
         Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), resId);
-        iv.setImageBitmap(BitmapHelper.getRoundBitmap(bitmap));
+        iv.setImageBitmap(BitmapTransformer.getRoundBitmap(bitmap));
     }
 }
