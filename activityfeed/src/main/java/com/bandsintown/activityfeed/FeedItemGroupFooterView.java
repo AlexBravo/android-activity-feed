@@ -29,7 +29,7 @@ public class FeedItemGroupFooterView extends RelativeLayout {
 
 	public void setOptions(FeedViewOptions options) {
 		if(options != null) {
-			mLikeButton.setVisibility(options.isEnableLiking() ? VISIBLE : GONE);
+			mLikeButton.setVisibility(mLikeButton.getVisibility() == VISIBLE && options.isEnableLiking() ? VISIBLE : GONE);
 		}
 	}
 
