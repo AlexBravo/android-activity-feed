@@ -306,7 +306,7 @@ public class ActivityViewBuilder {
 
             @Override
             public void onClick(View v) {
-                router.onHeaderClicked(mActivity, item);
+                router.onHeaderClicked(item);
             }
 
         });
@@ -339,7 +339,7 @@ public class ActivityViewBuilder {
                 @Override
                 public void onClick(View v) {
                     if(feedItem.getLikeCount() > 0) {
-                        router.onLikesTotalClick(mActivity, feedItem);
+                        router.onLikesTotalClick(feedItem);
                     }
                 }
 
@@ -438,7 +438,7 @@ public class ActivityViewBuilder {
     }
 
     private void openFlagFeedItemActivity(int feedId, IntentRouter router) {
-        router.onReportClick(feedId);
+        router.onFlagFeedItem(feedId);
     }
 
 }

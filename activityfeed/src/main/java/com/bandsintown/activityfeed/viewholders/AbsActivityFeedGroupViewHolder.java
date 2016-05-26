@@ -53,7 +53,7 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 			@Override
 			public void onClick(View v) {
 				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.ACTOR);
-				router.onHeaderClicked(mContext, group);
+				router.onHeaderClicked(group);
 			}
 
 		});

@@ -302,7 +302,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
 
         @Override
         public void onItemClick(FeedGroupInterface item, int index, int subIndex) {
-            mRouter.onGroupClicked(mActivity, item, index, subIndex, FeedValues.REQUEST_CODE_VIEW_GROUP_FEED);
+            mRouter.onGroupClicked(item, index, subIndex, FeedValues.REQUEST_CODE_VIEW_GROUP_FEED);
         }
 
     };

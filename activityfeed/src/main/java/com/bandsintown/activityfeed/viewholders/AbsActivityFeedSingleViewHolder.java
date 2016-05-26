@@ -52,7 +52,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			@Override
 			public void onClick(View v) {
 				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.ACTOR);
-				router.onHeaderClicked(mActivity, feedItem);
+				router.onHeaderClicked(feedItem);
 			}
 
 		});
@@ -78,8 +78,8 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 
 			@Override
 			public void onClick(View v) {
-				if(feedItem.getLikeCount() > 0 && mActivity != null) {
-					router.onLikesTotalClick(mActivity, feedItem);
+				if(feedItem.getLikeCount() > 0) {
+					router.onLikesTotalClick(feedItem);
 				}
 			}
 

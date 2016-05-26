@@ -1,30 +1,26 @@
 package com.bandsintown.activityfeed.objects;
 
-import android.support.v7.app.AppCompatActivity;
-
 /**
  * Created by rjaylward on 5/4/16 for Bandsintown
  */
 public interface IntentRouter {
 
-    void onArtistClicked(FeedArtistStub stub);
-    void onEventClicked(FeedEventStub stub);
-    void onPlayTrailerClicked(FeedItemInterface item);
-    void onUserClicked(FeedUser feedUser);
-
-    void onLikesTotalClick(AppCompatActivity activity, FeedItemInterface feedItem);
-
-    void onHeaderClicked(AppCompatActivity activity, FeedItemInterface feedItem);
-    void onHeaderClicked(AppCompatActivity activity, FeedGroupInterface feedGroup);
-
-    void onCommentClicked(FeedItemInterface feedItem);
+    void onHeaderClicked(FeedItemInterface feedItem);
+    void onHeaderClicked(FeedGroupInterface feedGroup);
 
     void onObjectClicked(FeedItemInterface feedItem);
+    void onPlayTrailerClicked(FeedItemInterface item);
 
-    void onReportClick(int feedId);
-
+    void onLikesTotalClick(FeedItemInterface feedItem);
+    void onCommentClicked(FeedItemInterface feedItem);
     void onFlagFeedItem(int feedId);
 
+    /**
+     * @param item the item
+     * @param index the index of the item in the list
+     * @param subIndex the index of the click inside the item
+     * @param requestCode the request code that is used to listen for changes to like status of items
+     */
     //Start for result
-    void onGroupClicked(AppCompatActivity activity, FeedGroupInterface item, int index, int subIndex, int requestCode);
+    void onGroupClicked(FeedGroupInterface item, int index, int subIndex, int requestCode);
 }
