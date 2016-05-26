@@ -32,7 +32,7 @@ public class FeedItemSinglePost extends AbsFeedItemSingleView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_user_post;
+		return R.layout.aaf_item_user_post;
 	}
 
 	public void setImage(String url) {

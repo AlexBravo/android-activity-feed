@@ -222,7 +222,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch(viewType) {
             case FeedValues.VERB_CODE_ACTIVITY_FEED_LOADING :
-                return new LoadMoreViewHolder(LayoutInflater.from(mActivity).inflate(R.layout.view_load_more, parent, false));
+                return new LoadMoreViewHolder(LayoutInflater.from(mActivity).inflate(R.layout.aaf_view_load_more, parent, false));
             case FeedValues.VERB_CODE_ARTIST_TRACKING :
             case FeedValues.VERB_CODE_EVENT_ANNOUNCEMENT :
             case FeedValues.VERB_CODE_RSVP :
@@ -277,7 +277,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                     throw new IllegalArgumentException("view type not found: " + viewType);
                 else {
                     Print.exception(new IllegalArgumentException("view type not found: " + viewType));
-                    return new SimpleViewHolder(LayoutInflater.from(mActivity).inflate(R.layout.listitem_no_content, parent, false));
+                    return new SimpleViewHolder(LayoutInflater.from(mActivity).inflate(R.layout.aaf_listitem_no_content, parent, false));
                 }
         }
     }

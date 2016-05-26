@@ -21,7 +21,7 @@
             android:visibility="gone"/>
 
         <include
-            layout="@layout/widget_big_image_for_feed_item_flexible_height"
+            layout="@layout/aaf_widget_big_image_for_feed_item_flexible_height"
             android:id="@+id/fir_event_section"/>
 
         <com.bandsintown.activityfeed.FeedItemSingleFooterView

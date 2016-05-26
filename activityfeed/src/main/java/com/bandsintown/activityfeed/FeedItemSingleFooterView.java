@@ -38,7 +38,7 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 	}
 
 	private void inflateLayout() {
-		LayoutInflater.from(getContext()).inflate(R.layout.activity_feed_item_footer, this, true);
+		LayoutInflater.from(getContext()).inflate(R.layout.aaf_feed_item_footer, this, true);
 
 		mLikeCount = (TextView) findViewById(R.id.afif_like_count);
 		mLikeButton = (ImageView) findViewById(R.id.afif_like_button);

@@ -8,8 +8,4 @@
     <integer name="landscape_content_weight">6</integer>
     <integer name="landscape_content_weight_sum">10</integer>
 
-    <integer name="cloud_users_max">3</integer>
-
-    <bool name="shouldWidgetBeEnabled">true</bool>
-
 </resources>

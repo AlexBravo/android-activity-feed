@@ -33,7 +33,7 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_group_text_post;
+		return R.layout.aaf_item_group_text_post;
 	}
 
 	public void setImage(Context context, String url) {

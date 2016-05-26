@@ -73,7 +73,7 @@ public class GroupFeedItemMiniList extends AbsFeedItemGroupView {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.group_listitem_mini_list;
+        return R.layout.aaf_group_listitem_mini_list;
     }
 
     public interface ViewModel {

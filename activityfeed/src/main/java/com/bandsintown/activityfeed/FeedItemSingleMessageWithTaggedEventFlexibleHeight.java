@@ -29,7 +29,7 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.feed_item_message_flexible_height_post;
+        return R.layout.aaf_item_message_flexible_height_post;
     }
 
     @Override

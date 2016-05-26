@@ -77,7 +77,7 @@ public class FeedItemSingleWatchTrailer extends AbsFeedItemSingleView {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.feed_item_tour_trailer;
+        return R.layout.aaf_item_tour_trailer;
     }
 
     public void setImage(final String url) {

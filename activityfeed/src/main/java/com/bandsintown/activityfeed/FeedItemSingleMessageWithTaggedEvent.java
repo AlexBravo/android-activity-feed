@@ -72,7 +72,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_message_event;
+		return R.layout.aaf_item_message_event;
 	}
 
 	public void setImage(final AppCompatActivity activity, final String url, final boolean isUserImage) {

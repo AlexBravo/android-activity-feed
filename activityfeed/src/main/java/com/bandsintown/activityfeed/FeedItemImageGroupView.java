@@ -57,7 +57,7 @@ public class FeedItemImageGroupView extends AbsFeedItemGroupView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_image_group_six;
+		return R.layout.aaf_item_image_group_six;
 	}
 
 	public void loadImages(Context activity, ArrayList<String> urls, final OnItemClickOfTypeAtIndex listener) {

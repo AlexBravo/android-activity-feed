@@ -38,7 +38,7 @@ public class EventAnnouncementGroupView extends AbsFeedItemGroupView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_group_event_announcement;
+		return R.layout.aaf_item_group_event_announcement;
 	}
 
 	public void buildItem(Context context, FeedGroupInterface group, final OnItemClickOfTypeAtIndex clickListener) {

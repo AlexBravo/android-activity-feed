@@ -105,7 +105,7 @@ public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_play_my_city;
+		return R.layout.aaf_item_play_my_city;
 	}
 
 }

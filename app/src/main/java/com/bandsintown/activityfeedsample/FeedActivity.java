@@ -5,7 +5,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.bandsintown.activityfeed.ApiListener;
 import com.bandsintown.activityfeed.BitFeedApi;
@@ -52,13 +51,7 @@ public class FeedActivity extends NaviAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_basic_recycler_view);
-
-        try {
-            findViewById(R.id.toolbar).setVisibility(View.GONE);
-        } catch(Exception e) {
-            com.bandsintown.kahlo.Print.log("no toolbar");
-        }
+        setContentView(R.layout.aaf_fragment_basic_recycler_view);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

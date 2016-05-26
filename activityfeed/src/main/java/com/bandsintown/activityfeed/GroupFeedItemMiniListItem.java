@@ -55,7 +55,7 @@ public class GroupFeedItemMiniListItem extends RelativeLayout implements MediaCo
     }
 
     private void init() {
-        LayoutInflater.from(getContext()).inflate(R.layout.listitem_artist_listen, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.aaf_listitem_artist_listen, this, true);
 
         mArtistImage = (ImageView) findViewById(R.id.lal_artist_image);
         mPlay = (Button) findViewById(R.id.lal_play_button);

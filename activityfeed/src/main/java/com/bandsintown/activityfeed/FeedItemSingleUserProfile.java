@@ -36,7 +36,7 @@ public class FeedItemSingleUserProfile extends AbsFeedItemSingleView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_user_profile;
+		return R.layout.aaf_item_user_profile;
 	}
 
 	public void setLocation(String location) {

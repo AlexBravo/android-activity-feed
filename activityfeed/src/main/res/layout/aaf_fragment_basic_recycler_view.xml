@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/activity_background_color">
 
-    <!--<include layout="@layout/toolbar_basic"/>-->
-
-    <include layout="@layout/basic_swipe_refresh_recyclerview"/>
+    <include layout="@layout/aaf_swipe_refresh_recyclerview_layout"/>
 
 </LinearLayout>
