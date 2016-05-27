@@ -1,8 +1,5 @@
 package com.bandsintown.activityfeed.objects;
 
-/**
- * Created by rjaylward on 5/4/16 for Bandsintown
- */
 public interface IntentRouter {
 
     void onHeaderClicked(FeedItemInterface feedItem);
