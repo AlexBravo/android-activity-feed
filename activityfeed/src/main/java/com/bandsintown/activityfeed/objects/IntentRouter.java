@@ -13,6 +13,10 @@ public interface IntentRouter {
 
     void onLikesTotalClick(FeedItemInterface feedItem);
     void onCommentClicked(FeedItemInterface feedItem);
+
+    /**
+     * @param feedId activity feed id
+     */
     void onFlagFeedItem(int feedId);
 
     /**
