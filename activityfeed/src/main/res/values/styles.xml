@@ -88,24 +88,6 @@
         <item name="android:textSize">18dp</item>
     </style>
 
-    <style name="Widget.Bandsintown.CardTitleTextAppearance" parent="@android:style/TextAppearance">
-        <item name="android:layout_marginLeft">4dp</item>
-        <item name="android:layout_marginTop">6dp</item>
-        <item name="android:layout_marginBottom">6dp</item>
-        <item name="android:layout_marginRight">12dp</item>
-        <item name="android:textSize">15dp</item>
-        <item name="android:textColor">@color/bit_teal</item>
-        <item name="android:fontFamily">@string/roboto_regular</item>
-    </style>
-
-    <style name="CardViewAppearance">
-        <item name="android:layout_marginLeft">@dimen/card_view_horizontal_margin</item>
-        <item name="android:layout_marginRight">@dimen/card_view_horizontal_margin</item>
-        <item name="android:layout_marginTop">@dimen/card_view_top_margin</item>
-        <item name="cardUseCompatPadding">true</item>
-        <item name="contentPadding">@dimen/card_view_content_padding</item>
-    </style>
-
     <style name="TealButton">
         <item name="android:textColor">@color/bit_button_text_color</item>
         <item name="android:background">@drawable/bit_button</item>
