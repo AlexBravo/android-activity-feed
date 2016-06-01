@@ -1,6 +1,6 @@
 package com.bandsintown.activityfeedsample.gson;
 
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.activityfeedsample.FieldNames;
 import com.bandsintown.activityfeedsample.objects.ActivityFeedItemActor;
 import com.google.gson.JsonDeserializationContext;
@@ -35,7 +35,7 @@ public class ActivityFeedItemActorDeserializer implements JsonDeserializer<Activ
                     activityFeedItemActor.setArtistId(actorId);
                     break;
                 default:
-                    Print.exception(new Exception("unhandled actor key: " + entry.getKey()));
+                    Logger.exception(new Exception("unhandled actor key: " + entry.getKey()));
                     break;
             }
         }

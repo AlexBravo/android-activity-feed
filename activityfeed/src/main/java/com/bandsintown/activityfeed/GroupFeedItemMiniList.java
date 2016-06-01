@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class GroupFeedItemMiniList extends AbsFeedItemGroupView {
     }
 
     public void loadItems(int size, OnItemClickOfTypeAtIndex clickOfTypeAtIndexListener, int mainClickType, int imageClickType) {
-        Print.log("LOADING A MINI LIST ITEM IN THE ACTIVITY FEED!!!!!");
+        Logger.log("LOADING A MINI LIST ITEM IN THE ACTIVITY FEED!!!!!");
         mLinearLayout.removeAllViews();
 
         if(mViewModel != null) {
@@ -62,7 +62,7 @@ public class GroupFeedItemMiniList extends AbsFeedItemGroupView {
             }
         }
         else {
-            Print.exception(new Exception("You must set the view model before you load the items"));
+            Logger.exception(new Exception("You must set the view model before you load the items"));
         }
     }
 

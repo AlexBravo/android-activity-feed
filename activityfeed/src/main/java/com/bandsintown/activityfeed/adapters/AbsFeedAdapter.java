@@ -25,6 +25,7 @@ import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEvent;
 import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEventFlexibleHeight;
 import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
 import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
+import com.bandsintown.activityfeed.FeedModule;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupFeedItemMiniList;
@@ -43,7 +44,7 @@ import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.FeedListItem;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.activityfeed.viewholders.AbsActivityFeedGroupViewHolder;
 import com.bandsintown.activityfeed.viewholders.AbsActivityFeedSingleViewHolder;
 import com.bandsintown.activityfeed.viewholders.ActivityViewBuilder;
@@ -188,7 +189,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                             AudioStateManager.getInstance().getCurrent().setState(state.getState(), true);
                     }
                     catch(Exception e) {
-                        Print.exception(e, false);
+                        Logger.exception(e, false);
                     }
                 }
             });
@@ -212,7 +213,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             }
         }
         catch(Exception e) {
-            Print.log(e.getMessage());
+            Logger.log(e.getMessage());
         }
     }
 
@@ -273,10 +274,10 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                 return new LikedActivityViewHolder(mActivity, mOptions, new FeedItemSingleLikedActivity(mActivity),
                         new ActivityViewBuilder(mActivity, mApi, mFeedDatabase, getAverageFeedItemImageSizeEstimate()));
             default :
-                if(FeedValues.IS_DEBUG_MODE)
+                if(FeedModule.mIsDebugMode)
                     throw new IllegalArgumentException("view type not found: " + viewType);
                 else {
-                    Print.exception(new IllegalArgumentException("view type not found: " + viewType));
+                    Logger.exception(new IllegalArgumentException("view type not found: " + viewType));
                     return new SimpleViewHolder(LayoutInflater.from(mActivity).inflate(R.layout.aaf_listitem_no_content, parent, false));
                 }
         }
@@ -314,7 +315,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             return;
 
         String verb = mItems.get(position).getEntry().getVerb();
-        Print.log("item", mItems.get(position).getEntry().getType().name(), verb);
+        Logger.log("item", mItems.get(position).getEntry().getType().name(), verb);
 
         if(mItems.get(position).getEntry().getType() == ActivityFeedEntry.Type.ITEM) {
             try {
@@ -324,7 +325,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
 //				else
 //					Print.exception(new Exception("holder not found for group item with verb: " + verb));
             } catch(Exception e) {
-                Print.exception(e);
+                Logger.exception(e);
             }
         }
         else if(mItems.get(position).getEntry().getType() == ActivityFeedEntry.Type.GROUP) {
@@ -333,7 +334,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                     ((AbsActivityFeedGroupViewHolder) holder).buildItem((FeedGroupInterface) mItems.get(position).getEntry(),
                             position == mItems.size() - 1, mOnGroupLikeListener, mOnItemOrLoadMoreListener, mRouter);
                 else
-                    Print.exception(new Exception("holder not found for group item with verb: " + verb));
+                    Logger.exception(new Exception("holder not found for group item with verb: " + verb));
 
                 if(holder instanceof GroupListensFeedItemViewHolder) {
                     mIndexOfItemsWithMediaControls.add(position);
@@ -341,7 +342,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                 }
 
             } catch(Exception e) {
-                Print.exception(e);
+                Logger.exception(e);
             }
         }
     }
@@ -403,7 +404,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
 
             @Override
             public void onClick(View v) {
-                Print.log("cancel untrack job");
+                Logger.log("cancel untrack job");
                 cancelDeleteJob();
                 snackbar.dismiss();
                 mItems.add(position, mItemToDelete);
@@ -427,7 +428,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
 
         @Override
         public void run() {
-            Print.log("running delete job");
+            Logger.log("running delete job");
 
             if(!(mItemToDelete.getEntry().getIdentifier() instanceof Integer))
                 return;
@@ -476,7 +477,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             @Override
             public void onErrorResponse(Exception error) {
                 // do nothing because the database shouldn't change
-                Print.log("Make like request error ---------->", error.getMessage());
+                Logger.log("Make like request error ---------->", error.getMessage());
             }
 
         });
@@ -501,7 +502,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             @Override
             public void onErrorResponse(Exception error) {
                 // do nothing because the database shouldn't change
-                Print.log("Make like request error ---------->", error.getMessage());
+                Logger.log("Make like request error ---------->", error.getMessage());
             }
 
         });
@@ -531,7 +532,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     }
 
     public void changeItemAtIndex(int index, FeedListItem item) {
-        Print.log("Changing group", item.getEntry().getIdentifier(), "at index", index);
+        Logger.log("Changing group", item.getEntry().getIdentifier(), "at index", index);
         if(index < mItems.size()) {
             mItems.remove(index);
             mItems.add(index, item);
@@ -541,13 +542,13 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     }
 
     public void notifyLikesChanged() {
-        Print.log("Feed Adapter", "received notify likes status changed");
+        Logger.log("Feed Adapter", "received notify likes status changed");
         try {
             if(mItems != null)
                 notifyItemRangeChanged(0, mItems.size(), UPDATE_LIKE_STATUS);
         }
         catch(Exception e) {
-            Print.log("Error notifying likes changed", e.getMessage());
+            Logger.log("Error notifying likes changed", e.getMessage());
         }
     }
 
@@ -562,7 +563,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                     notifyItemRemoved(currentSize);
                 }
             } catch(ArrayIndexOutOfBoundsException e) {
-                Print.exception(e);
+                Logger.exception(e);
             }
         }
     }

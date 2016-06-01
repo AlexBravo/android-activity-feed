@@ -2,7 +2,7 @@ package com.bandsintown.activityfeed.image;
 
 import android.widget.ImageView;
 
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.kahlo.image.callback.BitImageCallback;
 
 /**
@@ -49,7 +49,7 @@ public class RoundedUserImageCallback extends BitImageCallback {
         else if(mErrorResId > 0)
             mProvider.systemDisplayPersonImage(mErrorResId, iv);
 
-        Print.log("Loading image failed", url);
+        Logger.log("Loading image failed", url);
     }
 
     @Override

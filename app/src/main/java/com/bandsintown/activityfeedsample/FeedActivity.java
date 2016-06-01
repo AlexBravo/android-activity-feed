@@ -15,7 +15,7 @@ import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.SpotifyProvider;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.activityfeedsample.objects.ActivityFeedGroup;
 import com.bandsintown.activityfeedsample.objects.ActivityFeedItem;
 import com.bandsintown.activityfeedsample.objects.ArtistStub;
@@ -120,7 +120,7 @@ public class FeedActivity extends NaviAppCompatActivity {
 
                     for(ActivityFeedGroup group : response.body().getGroups()) {
                         for(ActivityFeedItem item : group.getActivities()) {
-                            Print.log("id", item.getId(), "actor", item.getActor(), "object", item.getObject());
+                            Logger.log("id", item.getId(), "actor", item.getActor(), "object", item.getObject());
 
                             if(item.getActor().getArtistId() > 0)
                                 item.getActor().setArtist(mArtistStubs.get(item.getActor().getArtistId()));
@@ -153,7 +153,7 @@ public class FeedActivity extends NaviAppCompatActivity {
             @Override
             public void onFailure(Call<FeedResponse> call, Throwable t) {
                 mRefreshLayout.setRefreshing(false);
-                Print.exception(new Exception(t));
+                Logger.exception(new Exception(t));
             }
 
         });

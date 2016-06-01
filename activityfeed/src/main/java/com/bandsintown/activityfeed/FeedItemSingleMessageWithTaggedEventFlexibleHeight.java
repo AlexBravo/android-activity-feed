@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 /**
  * Created by rjaylward on 12/9/15 for Bandsintown
@@ -55,8 +55,8 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
                 mEventImageView.setVisibility(GONE);
                 mBigImageView.setVisibility(VISIBLE);
                 final int width = mEstimate.getEstimate().x;
-                Print.log("Set Image Called", url);
-                Print.log(url, "Setting image");
+                Logger.log("Set Image Called", url);
+                Logger.log(url, "Setting image");
                 ImageProvider.activityFeedUserPostDisplayer(getContext(), width)
                         .source(url)
 //                        .callback(new BitImageCallback(url, mBigImageView) {
@@ -110,7 +110,7 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
 
                     if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
                         //depending on screen density the estimate can be slightly off but still acceptable
-                        Print.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
+                        Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
                         setEventImage(url);
                     }
                 }

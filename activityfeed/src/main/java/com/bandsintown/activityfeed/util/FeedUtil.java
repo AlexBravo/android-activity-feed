@@ -2,7 +2,6 @@ package com.bandsintown.activityfeed.util;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Address;
 import android.os.Bundle;
 
@@ -12,7 +11,6 @@ import com.bandsintown.activityfeed.objects.FeedItemInterface;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -21,30 +19,6 @@ import java.util.Locale;
  * Created by rjaylward on 5/4/16 for Bandsintown
  */
 public class FeedUtil {
-
-    public static String printCommaSeparatedArray(Object[] array) {
-        String result = "";
-        for(int i = 0; i < array.length; i++) {
-            if(i > 0)
-                result += ", ";
-
-            result += array[i].toString();
-        }
-
-        return result;
-    }
-
-    public static String printArrayListAsString(ArrayList arrayList) {
-        StringBuilder builder = new StringBuilder();
-        for(int i = 0; i < arrayList.size(); i++) {
-            if(i > 0)
-                builder.append(", ");
-
-            builder.append(arrayList.get(i));
-        }
-
-        return builder.toString();
-    }
 
     public static String formatDatetime(String datetime, SimpleDateFormat format) {
         if(datetime != null) {
@@ -76,7 +50,7 @@ public class FeedUtil {
                     cal.setTime(new SimpleDateFormat(FeedValues.DATE_FORMAT_BANDSINTOWN_API, Locale.getDefault()).parse(datetime));
                     return cal;
                 } catch(ParseException e1) {
-                    Print.exception(e);
+                    Logger.exception(e);
                     return null;
                 }
             }
@@ -132,7 +106,7 @@ public class FeedUtil {
             return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
                     && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
         } catch(ParseException e) {
-            Print.exception(e);
+            Logger.exception(e);
             throw new IllegalArgumentException("parser didn't work");
         }
     }
@@ -168,23 +142,6 @@ public class FeedUtil {
      */
     public static String formatTimerStringFromMillis(long millis) {
         return new SimpleDateFormat(FeedValues.DATE_FORMAT_TIMER, Locale.getDefault()).format(new Date(millis));
-    }
-
-    public static boolean isAppInstalled(Context context, String uri) {
-        PackageManager pm = context.getPackageManager();
-
-        boolean installed;
-        try {
-            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-            installed = true;
-        }
-        catch (Exception e) {
-            installed = false;
-        }
-
-        Print.log("Is installed?", uri, installed);
-
-        return installed;
     }
 
     public static String getFormattedLocationFromAddress(Address address) {
@@ -249,7 +206,7 @@ public class FeedUtil {
                 case FeedValues.VERB_POST_TRAILER:
                     return FeedValues.VERB_CODE_GROUP_POST_TRAILER;
                 default:
-                    Print.exception(new Exception("did not recognize: " + verb));
+                    Logger.exception(new Exception("did not recognize: " + verb));
                     return FeedValues.VERB_CODE_UNRECOGNIZED;
             }
         }
@@ -288,7 +245,7 @@ public class FeedUtil {
             case FeedValues.VERB_POST_TRAILER :
                 return FeedValues.VERB_CODE_POST_TRAILER;
             default :
-                Print.exception(new Exception("did not recognize: " + verb));
+                Logger.exception(new Exception("did not recognize: " + verb));
                 return FeedValues.VERB_CODE_UNRECOGNIZED;
         }
     }
@@ -307,7 +264,7 @@ public class FeedUtil {
                 return month <= 12 && month > 0
                         && date[1].length() == 2;
             } catch(Exception e) {
-                Print.exception(e);
+                Logger.exception(e);
             }
         }
 

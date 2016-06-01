@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import com.bandsintown.activityfeed.objects.FeedItemObjectInterface;
 import com.bandsintown.activityfeed.util.FeedUtil;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.activityfeedsample.Constants;
 import com.bandsintown.activityfeedsample.FieldNames;
 import com.bandsintown.activityfeedsample.R;
@@ -178,7 +178,7 @@ public class ActivityFeedItemObject implements Parcelable, FeedItemObjectInterfa
 		else if(mArtistStub != null)
 			return mArtistStub.getName();
 		else {
-			Print.exception(new NullPointerException("no title found"), false);
+			Logger.exception(new NullPointerException("no title found"), false);
 			return null;
 		}
 	}
@@ -191,7 +191,7 @@ public class ActivityFeedItemObject implements Parcelable, FeedItemObjectInterfa
 		else if(mArtistStub != null)
 			return context.getString(R.string.tracker_count, NumberFormat.getInstance().format(mArtistStub.getTrackerCount()));
 		else {
-			Print.exception(new NullPointerException("no description found"), false);
+			Logger.exception(new NullPointerException("no description found"), false);
 			return null;
 		}
 	}

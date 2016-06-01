@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.FeedUtil;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView {
 
@@ -97,7 +97,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 					if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
 						//depending on screen density the estimate can be slightly off but still acceptable
-						Print.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
+						Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
 						setImage(activity, url, isUserImage);
 					}
 				}

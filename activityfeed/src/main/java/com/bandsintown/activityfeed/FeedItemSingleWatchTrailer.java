@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 /**
  * Created by rjaylward on 12/10/15 for Bandsintown
@@ -35,37 +35,6 @@ public class FeedItemSingleWatchTrailer extends AbsFeedItemSingleView {
 
         mEstimate = imageSizeEstimate;
     }
-
-//    protected Point calculateImageViewSizeGuess() {
-//        float fraction = getResources().getFraction(R.fraction.sixteen_by_nine, 1, 1);
-//        float horizontalMargin = getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
-//
-//        //this assumes feed fills the screen, if we change the layout we need to change this
-//        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-//        Display display = wm.getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//
-//        int mWidthGuess = (int) (size.x - 2 * horizontalMargin);
-//        int mHeightGuess = (int) (mWidthGuess / fraction);
-//
-//        return new Point(mWidthGuess, mHeightGuess);
-//    }
-//
-//    protected Point tabletImageViewSizeGuess() {
-//        float fraction = getResources().getFraction(R.fraction.sixteen_by_nine, 1, 1);
-//        float horizontalMargin = getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
-//
-//        int mTableMainFeedWidthGuess = 0;
-//        int mTableMainFeedHeightGuess = 0;
-//
-//        if(getResources().getBoolean(R.bool.isTablet)) {
-//            mTableMainFeedWidthGuess = (int) (getResources().getDimension(R.dimen.feed_width) - horizontalMargin * 2);
-//            mTableMainFeedHeightGuess = (int) (mTableMainFeedWidthGuess / fraction);
-//        }
-//
-//        return new Point(mTableMainFeedWidthGuess, mTableMainFeedHeightGuess);
-//    }
 
     @Override
     protected void initLayout() {
@@ -101,7 +70,7 @@ public class FeedItemSingleWatchTrailer extends AbsFeedItemSingleView {
 
                     if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
                         //depending on screen density the estimate can be slightly off but still acceptable
-                        Print.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
+                        Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
                         setImage(url);
                     }
                 }
