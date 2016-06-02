@@ -35,7 +35,7 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
     @Override
     public void setOnImageClickListener(OnClickListener listener) {
         super.setOnImageClickListener(listener);
-        mEventImageView.setOnClickListener(listener);
+        mBigImageView.setOnClickListener(listener);
     }
 
     @Override
@@ -59,23 +59,6 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
                 Logger.log(url, "Setting image");
                 ImageProvider.activityFeedUserPostDisplayer(getContext(), width)
                         .source(url)
-//                        .callback(new BitImageCallback(url, mBigImageView) {
-//
-//                            @Override
-//                            public void onFailure(String url, ImageView imageView, Exception e) {
-//                                Print.log(url, "Failed to load image", mBigImageView.getWidth(), mBigImageView.getHeight());
-//                                Print.exception(e);
-//                            }
-//
-//                            @Override
-//                            public void onSuccess(String url, ImageView imageView) {
-//                                Print.log(url, "Loaded image", mBigImageView.getWidth(), mBigImageView.getHeight());
-//                                Print.log(url, "drawable intrinsic size", mBigImageView.getDrawable().getIntrinsicWidth(),
-//                                        mBigImageView.getDrawable().getIntrinsicHeight());
-//                                Print.log("is visible?", mBigImageView.getVisibility() == VISIBLE);
-//                            }
-//
-//                        })
                         .display(mBigImageView);
 
             }
