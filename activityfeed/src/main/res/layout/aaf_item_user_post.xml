@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--this should be just a merge tag but for some reason images do not load correctly if it is.-->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
