@@ -1,27 +1,43 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
-import android.util.AttributeSet;
+import android.graphics.Point;
+import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.objects.SizeEstimate;
 
 public class FeedItemSinglePost extends AbsFeedItemSingleView {
 
 	private ImageView mImage;
 	private TextView mMessage;
+	protected SizeEstimate mEstimate;
 
-	public FeedItemSinglePost(Context context) {
+	public FeedItemSinglePost(Context context, @Nullable SizeEstimate imageViewSize) {
 		super(context);
-	}
 
-	public FeedItemSinglePost(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+		mEstimate = imageViewSize;
 
-	public FeedItemSinglePost(Context context, AttributeSet attrs, int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
+		if(mEstimate == null)
+			mEstimate = new SizeEstimate() {
+
+				@Override
+				protected Point estimateSize() {
+					return new Point(0,0);
+				}
+
+				@Override
+				protected Point estimateTabletSize() {
+					return new Point(0,0);
+				}
+
+				@Override
+				protected boolean useTabletEstimate() {
+					return false;
+				}
+			};
 	}
 
 	@Override
@@ -40,7 +56,14 @@ public class FeedItemSinglePost extends AbsFeedItemSingleView {
 			ImageProvider.getInstance(getContext()).displayImageDirect(url, mImage,
 					ImageProvider.activityFeedUserPostDisplayer(getContext(), getResources().getDisplayMetrics().widthPixels), null);
 			mImage.setVisibility(VISIBLE);
+
+			final int width = mEstimate.getEstimate().x;
+			mImage.setVisibility(VISIBLE);
+			ImageProvider.activityFeedUserPostDisplayer(getContext(), width)
+					.source(url)
+					.display(mImage);
 		}
+
 	}
 
 	public void setImageGone() {

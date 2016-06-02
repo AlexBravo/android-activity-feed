@@ -181,7 +181,7 @@ public class ActivityViewBuilder {
         FeedItemSinglePost post = null;
 
         if(activityFeedItem.getObject() != null && activityFeedItem.getObject().getPost() != null) {
-            post = new FeedItemSinglePost(mActivity);
+            post = new FeedItemSinglePost(mActivity, mAverageImageSizeEstimate);
             post.setMessage(activityFeedItem.getObject().getPost().getMessage());
 
             if(activityFeedItem.getObject().getPost().getMediaId() > 0)
