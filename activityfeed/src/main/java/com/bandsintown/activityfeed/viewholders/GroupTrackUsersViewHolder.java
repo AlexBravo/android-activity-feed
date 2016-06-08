@@ -14,7 +14,7 @@ import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 import java.util.ArrayList;
 
@@ -49,11 +49,11 @@ public class GroupTrackUsersViewHolder extends AbsActivityFeedGroupViewHolder im
             @Override
             public String getTitle(int index) {
                 try {
-                    Print.log("Index", index, mFeedItems.get(index).getObject().getUser().getFullName());
+                    Logger.log("Index", index, mFeedItems.get(index).getObject().getUser().getFullName());
                     return mFeedItems.get(index).getObject().getUser().getFullName();
                 }
                 catch(NullPointerException e) {
-                    Print.exception(e);
+                    Logger.exception(e);
                     return "";
                 }
             }
@@ -64,7 +64,7 @@ public class GroupTrackUsersViewHolder extends AbsActivityFeedGroupViewHolder im
                     return mFeedItems.get(index).getObject().getUser().getLocation();
                 }
                 catch(NullPointerException e) {
-                    Print.exception(e);
+                    Logger.exception(e);
                     return "";
                 }
             }
@@ -76,7 +76,7 @@ public class GroupTrackUsersViewHolder extends AbsActivityFeedGroupViewHolder im
                     url = mFeedItems.get(index).getObject().getObjectImageUrl();
                 }
                 catch(NullPointerException e) {
-                    Print.exception(e);
+                    Logger.exception(e);
                 }
                 return Pair.create(url, R.drawable.user_placeholder);
             }
@@ -93,7 +93,7 @@ public class GroupTrackUsersViewHolder extends AbsActivityFeedGroupViewHolder im
 
     @Override
     public void onItemClick(int type, int index, Bundle bundle) {
-        Print.log("Click", index, "item?", type == ITEM_CLICK, "image?", type == IMAGE_CLICK);
+        Logger.log("Click", index, "item?", type == ITEM_CLICK, "image?", type == IMAGE_CLICK);
 
         switch(type) {
             case ITEM_CLICK:
@@ -105,7 +105,7 @@ public class GroupTrackUsersViewHolder extends AbsActivityFeedGroupViewHolder im
                     mView.getContext().startActivity(mGroup.getActivities().get(index).getObject().buildOnClickIntent(mView.getContext()));
                 }
                 catch(Exception e) {
-                    Print.log(e.toString());
+                    Logger.log(e.toString());
                 }
                 break;
         }

@@ -31,7 +31,7 @@ public class FeedItemViewHeader extends RelativeLayout {
 	}
 
 	private void inflateLayout() {
-		LayoutInflater.from(getContext()).inflate(R.layout.activity_feed_item_header, this, true);
+		LayoutInflater.from(getContext()).inflate(R.layout.aaf_feed_item_header, this, true);
 
 		mPosterImage = (ImageView) findViewById(R.id.afih_image);
 		mName = (TextView) findViewById(R.id.afih_name);

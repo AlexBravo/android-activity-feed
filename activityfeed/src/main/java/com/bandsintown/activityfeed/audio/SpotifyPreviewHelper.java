@@ -17,7 +17,7 @@ import com.bandsintown.activityfeed.audio.spotify.SpotifyArtistSearchResponse;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyTrack;
 import com.bandsintown.activityfeed.interfaces.OnCompleteListener;
 import com.bandsintown.activityfeed.objects.SpotifyProvider;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -81,7 +81,7 @@ public class SpotifyPreviewHelper {
                 activity.setSupportMediaController(null);
         }
         catch(Exception e) {
-            Print.log("Unable to null out the media controller");
+            Logger.log("Unable to null out the media controller");
         }
     }
 
@@ -89,7 +89,7 @@ public class SpotifyPreviewHelper {
         if(instance != null && instance.mSession != null)
             instance.mSession.release();
         else
-            Print.log("failed to release the media session");
+            Logger.log("failed to release the media session");
     }
 
     private SpotifyPreviewHelper(AppCompatActivity activity, SpotifyProvider api) {
@@ -151,14 +151,14 @@ public class SpotifyPreviewHelper {
 
             @Override
             public void onErrorResponse(Exception error) {
-                Print.log("Error getting artists", error.toString());
+                Logger.log("Error getting artists", error.toString());
                 onCompleteListener.onComplete(null);
             }
         });
     }
 
     private void getPreviewUrl(final String id, final OnCompleteListener<AudioTrackInfo> onCompleteListener) {
-        Print.log("Spotify id", id);
+        Logger.log("Spotify id", id);
         if(id != null) {
             mApiHelper.getSpotifyTrackForArtistId(id, new ApiListener<SpotifyArtistResponse>() {
 
@@ -185,21 +185,21 @@ public class SpotifyPreviewHelper {
                         onCompleteListener.onComplete(audioItem);
                     }
                     else {
-                        Print.log("Error getting preview url, no preview url");
+                        Logger.log("Error getting preview url, no preview url");
                         onCompleteListener.onComplete(null);
                     }
                 }
 
                 @Override
                 public void onErrorResponse(Exception error) {
-                    Print.log("Error getting preview url", error.toString());
+                    Logger.log("Error getting preview url", error.toString());
                     onCompleteListener.onComplete(null);
                 }
 
             });
         }
         else {
-            Print.exception(new Exception("Spotify uri split failed"), false);
+            Logger.exception(new Exception("Spotify uri split failed"), false);
             onCompleteListener.onComplete(null);
         }
     }
@@ -322,7 +322,7 @@ public class SpotifyPreviewHelper {
             mMediaNotificationManager = new MediaNotificationManager(activity.getApplicationContext(), mSession, null);
         }
         catch(Exception e) {
-            Print.exception(e, false);
+            Logger.exception(e, false);
         }
     }
 
@@ -338,12 +338,12 @@ public class SpotifyPreviewHelper {
 
         String trackId = metadata.getString(MediaMetadataCompat.METADATA_KEY_MEDIA_ID);
 
-        Print.log("Updating metadata for MusicID = " + trackId);
+        Logger.log("Updating metadata for MusicID = " + trackId);
         mSession.setMetadata(metadata);
     }
 
     private void updatePlaybackState(String error) {
-        Print.log("updatePlaybackState, playback state=", mPlayback.getState());
+        Logger.log("updatePlaybackState, playback state=", mPlayback.getState());
         long position = PlaybackStateCompat.PLAYBACK_POSITION_UNKNOWN;
         if(mPlayback != null && mPlayback.isConnected()) {
             position = mPlayback.getCurrentStreamPosition();

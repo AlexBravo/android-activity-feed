@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,9 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <include layout="@layout/widget_user_profile"
+        <TextView
+            android:id="@+id/fir_message"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_feed_big_image_height"/>
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:visibility="gone"/>
+
+        <include
+            layout="@layout/aaf_widget_big_image_for_feed_item"
+            android:id="@+id/fir_event_section"/>
 
         <com.bandsintown.activityfeed.FeedItemSingleFooterView
             android:layout_width="match_parent"

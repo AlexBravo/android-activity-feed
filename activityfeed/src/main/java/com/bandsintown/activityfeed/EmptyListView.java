@@ -33,7 +33,7 @@ public class EmptyListView extends RelativeLayout {
     }
 
     private void initialize() {
-        LayoutInflater.from(getContext()).inflate(R.layout.widget_empty_list_with_button, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.aaf_widget_empty_list_with_button, this, true);
 
         mEmptyListButton = (Button) findViewById(R.id.empty_button);
         mEmptyListText = (TextView) findViewById(R.id.empty_textview);

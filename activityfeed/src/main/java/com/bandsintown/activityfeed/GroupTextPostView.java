@@ -1,6 +1,7 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
+import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
@@ -33,7 +34,7 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_group_text_post;
+		return R.layout.aaf_item_group_text_post;
 	}
 
 	public void setImage(Context context, String url) {
@@ -57,6 +58,13 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 		}
 		else
 			mMessage.setVisibility(GONE);
+	}
+
+	public void setMessageLinksClickable(boolean clickable) {
+		if(clickable)
+			mMessage.setMovementMethod(new LinkMovementMethod());
+		else
+			mMessage.setMovementMethod(null);
 	}
 
 }

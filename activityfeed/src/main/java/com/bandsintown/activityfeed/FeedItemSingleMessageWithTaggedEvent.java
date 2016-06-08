@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.FeedUtil;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView {
 
@@ -72,7 +73,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_message_event;
+		return R.layout.aaf_item_message_event;
 	}
 
 	public void setImage(final AppCompatActivity activity, final String url, final boolean isUserImage) {
@@ -97,7 +98,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 					if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
 						//depending on screen density the estimate can be slightly off but still acceptable
-						Print.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
+						Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
 						setImage(activity, url, isUserImage);
 					}
 				}
@@ -153,6 +154,13 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	public void showTextSection() {
 		mEventImageTextSection.setVisibility(VISIBLE);
+	}
+
+	public void setMessageLinksClickable(boolean clickable) {
+		if(clickable)
+			mMessage.setMovementMethod(new LinkMovementMethod());
+		else
+			mMessage.setMovementMethod(null);
 	}
 
 }

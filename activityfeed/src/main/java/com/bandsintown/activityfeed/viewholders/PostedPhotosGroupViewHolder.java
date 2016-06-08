@@ -6,7 +6,7 @@ import android.view.View;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ public class PostedPhotosGroupViewHolder extends AbsImageGroupViewHolder {
                 else
                     urls.add(null);
             } catch(Exception e) {
-                Print.exception(e);
+                Logger.exception(e);
                 urls.add(null);
             }
         }

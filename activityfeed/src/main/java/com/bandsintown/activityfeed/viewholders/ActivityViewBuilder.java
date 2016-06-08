@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.bandsintown.activityfeed.AbsFeedItemSingleView;
 import com.bandsintown.activityfeed.ApiListener;
 import com.bandsintown.activityfeed.BitFeedApi;
-import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedDatabase;
 import com.bandsintown.activityfeed.FeedItemSingleFooterView;
 import com.bandsintown.activityfeed.FeedItemSingleLikedActivity;
@@ -23,16 +22,15 @@ import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEventFlexible
 import com.bandsintown.activityfeed.FeedItemSinglePost;
 import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
 import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
+import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
-import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 import com.bandsintown.activityfeed.util.FeedUtil;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.google.gson.JsonObject;
 
 /**
@@ -85,12 +83,12 @@ public class ActivityViewBuilder {
                     break;
                 default:
                     view = null;
-                    Print.exception(new IllegalArgumentException("view type not found: " + activityFeedItem.getVerb()));
+                    Logger.exception(new IllegalArgumentException("view type not found: " + activityFeedItem.getVerb()));
             }
         }
         else {
             view = null;
-            Print.exception(new IllegalArgumentException("activity feed item or verb was null"));
+            Logger.exception(new IllegalArgumentException("activity feed item or verb was null"));
         }
 
         return view;
@@ -130,7 +128,6 @@ public class ActivityViewBuilder {
             @Override
             public void onClick(View v) {
                 //TODO do we have 2 separate click actions here, 1 for the artist and another for the video or should both go to the video?
-                AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
                 router.onObjectClicked(activityFeedItem);
             }
 
@@ -140,8 +137,6 @@ public class ActivityViewBuilder {
 
             @Override
             public void onClick(View v) {
-                //TODO probably need different analytics for this
-                AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
                 router.onPlayTrailerClicked(activityFeedItem);
             }
 
@@ -158,8 +153,8 @@ public class ActivityViewBuilder {
             renderScript = RenderScript.create(mActivity.getApplicationContext());
         }
         catch(Exception e) {
-            Print.log("Renderscript Exception");
-            Print.exception(e);
+            Logger.log("Renderscript Exception");
+            Logger.exception(e);
         }
 
         FeedUser objectUser = activityFeedItem.getObject().getUser();
@@ -186,7 +181,7 @@ public class ActivityViewBuilder {
         FeedItemSinglePost post = null;
 
         if(activityFeedItem.getObject() != null && activityFeedItem.getObject().getPost() != null) {
-            post = new FeedItemSinglePost(mActivity);
+            post = new FeedItemSinglePost(mActivity, mAverageImageSizeEstimate);
             post.setMessage(activityFeedItem.getObject().getPost().getMessage());
 
             if(activityFeedItem.getObject().getPost().getMediaId() > 0)
@@ -195,7 +190,7 @@ public class ActivityViewBuilder {
                 post.setImageGone();
         }
         else
-            Print.exception(new Exception("FeedPost was null in artist post"));
+            Logger.exception(new Exception("FeedPost was null in artist post"));
 
         return post;
     }
@@ -306,7 +301,7 @@ public class ActivityViewBuilder {
 
             @Override
             public void onClick(View v) {
-                router.onHeaderClicked(mActivity, item);
+                router.onHeaderClicked(item);
             }
 
         });
@@ -324,7 +319,6 @@ public class ActivityViewBuilder {
                 @Override
                 public void onClick(View v) {
                     view.getFooter().onLikeClick(feedItem.isLikedByUser(), feedItem.getLikeCount());
-                    AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.LIKE);
 
                     if(feedItem.isLikedByUser()) // unlike the post
                         makeLikeItemRequest(feedItem, false, view.getFooter(), router);
@@ -339,7 +333,7 @@ public class ActivityViewBuilder {
                 @Override
                 public void onClick(View v) {
                     if(feedItem.getLikeCount() > 0) {
-                        router.onLikesTotalClick(mActivity, feedItem);
+                        router.onLikesTotalClick(feedItem);
                     }
                 }
 
@@ -378,7 +372,7 @@ public class ActivityViewBuilder {
             @Override
             public void onErrorResponse(Exception error) {
                 // do nothing because the database shouldn't change
-                Print.log("Make like request error ---------->", error.getMessage());
+                Logger.log("Make like request error ---------->", error.getMessage());
 
                 if(footer != null)
                     footer.setInitialState(feedItem, router);
@@ -438,7 +432,7 @@ public class ActivityViewBuilder {
     }
 
     private void openFlagFeedItemActivity(int feedId, IntentRouter router) {
-        router.onReportClick(feedId);
+        router.onFlagFeedItem(feedId);
     }
 
 }

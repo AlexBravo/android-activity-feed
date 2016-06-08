@@ -3,16 +3,15 @@ package com.bandsintown.activityfeed.util;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.bandsintown.activityfeed.FeedValues;
-
 import java.util.Map;
 
 /**
  * Created by rjaylward on 5/2/16 for Bandsintown
  */
-public class Print {
+public class Logger {
 
     public static boolean mIsDebugMode = true;
+    public static boolean mIsLoggingEnabled = true;
 
     private static final String SHORT_TAG = "(BIT Feed)";
 
@@ -23,13 +22,17 @@ public class Print {
         mCrashReporter = crashReporter;
     }
 
+    public static void setLoggingEnabled(boolean enabled) {
+        mIsLoggingEnabled = enabled;
+    }
+
     /**
      * Used for logging whatever in log cat.
      *
      * @param message - log message
      */
     public static void log(Object message) {
-        if(mIsDebugMode) {
+        if(mIsDebugMode && mIsLoggingEnabled) {
             if(message == null || message.toString() == null)
                 Log.d(SHORT_TAG, "The Message is null");
             else
@@ -44,7 +47,7 @@ public class Print {
      * @param messages - log messages, separated by commas
      */
     public static void log(String tag, Object... messages) {
-        if(mIsDebugMode) {
+        if(mIsDebugMode && mIsLoggingEnabled) {
             String message;
             if(messages == null || messages.length == 0)
                 message = "The Message is null";
@@ -92,7 +95,7 @@ public class Print {
     }
 
     public static void analyticsScreenView(String screenName, Map<String, String> params) {
-        if(FeedValues.IS_DEBUG_MODE)
+        if(mIsDebugMode)
             Log.d("Analytics screen view", "Page: " + screenName + "Params: " + params.toString());
     }
 

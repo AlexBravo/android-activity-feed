@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 public class LoadMoreRecyclerView extends RecyclerView {
 
@@ -46,7 +46,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
 						}
 					}
 				} catch(ClassCastException e) {
-					Print.exception(e);
+					Logger.exception(e);
 				}
 			}
 

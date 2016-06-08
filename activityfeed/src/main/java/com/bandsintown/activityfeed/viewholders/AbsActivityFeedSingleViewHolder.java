@@ -15,10 +15,8 @@ import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListene
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 import com.bandsintown.activityfeed.util.FeedUtil;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewHolder {
 
@@ -51,8 +49,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 
 			@Override
 			public void onClick(View v) {
-				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.ACTOR);
-				router.onHeaderClicked(mActivity, feedItem);
+				router.onHeaderClicked(feedItem);
 			}
 
 		});
@@ -64,7 +61,6 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			@Override
 			public void onClick(View v) {
 				mView.getFooter().onLikeClick(feedItem.isLikedByUser(), feedItem.getLikeCount());
-				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.LIKE);
 
 				if(feedItem.isLikedByUser()) // unlike the post
 					onLikeClickListener.onLike(feedItem, false);
@@ -78,8 +74,8 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 
 			@Override
 			public void onClick(View v) {
-				if(feedItem.getLikeCount() > 0 && mActivity != null) {
-					router.onLikesTotalClick(mActivity, feedItem);
+				if(feedItem.getLikeCount() > 0) {
+					router.onLikesTotalClick(feedItem);
 				}
 			}
 
@@ -90,7 +86,6 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			@Override
 			public void onReportClick(int feedId) {
 				if(feedMenuItemClickListener != null) {
-					AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.MORE_OPTIONS_ICON);
 					feedMenuItemClickListener.onReportClick(feedId, getAdapterPosition());
 				}
 			}
@@ -98,7 +93,6 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 			@Override
 			public void onDeleteClick(int feedId) {
 				if(feedMenuItemClickListener != null) {
-					AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.MORE_OPTIONS_ICON);
 					feedMenuItemClickListener.onDeleteClick(feedId, getAdapterPosition());
 				}
 			}
@@ -109,7 +103,7 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 
 			@Override
 			public void onMenuButtonClick() {
-				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.MORE_OPTIONS_ICON);
+				//Used to just be analytics here... not sure if anything is actually needed
 			}
 
 		});
@@ -171,12 +165,12 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 						return null;
 				}
 			} else {
-				Print.exception(new Exception("Feed item " + item.getId() + " has a null description key"));
+				Logger.exception(new Exception("Feed item " + item.getId() + " has a null description key"));
 				return null;
 			}
 		}
 		catch(Exception e) {
-			Print.exception(e);
+			Logger.exception(e);
 			return null;
 		}
 	}

@@ -27,8 +27,6 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder {
 						  OnItemClickAtIndexAtSubIndex<FeedGroupInterface> itemOrViewMoreListener, IntentRouter router) {
 		super.buildItem(group, lastItem, onLikeClickListener, itemOrViewMoreListener, router);
 
-//		mGroupTextPostView.getFooter().setViewMoreText(mContext.getString(R.string.see_more_posts_from_actor, group.getGroupActor().getActorName()));
-
 		FeedItemInterface firstItem = group.getActivities().get(0);
 
 		mGroupTextPostView.setMessage(firstItem.getObject().getPost().getMessage());
@@ -37,5 +35,7 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder {
 			mGroupTextPostView.setImage(mContext, String.format(FeedValues.BIT_MEDIA_IMAGE_URL, firstItem.getObject().getPost().getMediaId()));
 		else
 			mGroupTextPostView.setImageGone();
+
+		mGroupTextPostView.setMessageLinksClickable(group.getGroupActor().getArtist() != null);
 	}
 }

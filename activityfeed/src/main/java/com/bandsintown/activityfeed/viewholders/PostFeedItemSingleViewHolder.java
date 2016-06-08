@@ -32,6 +32,8 @@ public class PostFeedItemSingleViewHolder extends AbsActivityFeedSingleViewHolde
 			mItem.setImage(String.format(FeedValues.BIT_MEDIA_IMAGE_URL, feedItem.getObject().getPost().getMediaId()));
 		else
 			mItem.setImageGone();
+
+		mItem.setMessageLinksClickable(feedItem.getActor().getArtist() != null);
 	}
 
 }

@@ -10,8 +10,6 @@ import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListene
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 
 public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityFeedSingleViewHolder {
 
@@ -57,11 +55,12 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 
 			@Override
 			public void onClick(View v) {
-				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
 				router.onObjectClicked(feedItem);
 			}
 
 		});
+
+		mItem.setMessageLinksClickable(feedItem.getActor().getArtist() != null);
 
 		//TODO second click listener for event if the click intent above is for the image preview
 	}

@@ -4,18 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v8.renderscript.RenderScript;
 import android.view.View;
 
-import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
+import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
-import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.FeedUser;
-import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.objects.IntentRouter;
+import com.bandsintown.activityfeed.util.Logger;
 
 public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleViewHolder {
 
@@ -32,8 +30,8 @@ public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleVi
 			mRenderScript = RenderScript.create(mActivity.getApplicationContext());
 		}
 		catch(Exception e) {
-			Print.log("Renderscript Exception");
-			Print.exception(e);
+			Logger.log("Renderscript Exception");
+			Logger.exception(e);
 		}
 	}
 
@@ -63,7 +61,6 @@ public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleVi
 
 			@Override
 			public void onClick(View v) {
-				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.OBJECT);
 				router.onObjectClicked(feedItem);
 			}
 

@@ -20,7 +20,7 @@ import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 import java.util.ArrayList;
 
@@ -57,11 +57,11 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
             @Override
             public String getTitle(int index) {
                 try {
-                    Print.log("Index", index, mFeedItems.get(index).getObject().getArtistStub().getName());
+                    Logger.log("Index", index, mFeedItems.get(index).getObject().getArtistStub().getName());
                     return mFeedItems.get(index).getObject().getArtistStub().getName();
                 }
                 catch(NullPointerException e) {
-                    Print.exception(e);
+                    Logger.exception(e);
                     return "";
                 }
             }
@@ -72,7 +72,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                     return mView.getContext().getString(R.string.tracker_count, mFeedItems.get(index).getObject().getArtistStub().getTrackerCount());
                 }
                 catch(NullPointerException e) {
-                    Print.exception(e);
+                    Logger.exception(e);
                     return "";
                 }
             }
@@ -84,7 +84,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                     url = mFeedItems.get(index).getObject().getObjectImageUrl();
                 }
                 catch(NullPointerException e) {
-                    Print.exception(e);
+                    Logger.exception(e);
                 }
                 return Pair.create(url, R.drawable.placeholder_artist_small_square);
             }
@@ -101,7 +101,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
 
     @Override
     public void onItemClick(int type, int index, Bundle bundle) {
-        Print.log("Click", index, "item?", type == ITEM_CLICK, "image?", type == IMAGE_CLICK);
+        Logger.log("Click", index, "item?", type == ITEM_CLICK, "image?", type == IMAGE_CLICK);
 
         switch(type) {
             case ITEM_CLICK:

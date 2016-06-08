@@ -5,7 +5,6 @@ package com.bandsintown.activityfeed;
  */
 public class FeedValues {
 
-    public static final boolean IS_DEBUG_MODE = true;
     public static final String INSTANT_RUN_FIELD_INDICATOR = "$";
 
     //Time periods

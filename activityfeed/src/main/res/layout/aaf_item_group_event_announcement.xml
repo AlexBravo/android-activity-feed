@@ -9,7 +9,7 @@
 		android:layout_height="wrap_content"/>
 
 	<include
-		layout="@layout/widget_big_image_for_feed_item"
+		layout="@layout/aaf_widget_big_image_for_feed_item"
 		android:id="@+id/figea_image_section"/>
 
 	<com.bandsintown.activityfeed.FeedItemGroupFooterView

@@ -28,7 +28,7 @@ public class FeedItemSingleLikedActivity extends AbsFeedItemSingleView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_liked_activity;
+		return R.layout.aaf_item_liked_activity;
 	}
 
 	public void addChildToLikedContainer(View child) {

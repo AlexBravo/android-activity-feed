@@ -10,7 +10,8 @@ public class FeedViewOptions {
     private boolean mEnableDeleting;
     private boolean mEnableCommentButton;
 
-    private FeedViewOptions(boolean enableLiking, boolean enableReporting, boolean enableDeleting, boolean enableCommentButton) {
+    private FeedViewOptions(boolean enableLiking, boolean enableReporting, boolean enableDeleting,
+                            boolean enableCommentButton) {
         mEnableLiking = enableLiking;
         mEnableReporting = enableReporting;
         mEnableDeleting = enableDeleting;

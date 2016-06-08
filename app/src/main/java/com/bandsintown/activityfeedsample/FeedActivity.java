@@ -2,10 +2,8 @@ package com.bandsintown.activityfeedsample;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.bandsintown.activityfeed.ApiListener;
 import com.bandsintown.activityfeed.BitFeedApi;
@@ -13,14 +11,11 @@ import com.bandsintown.activityfeed.FeedDatabase;
 import com.bandsintown.activityfeed.audio.SpotifyPreviewHelper;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyArtistResponse;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyArtistSearchResponse;
-import com.bandsintown.activityfeed.objects.FeedArtistStub;
-import com.bandsintown.activityfeed.objects.FeedEventStub;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
-import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.SpotifyProvider;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.activityfeedsample.objects.ActivityFeedGroup;
 import com.bandsintown.activityfeedsample.objects.ActivityFeedItem;
 import com.bandsintown.activityfeedsample.objects.ArtistStub;
@@ -52,13 +47,7 @@ public class FeedActivity extends NaviAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fragment_basic_recycler_view);
-
-        try {
-            findViewById(R.id.toolbar).setVisibility(View.GONE);
-        } catch(Exception e) {
-            com.bandsintown.kahlo.Print.log("no toolbar");
-        }
+        setContentView(R.layout.aaf_fragment_basic_recycler_view);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -131,7 +120,7 @@ public class FeedActivity extends NaviAppCompatActivity {
 
                     for(ActivityFeedGroup group : response.body().getGroups()) {
                         for(ActivityFeedItem item : group.getActivities()) {
-                            Print.log("id", item.getId(), "actor", item.getActor(), "object", item.getObject());
+                            Logger.log("id", item.getId(), "actor", item.getActor(), "object", item.getObject());
 
                             if(item.getActor().getArtistId() > 0)
                                 item.getActor().setArtist(mArtistStubs.get(item.getActor().getArtistId()));
@@ -164,7 +153,7 @@ public class FeedActivity extends NaviAppCompatActivity {
             @Override
             public void onFailure(Call<FeedResponse> call, Throwable t) {
                 mRefreshLayout.setRefreshing(false);
-                Print.exception(new Exception(t));
+                Logger.exception(new Exception(t));
             }
 
         });
@@ -240,42 +229,12 @@ public class FeedActivity extends NaviAppCompatActivity {
     IntentRouter mIntentRouter = new IntentRouter() {
 
         @Override
-        public void onArtistClicked(FeedArtistStub stub) {
+        public void onHeaderClicked(FeedItemInterface feedItem) {
 
         }
 
         @Override
-        public void onEventClicked(FeedEventStub stub) {
-
-        }
-
-        @Override
-        public void onPlayTrailerClicked(FeedItemInterface item) {
-
-        }
-
-        @Override
-        public void onUserClicked(FeedUser feedUser) {
-
-        }
-
-        @Override
-        public void onLikesTotalClick(AppCompatActivity activity, FeedItemInterface feedItem) {
-
-        }
-
-        @Override
-        public void onHeaderClicked(AppCompatActivity activity, FeedItemInterface feedItem) {
-
-        }
-
-        @Override
-        public void onHeaderClicked(AppCompatActivity activity, FeedGroupInterface feedGroup) {
-
-        }
-
-        @Override
-        public void onCommentClicked(FeedItemInterface feedItem) {
+        public void onHeaderClicked(FeedGroupInterface feedGroup) {
 
         }
 
@@ -285,7 +244,17 @@ public class FeedActivity extends NaviAppCompatActivity {
         }
 
         @Override
-        public void onReportClick(int feedId) {
+        public void onPlayTrailerClicked(FeedItemInterface item) {
+
+        }
+
+        @Override
+        public void onLikesTotalClick(FeedItemInterface feedItem) {
+
+        }
+
+        @Override
+        public void onCommentClicked(FeedItemInterface feedItem) {
 
         }
 
@@ -295,10 +264,9 @@ public class FeedActivity extends NaviAppCompatActivity {
         }
 
         @Override
-        public void onGroupClicked(AppCompatActivity activity, FeedGroupInterface item, int index, int subIndex, int requestCode) {
+        public void onGroupClicked(FeedGroupInterface item, int index, int subIndex, int requestCode) {
 
         }
-
     };
 
 }

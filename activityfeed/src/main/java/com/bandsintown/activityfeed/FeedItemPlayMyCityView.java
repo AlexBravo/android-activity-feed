@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.FeedUtil;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.kahlo.image.provider.Kahlo;
 
 public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
@@ -27,36 +27,6 @@ public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
 		super(context);
 		mEstimate = imageViewSize;
 	}
-
-//	protected Point calculateImageViewSizeGuess() {
-//		float fraction = getResources().getFraction(R.fraction.sixteen_by_nine, 1, 1);
-//		float horizontalMargin = getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
-//
-//		//this assumes feed fills the screen, if we change the layout we need to change this
-//		WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-//		Display display = wm.getDefaultDisplay();
-//		Point size = new Point();
-//		display.getSize(size);
-//
-//		int mWidthGuess = (int) (size.x - 2 * horizontalMargin);
-//		int mHeightGuess = (int) (mWidthGuess / fraction);
-//
-//		return new Point(mWidthGuess, mHeightGuess);
-//	}
-//
-//	protected Point calculateTableImageViewSizGuess() {
-//		float fraction = getResources().getFraction(R.fraction.sixteen_by_nine, 1, 1);
-//		float horizontalMargin = getResources().getDimension(R.dimen.activity_feed_card_horizontal_margin);
-//
-//		int mTableMainFeedWidthGuess = (int) (getResources().getDimension(R.dimen.feed_width) - horizontalMargin * 2);
-//		int mTableMainFeedHeightGuess = (int) (mTableMainFeedWidthGuess / fraction);
-//
-//		return new Point(mTableMainFeedWidthGuess, mTableMainFeedHeightGuess);
-//	}
-//
-//	protected boolean useTabletSizeEstimate() {
-//		return getResources().getBoolean(R.bool.isLandscape) && getResources().getBoolean(R.bool.isTablet);
-//	}
 
 	@Override
 	protected void initLayout() {
@@ -87,7 +57,7 @@ public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
 
 					if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.y - mWidth) > WIDTH_ERROR_MARGIN) {
 						//depending on screen density the estimate can be slightly off but still acceptable
-						Print.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth);
+						Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth);
 						loadMap(lat, lng);
 					}
 				}
@@ -105,7 +75,7 @@ public class FeedItemPlayMyCityView extends AbsFeedItemGroupView {
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.feed_item_play_my_city;
+		return R.layout.aaf_item_play_my_city;
 	}
 
 }

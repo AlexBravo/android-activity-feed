@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<!--this should be just a merge tag but for some reason images do not load correctly if it is.-->
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -20,9 +21,13 @@
             android:layout_margin="12dp"
             android:visibility="gone"/>
 
-        <include
-            layout="@layout/widget_big_image_for_feed_item_flexible_height"
-            android:id="@+id/fir_event_section"/>
+        <ImageView
+            android:id="@+id/fir_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:visibility="gone"/>
 
         <com.bandsintown.activityfeed.FeedItemSingleFooterView
             android:layout_width="match_parent"
@@ -30,4 +35,4 @@
 
     </LinearLayout>
 
-</merge>
+</RelativeLayout>

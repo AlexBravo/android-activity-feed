@@ -14,10 +14,8 @@ import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.activityfeed.util.AnalyticsHelper;
-import com.bandsintown.activityfeed.util.FeedAnalyticsTags;
 import com.bandsintown.activityfeed.util.FeedUtil;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 
@@ -52,8 +50,7 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 
 			@Override
 			public void onClick(View v) {
-				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.ACTOR);
-				router.onHeaderClicked(mContext, group);
+				router.onHeaderClicked(group);
 			}
 
 		});
@@ -63,7 +60,6 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 			@Override
 			public void onClick(View v) {
 				mView.getFooter().onLikeClick(group.isGroupLikedByUser());
-				AnalyticsHelper.trackEvent(FeedAnalyticsTags.ACTIVITY_FEED_ITEM_CLICK, FeedAnalyticsTags.LIKE);
 
 				if(onLikeClickListener != null) {
 					if(group.isGroupLikedByUser()) // unlike the post
@@ -132,12 +128,12 @@ public class AbsActivityFeedGroupViewHolder extends RecyclerView.ViewHolder {
 				}
 			}
 			else {
-				Print.exception(new Exception("Feed item " + group.getGroupId() + " has a null description key"));
+				Logger.exception(new Exception("Feed item " + group.getGroupId() + " has a null description key"));
 				return null;
 			}
 		}
 		catch(Exception e) {
-			Print.exception(e);
+			Logger.exception(e);
 			return null;
 		}
 	}

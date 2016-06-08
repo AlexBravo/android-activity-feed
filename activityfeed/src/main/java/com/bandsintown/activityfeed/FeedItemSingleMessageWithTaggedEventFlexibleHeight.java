@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
-import com.bandsintown.activityfeed.util.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 /**
  * Created by rjaylward on 12/9/15 for Bandsintown
@@ -29,13 +29,13 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.feed_item_message_flexible_height_post;
+        return R.layout.aaf_item_message_flexible_height_post;
     }
 
     @Override
     public void setOnImageClickListener(OnClickListener listener) {
         super.setOnImageClickListener(listener);
-        mEventImageView.setOnClickListener(listener);
+        mBigImageView.setOnClickListener(listener);
     }
 
     @Override
@@ -55,27 +55,10 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
                 mEventImageView.setVisibility(GONE);
                 mBigImageView.setVisibility(VISIBLE);
                 final int width = mEstimate.getEstimate().x;
-                Print.log("Set Image Called", url);
-                Print.log(url, "Setting image");
+                Logger.log("Set Image Called", url);
+                Logger.log(url, "Setting image");
                 ImageProvider.activityFeedUserPostDisplayer(getContext(), width)
                         .source(url)
-//                        .callback(new BitImageCallback(url, mBigImageView) {
-//
-//                            @Override
-//                            public void onFailure(String url, ImageView imageView, Exception e) {
-//                                Print.log(url, "Failed to load image", mBigImageView.getWidth(), mBigImageView.getHeight());
-//                                Print.exception(e);
-//                            }
-//
-//                            @Override
-//                            public void onSuccess(String url, ImageView imageView) {
-//                                Print.log(url, "Loaded image", mBigImageView.getWidth(), mBigImageView.getHeight());
-//                                Print.log(url, "drawable intrinsic size", mBigImageView.getDrawable().getIntrinsicWidth(),
-//                                        mBigImageView.getDrawable().getIntrinsicHeight());
-//                                Print.log("is visible?", mBigImageView.getVisibility() == VISIBLE);
-//                            }
-//
-//                        })
                         .display(mBigImageView);
 
             }
@@ -110,7 +93,7 @@ public class FeedItemSingleMessageWithTaggedEventFlexibleHeight extends FeedItem
 
                     if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
                         //depending on screen density the estimate can be slightly off but still acceptable
-                        Print.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
+                        Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
                         setEventImage(url);
                     }
                 }
