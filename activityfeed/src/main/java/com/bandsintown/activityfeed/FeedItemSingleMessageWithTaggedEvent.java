@@ -4,12 +4,11 @@ import android.content.Context;
 import android.graphics.Point;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.FeedUtil;
@@ -158,9 +157,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	public void setMessageLinksClickable(boolean clickable) {
 		if(clickable)
-			mMessage.setMovementMethod(new LinkMovementMethod());
-		else
-			mMessage.setMovementMethod(null);
+			Linkify.addLinks(mMessage, Linkify.ALL);
 	}
 
 }
