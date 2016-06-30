@@ -184,6 +184,8 @@ public class ActivityViewBuilder {
             post = new FeedItemSinglePost(mActivity, mAverageImageSizeEstimate);
             post.setMessage(activityFeedItem.getObject().getPost().getMessage());
 
+            post.setMessageLinksClickable(activityFeedItem.getActor().getArtist() != null);
+
             if(activityFeedItem.getObject().getPost().getMediaId() > 0)
                 post.setImage(String.format(FeedValues.BIT_MEDIA_IMAGE_URL, activityFeedItem.getObject().getPost().getMediaId()));
             else
