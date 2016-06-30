@@ -3,7 +3,7 @@ package com.bandsintown.activityfeed;
 import android.content.Context;
 import android.graphics.Point;
 import android.support.annotation.Nullable;
-import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -82,9 +82,7 @@ public class FeedItemSinglePost extends AbsFeedItemSingleView {
 
 	public void setMessageLinksClickable(boolean clickable) {
 		if(clickable)
-			mMessage.setMovementMethod(new LinkMovementMethod());
-		else
-			mMessage.setMovementMethod(null);
+			Linkify.addLinks(mMessage, Linkify.ALL);
 	}
 
 }

@@ -184,7 +184,7 @@ public class ActivityViewBuilder {
             post = new FeedItemSinglePost(mActivity, mAverageImageSizeEstimate);
             post.setMessage(activityFeedItem.getObject().getPost().getMessage());
 
-            post.setMessageLinksClickable(activityFeedItem.getActor().getArtist() != null);
+            post.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0);
 
             if(activityFeedItem.getObject().getPost().getMediaId() > 0)
                 post.setImage(String.format(FeedValues.BIT_MEDIA_IMAGE_URL, activityFeedItem.getObject().getPost().getMediaId()));
@@ -232,7 +232,7 @@ public class ActivityViewBuilder {
 
         });
 
-        item.setMessageLinksClickable(activityFeedItem.getActor().getArtist() != null);
+        item.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0);
 
         return item;
     }
