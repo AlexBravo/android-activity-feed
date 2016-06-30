@@ -230,6 +230,8 @@ public class ActivityViewBuilder {
 
         });
 
+        item.setMessageLinksClickable(activityFeedItem.getActor().getArtist() != null);
+
         return item;
     }
 

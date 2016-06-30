@@ -156,8 +156,9 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 	}
 
 	public void setMessageLinksClickable(boolean clickable) {
-		if(clickable)
+		if(clickable) {
 			Linkify.addLinks(mMessage, Linkify.ALL);
+		}
 	}
 
 }
