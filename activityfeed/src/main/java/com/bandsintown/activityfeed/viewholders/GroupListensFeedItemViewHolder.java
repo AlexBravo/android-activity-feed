@@ -133,7 +133,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                                 break;
                             default:
                                 Bundle mediaInfoBundle = new Bundle();
-                                mediaInfoBundle.putString(FeedValues.MEDIA_PROVIDER_NAME, FeedValues.SPOTIFY);
+                                mediaInfoBundle.putString(FeedValues.SOURCE, FeedValues.SPOTIFY);
                                 if(mFeedItems.get(index).getObject().getSpotifyUri() != null) {
                                     mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
                                     mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);

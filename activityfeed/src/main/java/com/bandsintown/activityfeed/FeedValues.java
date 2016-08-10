@@ -207,10 +207,10 @@ public class FeedValues {
     public static final String SCROLL_TO_COMMENTS = "scroll_to_comments";
     public static final String ACTIVITY_FEED_GROUP = "activity_feed_group";
 
-    public static final String MEDIA_PROVIDER_NAME = "media_provider_name";
     public static final String TYPE = "type";
     public static final String SPOTIFY = "spotify";
     public static final String SPOTIFY_URI = "spotify_uri";
     public static final String ARTIST_NAME = "artist_name";
+    public static final String SOURCE = "source";
 }
 
