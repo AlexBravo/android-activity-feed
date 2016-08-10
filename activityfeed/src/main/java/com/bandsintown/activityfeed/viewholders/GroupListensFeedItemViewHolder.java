@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.view.View;
 
+import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupFeedItemMiniList;
 import com.bandsintown.activityfeed.GroupFeedItemMiniListItem;
@@ -128,10 +129,16 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                             case PlaybackStateCompat.STATE_CONNECTING:
                                 break;
                             default:
-                                if(mFeedItems.get(index).getObject().getSpotifyUri() != null)
-                                    mTransportControls.playFromMediaId(mFeedItems.get(index).getObject().getSpotifyUri(), null);
-                                else
-                                    mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), null);
+                                Bundle mediaInfoBundle = new Bundle();
+                                mediaInfoBundle.putString(FeedValues.MEDIA_PROVIDER_NAME, FeedValues.SPOTIFY);
+                                if(mFeedItems.get(index).getObject().getSpotifyUri() != null) {
+                                    mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
+                                    mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
+                                }
+                                else {
+                                    mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.ARTIST_NAME);
+                                    mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), mediaInfoBundle);
+                                }
                         }
                     }
                 break;

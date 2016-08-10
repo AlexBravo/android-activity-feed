@@ -10,6 +10,7 @@ import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.bandsintown.activityfeed.ApiListener;
+import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyArtist;
 import com.bandsintown.activityfeed.audio.spotify.SpotifyArtistResponse;
@@ -259,41 +260,46 @@ public class SpotifyPreviewHelper {
                 super.onPlayFromSearch(query, extras);
 
                 mPlayback.setLoading();
-                getUrlForArtistName(query, new OnCompleteListener<AudioTrackInfo>() {
+                if(FeedValues.SPOTIFY.equals(extras.getString(FeedValues.TYPE))) {
+                    if(FeedValues.SPOTIFY_URI.equals(extras.getString(FeedValues.TYPE))) {
+                        getUrlForId(query, new OnCompleteListener<AudioTrackInfo>() {
 
-                    @Override
-                    public void onComplete(AudioTrackInfo response) {
-                        if(mPlayback != null) {
-                            if(response != null) {
-                                mPlayback.play(response.getUrl());
-                                updateMetadata(response);
+                            @Override
+                            public void onComplete(AudioTrackInfo response) {
+                                if(response != null) {
+                                    mPlayback.play(response.getUrl());
+                                    updateMetadata(response);
+                                }
+                                else
+                                    mPlayback.stop(true);
                             }
-                            else
-                                mPlayback.stop(true);
-                        }
-                    }
 
-                });
+                        });
+                    }
+                    else {
+                        getUrlForArtistName(query, new OnCompleteListener<AudioTrackInfo>() {
+
+                            @Override
+                            public void onComplete(AudioTrackInfo response) {
+                                if(mPlayback != null) {
+                                    if(response != null) {
+                                        mPlayback.play(response.getUrl());
+                                        updateMetadata(response);
+                                    }
+                                    else
+                                        mPlayback.stop(true);
+                                }
+                            }
+
+                        });
+                    }
+                }
             }
 
             @Override
             public void onPlayFromMediaId(String mediaId, Bundle extras) {
                 super.onPlayFromMediaId(mediaId, extras);
 
-                mPlayback.setLoading();
-                getUrlForId(mediaId, new OnCompleteListener<AudioTrackInfo>() {
-
-                    @Override
-                    public void onComplete(AudioTrackInfo response) {
-                        if(response != null) {
-                            mPlayback.play(response.getUrl());
-                            updateMetadata(response);
-                        }
-                        else
-                            mPlayback.stop(true);
-                    }
-
-                });
             }
 
             @Override
