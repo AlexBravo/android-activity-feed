@@ -259,8 +259,8 @@ public class SpotifyPreviewHelper {
             public void onPlayFromSearch(String query, Bundle extras) {
                 super.onPlayFromSearch(query, extras);
 
-                mPlayback.setLoading();
                 if(FeedValues.SPOTIFY.equals(extras.getString(FeedValues.TYPE))) {
+                    mPlayback.setLoading();
                     if(FeedValues.SPOTIFY_URI.equals(extras.getString(FeedValues.TYPE))) {
                         getUrlForId(query, new OnCompleteListener<AudioTrackInfo>() {
 
