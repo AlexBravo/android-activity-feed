@@ -23,6 +23,7 @@ import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.util.Logger;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 /**
@@ -70,7 +71,9 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
             @Override
             public String getSubtitle(int index) {
                 try {
-                    return mView.getContext().getString(R.string.tracker_count, mFeedItems.get(index).getObject().getArtistStub().getTrackerCount());
+                    return mView.getContext().getString(R.string.tracker_count, NumberFormat.getInstance().format(
+                            mFeedItems.get(index).getObject().getArtistStub().getTrackerCount())
+                    );
                 }
                 catch(NullPointerException e) {
                     Logger.exception(e);
