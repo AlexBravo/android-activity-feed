@@ -10,7 +10,7 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 5
+        versionCode 6
         versionName "1.2"
         renderscriptTargetApi 20
         renderscriptSupportModeEnabled true
@@ -35,6 +35,6 @@ dependencies {
     compile 'com.android.support:design:24.2.0'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.trello:navi:0.2.0'
-    compile 'com.github.bandsintown:kahlo:1.2'
+    compile 'com.github.bandsintown:kahlo:1.1'
 
 }
