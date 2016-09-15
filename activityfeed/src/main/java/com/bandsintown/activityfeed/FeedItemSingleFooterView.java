@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 
@@ -76,8 +75,14 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 		if(options != null) {
 			mComment.setVisibility(mComment.getVisibility() == VISIBLE && options.isCommentingEnabled() ? VISIBLE : GONE);
 			mLikeButton.setVisibility(mLikeButton.getVisibility() == VISIBLE && options.isEnableLiking() ? VISIBLE : GONE);
+
+			boolean reportVis = mReportItem.isVisible();
 			mReportItem.setVisible(mReportItem.isVisible() && options.isEnableReporting());
+
+			boolean deleteVis = mDeleteItem.isVisible();
 			mDeleteItem.setVisible(mDeleteItem.isVisible() && options.isEnableDeleting());
+
+			boolean untrackVis = mUntrackItem.isVisible();
 			mUntrackItem.setVisible(mUntrackItem.isVisible() && options.isEnableUntracking());
 		}
 	}
@@ -148,6 +153,8 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 
 		if(feedItem.getVerb().equals(FeedValues.VERB_MESSAGE_RSVPS) || (feedItem.getVerb().equals(FeedValues.VERB_USER_POST) && feedItem.getObject().getEventStub() != null))
 			mUntrackItem.setVisible(false);
+		else
+			mUntrackItem.setVisible(true);
 
 		//Set comment button if necessary
 		if(feedItem.getObject().getEventStub() != null) {

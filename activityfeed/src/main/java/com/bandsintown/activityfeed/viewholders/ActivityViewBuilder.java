@@ -357,7 +357,7 @@ public class ActivityViewBuilder {
 
                 @Override
                 public void onUntrackClick(FeedItemInterface feedItem) {
-
+					handleUntrack(feedItem, router);
                 }
 
             });

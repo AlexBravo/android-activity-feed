@@ -16,6 +16,7 @@ import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.SpotifyProvider;
 import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.activityfeedsample.objects.*;
+import com.bandsintown.kahlo.Print;
 import com.google.gson.JsonObject;
 import com.trello.navi.component.support.NaviAppCompatActivity;
 import retrofit2.Call;
@@ -263,8 +264,8 @@ public class FeedActivity extends NaviAppCompatActivity {
 
         @Override
         public void onUntrackClicked(FeedItemInterface feedItemInterface) {
-
-        }
+			Print.log("untrack was clicked");
+		}
 
     };
 
