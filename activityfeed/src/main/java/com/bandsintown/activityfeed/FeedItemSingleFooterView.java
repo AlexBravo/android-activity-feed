@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
+import com.bandsintown.kahlo.Print;
 
 public class FeedItemSingleFooterView extends RelativeLayout {
 
@@ -54,6 +55,8 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 		mDeleteItem = popupMenu.getMenu().getItem(1);
 		mUntrackItem = popupMenu.getMenu().getItem(2);
 
+		Print.log("footer view has loaded 3 items");
+
 		menuButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -76,13 +79,8 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 			mComment.setVisibility(mComment.getVisibility() == VISIBLE && options.isCommentingEnabled() ? VISIBLE : GONE);
 			mLikeButton.setVisibility(mLikeButton.getVisibility() == VISIBLE && options.isEnableLiking() ? VISIBLE : GONE);
 
-			boolean reportVis = mReportItem.isVisible();
 			mReportItem.setVisible(mReportItem.isVisible() && options.isEnableReporting());
-
-			boolean deleteVis = mDeleteItem.isVisible();
 			mDeleteItem.setVisible(mDeleteItem.isVisible() && options.isEnableDeleting());
-
-			boolean untrackVis = mUntrackItem.isVisible();
 			mUntrackItem.setVisible(mUntrackItem.isVisible() && options.isEnableUntracking());
 		}
 	}
@@ -155,6 +153,8 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 			mUntrackItem.setVisible(false);
 		else
 			mUntrackItem.setVisible(true);
+
+		Print.log("untrack visibility", mUntrackItem.isVisible());
 
 		//Set comment button if necessary
 		if(feedItem.getObject().getEventStub() != null) {
