@@ -355,6 +355,11 @@ public class ActivityViewBuilder {
                     promptToDeletePost(feedItem);
                 }
 
+                @Override
+                public void onUntrackClick(FeedItemInterface feedItem) {
+
+                }
+
             });
         }
     }
@@ -438,5 +443,9 @@ public class ActivityViewBuilder {
     private void openFlagFeedItemActivity(int feedId, IntentRouter router) {
         router.onFlagFeedItem(feedId);
     }
+
+    private void handleUntrack(FeedItemInterface feedItemInterface, IntentRouter router) {
+		router.onUntrackClicked(feedItemInterface);
+	}
 
 }

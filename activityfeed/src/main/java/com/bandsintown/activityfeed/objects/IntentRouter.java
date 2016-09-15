@@ -24,4 +24,7 @@ public interface IntentRouter {
      */
     //Start for result
     void onGroupClicked(FeedGroupInterface item, int index, int subIndex, int requestCode);
+
+    void onUntrackClicked(FeedItemInterface feedItemInterface);
+
 }

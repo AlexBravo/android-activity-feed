@@ -9,13 +9,15 @@ public class FeedViewOptions {
     private boolean mEnableReporting;
     private boolean mEnableDeleting;
     private boolean mEnableCommentButton;
+    private boolean mEnableUntracking;
 
     private FeedViewOptions(boolean enableLiking, boolean enableReporting, boolean enableDeleting,
-                            boolean enableCommentButton) {
+                            boolean enableCommentButton, boolean enableUntracking) {
         mEnableLiking = enableLiking;
         mEnableReporting = enableReporting;
         mEnableDeleting = enableDeleting;
         mEnableCommentButton = enableCommentButton;
+        mEnableUntracking = enableUntracking;
     }
 
     public boolean isEnableLiking() {
@@ -34,11 +36,16 @@ public class FeedViewOptions {
         return mEnableCommentButton;
     }
 
+    public boolean isEnableUntracking() {
+        return mEnableUntracking;
+    }
+
     public static class Builder {
         private boolean mLikingEnabled = true;
         private boolean mReportingEnabled = true;
         private boolean mDeletingEnabled = true;
         private boolean mCommentingEnabled = true;
+        private boolean mUntrackingEnabled = true;
 
         public Builder liking(boolean isEnabled) {
             mLikingEnabled = isEnabled;
@@ -60,8 +67,13 @@ public class FeedViewOptions {
             return this;
         }
 
+        public Builder untracking(boolean isEnabled) {
+            mUntrackingEnabled = isEnabled;
+            return this;
+        }
+
         public FeedViewOptions build() {
-            return new FeedViewOptions(mLikingEnabled, mReportingEnabled, mDeletingEnabled, mCommentingEnabled);
+            return new FeedViewOptions(mLikingEnabled, mReportingEnabled, mDeletingEnabled, mCommentingEnabled, mUntrackingEnabled);
         }
     }
 

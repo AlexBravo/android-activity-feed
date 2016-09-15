@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import com.bandsintown.activityfeed.ApiListener;
 import com.bandsintown.activityfeed.BitFeedApi;
 import com.bandsintown.activityfeed.FeedDatabase;
@@ -16,23 +15,17 @@ import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.SpotifyProvider;
 import com.bandsintown.activityfeed.util.Logger;
-import com.bandsintown.activityfeedsample.objects.ActivityFeedGroup;
-import com.bandsintown.activityfeedsample.objects.ActivityFeedItem;
-import com.bandsintown.activityfeedsample.objects.ArtistStub;
-import com.bandsintown.activityfeedsample.objects.EventStub;
-import com.bandsintown.activityfeedsample.objects.User;
-import com.bandsintown.activityfeedsample.objects.VenueStub;
+import com.bandsintown.activityfeedsample.objects.*;
 import com.google.gson.JsonObject;
 import com.trello.navi.component.support.NaviAppCompatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by rjaylward on 5/10/16 for Bandsintown
@@ -267,6 +260,12 @@ public class FeedActivity extends NaviAppCompatActivity {
         public void onGroupClicked(FeedGroupInterface item, int index, int subIndex, int requestCode) {
 
         }
+
+        @Override
+        public void onUntrackClicked(FeedItemInterface feedItemInterface) {
+
+        }
+
     };
 
 }

@@ -819,4 +819,6 @@
 
 	<string name="people_count">%s people</string>
 
+    <string name="untrack">Untrack</string>
+
 </resources>

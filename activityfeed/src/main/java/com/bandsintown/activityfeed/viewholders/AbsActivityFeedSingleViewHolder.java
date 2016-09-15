@@ -97,6 +97,12 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 				}
 			}
 
+			@Override
+			public void onUntrackClick(FeedItemInterface feedItem) {
+				if(feedMenuItemClickListener != null)
+					feedMenuItemClickListener.onUntrackClick(feedItem, getAdapterPosition());
+			}
+
 		});
 
 		mView.getFooter().setFeedMenuButtonClickListener(new FeedItemSingleFooterView.OnFeedFooterMenuButtonClickListener() {
