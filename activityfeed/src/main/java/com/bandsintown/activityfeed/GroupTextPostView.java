@@ -1,13 +1,15 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
-import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
+
+import me.saket.bettermovementmethod.BetterLinkMovementMethod;
 
 public class GroupTextPostView extends AbsFeedItemGroupView {
 
@@ -60,9 +62,11 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 			mMessage.setVisibility(GONE);
 	}
 
-	public void setMessageLinksClickable(boolean clickable) {
+	public void setMessageLinksClickable(boolean clickable, OnLinkClickListener linkClickListener) {
+		BetterLinkMovementMethod betterLinkMovementMethod = BetterLinkMovementMethod.newInstance();
+		betterLinkMovementMethod.setOnLinkClickListener(linkClickListener);
 		if(clickable)
-			mMessage.setMovementMethod(new LinkMovementMethod());
+			mMessage.setMovementMethod(betterLinkMovementMethod);
 		else
 			mMessage.setMovementMethod(null);
 	}

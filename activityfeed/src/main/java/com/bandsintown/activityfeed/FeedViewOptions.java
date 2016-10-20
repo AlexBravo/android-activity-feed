@@ -1,5 +1,7 @@
 package com.bandsintown.activityfeed;
 
+import com.bandsintown.activityfeed.interfaces.AudioPreviewLinkProcessor;
+
 /**
  * Created by rjaylward on 5/11/16 for Bandsintown
  */
@@ -9,13 +11,15 @@ public class FeedViewOptions {
     private boolean mEnableReporting;
     private boolean mEnableDeleting;
     private boolean mEnableCommentButton;
+    private AudioPreviewLinkProcessor mAudioPreviewLinkProcessor;
 
     private FeedViewOptions(boolean enableLiking, boolean enableReporting, boolean enableDeleting,
-                            boolean enableCommentButton) {
+                            boolean enableCommentButton, AudioPreviewLinkProcessor processor) {
         mEnableLiking = enableLiking;
         mEnableReporting = enableReporting;
         mEnableDeleting = enableDeleting;
         mEnableCommentButton = enableCommentButton;
+        mAudioPreviewLinkProcessor = processor;
     }
 
     public boolean isEnableLiking() {
@@ -34,11 +38,17 @@ public class FeedViewOptions {
         return mEnableCommentButton;
     }
 
+    public AudioPreviewLinkProcessor getLinkProcessor() {
+        return mAudioPreviewLinkProcessor;
+    }
+
     public static class Builder {
         private boolean mLikingEnabled = true;
         private boolean mReportingEnabled = true;
         private boolean mDeletingEnabled = true;
         private boolean mCommentingEnabled = true;
+
+        private AudioPreviewLinkProcessor mAudioPreviewLinkProcessor = null;
 
         public Builder liking(boolean isEnabled) {
             mLikingEnabled = isEnabled;
@@ -60,8 +70,14 @@ public class FeedViewOptions {
             return this;
         }
 
+        public Builder audioLinkProcessor(AudioPreviewLinkProcessor processor) {
+            mAudioPreviewLinkProcessor = processor;
+            return this;
+        }
+
         public FeedViewOptions build() {
-            return new FeedViewOptions(mLikingEnabled, mReportingEnabled, mDeletingEnabled, mCommentingEnabled);
+            return new FeedViewOptions(mLikingEnabled, mReportingEnabled, mDeletingEnabled,
+                    mCommentingEnabled, mAudioPreviewLinkProcessor);
         }
     }
 

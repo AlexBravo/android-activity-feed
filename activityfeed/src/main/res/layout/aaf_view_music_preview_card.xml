@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="56dp">
+
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/mpcv_image_layout"
+            app:layout_heightPercent="100%"
+            app:layout_aspectRatio="100%"
+            android:layout_marginRight="8dp">
+
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/mpcv_artist_image"
+                android:layout_centerVertical="true"
+                android:background="@drawable/transparent_box"
+                tools:background="@drawable/placeholder_artist_small_square"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/mpcv_play_button"
+                android:layout_centerInParent="true"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_play_arrow_white_24dp"/>
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/mpcv_progress"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            style="Widget.ProgressBar.Small"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/mpcv_image_layout"
+            android:layout_toEndOf="@+id/mpcv_image_layout">
+
+            <TextView
+                android:id="@+id/mpcv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                style="@style/Widget.Bandsintown.TextAppearance.ArtistListens"
+                tools:text="Taylor Swift"/>
+
+            <TextView
+                android:id="@+id/mpcv_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                style="@style/Widget.Bandsintown.TextAppearance.ArtistListens.Subtitle"
+                tools:text="1,000,000 Trackers"/>
+
+        </LinearLayout>
+
+    </android.support.percent.PercentRelativeLayout>
+
+</android.support.v7.widget.CardView>

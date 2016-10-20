@@ -2,12 +2,14 @@ package com.bandsintown.activityfeed.viewholders;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEvent;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 
@@ -60,7 +62,17 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 
 		});
 
-		mItem.setMessageLinksClickable(feedItem.getActor().getArtist() != null);
+		if(feedItem.getActor().getArtist() != null)
+			mItem.setMessageLinksClickable(false, null);
+		else
+			mItem.setMessageLinksClickable(true, new OnLinkClickListener() {
+
+				@Override
+				public boolean onClick(TextView textView, String url) {
+					return router.onLinkClicked(url);
+				}
+
+			});
 
 		//TODO second click listener for event if the click intent above is for the image preview
 	}

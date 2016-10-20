@@ -10,9 +10,12 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Logger;
+
+import me.saket.bettermovementmethod.BetterLinkMovementMethod;
 
 public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView {
 
@@ -155,9 +158,10 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 		mEventImageTextSection.setVisibility(VISIBLE);
 	}
 
-	public void setMessageLinksClickable(boolean clickable) {
+	public void setMessageLinksClickable(boolean clickable, @Nullable OnLinkClickListener listener) {
 		if(clickable) {
-			Linkify.addLinks(mMessage, Linkify.ALL);
+			BetterLinkMovementMethod linkify = BetterLinkMovementMethod.linkify(Linkify.ALL, mMessage);
+			linkify.setOnLinkClickListener(listener);
 		}
 	}
 

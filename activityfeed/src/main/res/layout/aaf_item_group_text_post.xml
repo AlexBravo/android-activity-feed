@@ -23,6 +23,11 @@
 		android:scaleType="centerCrop"
 		android:visibility="gone"/>
 
+	<com.bandsintown.activityfeed.viewholders.MusicPreviewCardView
+		android:id="@+id/figtp_music_preview_view"
+		android:layout_width="match_parent"
+		android:layout_height="56dp"/>
+
 	<com.bandsintown.activityfeed.FeedItemGroupFooterView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"/>

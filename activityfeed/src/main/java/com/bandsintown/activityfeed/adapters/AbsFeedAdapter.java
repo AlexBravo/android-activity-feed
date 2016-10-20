@@ -184,7 +184,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                     super.onPlaybackStateChanged(state);
 
                     //The current item should be set already, this will just set the correct state
-                    try {
+                    try { //TODO... check this
                         if(AudioStateManager.getInstance().getCurrent() != null)
                             AudioStateManager.getInstance().getCurrent().setState(state.getState(), true);
                     }
@@ -362,7 +362,6 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             boolean checkAllForListens = payloads.contains(CHECK_ALL_FOR_LISTEN_ITEMS);
             boolean onlyCheckListens = payloads.contains(CHECK_LISTEN_ITEMS_ONLY);
             boolean updateLikeStatus = payloads.contains(UPDATE_LIKE_STATUS);
-
 
             if(checkAllForListens || onlyCheckListens) {
                 if(holder instanceof GroupListensFeedItemViewHolder) {

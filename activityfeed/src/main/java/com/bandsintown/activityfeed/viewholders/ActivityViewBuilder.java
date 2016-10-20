@@ -9,6 +9,7 @@ import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bandsintown.activityfeed.AbsFeedItemSingleView;
@@ -25,6 +26,7 @@ import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.objects.IntentRouter;
@@ -232,7 +234,18 @@ public class ActivityViewBuilder {
 
         });
 
-        item.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0);
+        if(activityFeedItem.getActor().getArtistId() > 0) {
+            item.setMessageLinksClickable(true, new OnLinkClickListener() {
+
+                @Override
+                public boolean onClick(TextView textView, String url) {
+                    return router.onLinkClicked(url);
+                }
+
+            });
+        }
+        else
+            item.setMessageLinksClickable(false, null);
 
         return item;
     }
