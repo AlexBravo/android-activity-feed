@@ -45,6 +45,8 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 		AudioPreviewInfo audioInfo = mOptions.getLinkProcessor().process(firstItem.getObject().getPost().getMessage());
 		if(audioInfo != null)
 			setUpAudioPreview(audioInfo, group, router);
+		else
+			hideAudioPreview();
 
 		if(firstItem.getObject().getPost().getMediaId() > 0)
 			mGroupTextPostView.setImage(mContext, String.format(FeedValues.BIT_MEDIA_IMAGE_URL, firstItem.getObject().getPost().getMediaId()));
@@ -65,7 +67,12 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 			mGroupTextPostView.setMessageLinksClickable(false, null);
 	}
 
+	private void hideAudioPreview() {
+		mGroupTextPostView.setMusicPreviewCardViewVisible(false);
+	}
+
 	private void setUpAudioPreview(AudioPreviewInfo audioInfo, FeedGroupInterface group, final IntentRouter router) {
+		mGroupTextPostView.setMusicPreviewCardViewVisible(true);
 		OnItemClickAtIndex<AudioPreviewInfo> previewBodyClickListener = new OnItemClickAtIndex<AudioPreviewInfo>() {
 
 			@Override

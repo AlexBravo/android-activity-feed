@@ -4,6 +4,7 @@ import android.support.annotation.CheckResult;
 
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.objects.AudioPreviewInfo;
+import com.bandsintown.kahlo.Print;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,6 +15,8 @@ import java.util.regex.Pattern;
 
 public class SpotifyPreviewLinkProcessor implements AudioPreviewLinkProcessor {
 
+    private static final String TAG = SpotifyPreviewLinkProcessor.class.getSimpleName();
+
     private static final String SPOTIFY_GENERAL_PREFIX = "https://open.";
     private static final Pattern mPattern =
             Pattern.compile("spotify.com\\/(artist|album|track)\\/([a-zA-Z0-9]{1,30})\\w*");
@@ -23,6 +26,8 @@ public class SpotifyPreviewLinkProcessor implements AudioPreviewLinkProcessor {
     public AudioPreviewInfo process(String text) {
         if(text == null)
             return null;
+
+        Print.log(TAG, "processing text", text);
 
         Matcher matcher = mPattern.matcher(text);
 
@@ -41,6 +46,8 @@ public class SpotifyPreviewLinkProcessor implements AudioPreviewLinkProcessor {
                 spotifyId = matcher.group(2);
             }
         }
+
+        Print.log(TAG, "result", urlFound, type, spotifyId);
 
         if(urlFound != null && type != null && spotifyId != null) {
             return new AudioPreviewInfo.Builder()

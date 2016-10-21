@@ -76,6 +76,10 @@ public class GroupTextPostView extends AbsFeedItemGroupView implements AudioCont
 			mMessage.setMovementMethod(null);
 	}
 
+	public void setMusicPreviewCardViewVisible(boolean visible) {
+		mMusicPreviewCardView.setVisibility(visible ? VISIBLE : GONE);
+	}
+
 	public void setUpAudioControls(@DrawableRes int imageResId, String title, String subtitle) {
 		mMusicPreviewCardView.setImage(null, null, imageResId);
 		mMusicPreviewCardView.setText(title, subtitle);

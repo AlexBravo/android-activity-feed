@@ -83,7 +83,7 @@ public class FeedActivity extends NaviAppCompatActivity {
 
     private void loadAdapter() {
         FeedApi api = Api.create();
-        api.getArtistActivities(Api.ARTIST_ID, null, null).enqueue(new Callback<FeedResponse>() {
+        api.getActivities(null, null).enqueue(new Callback<FeedResponse>() {
 
             @Override
             public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {

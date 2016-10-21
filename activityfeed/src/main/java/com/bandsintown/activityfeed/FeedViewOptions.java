@@ -1,6 +1,7 @@
 package com.bandsintown.activityfeed;
 
 import com.bandsintown.activityfeed.interfaces.AudioPreviewLinkProcessor;
+import com.bandsintown.activityfeed.interfaces.SpotifyPreviewLinkProcessor;
 
 /**
  * Created by rjaylward on 5/11/16 for Bandsintown
@@ -48,7 +49,7 @@ public class FeedViewOptions {
         private boolean mDeletingEnabled = true;
         private boolean mCommentingEnabled = true;
 
-        private AudioPreviewLinkProcessor mAudioPreviewLinkProcessor = null;
+        private AudioPreviewLinkProcessor mAudioPreviewLinkProcessor = new SpotifyPreviewLinkProcessor();
 
         public Builder liking(boolean isEnabled) {
             mLikingEnabled = isEnabled;

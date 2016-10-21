@@ -33,7 +33,8 @@ public class TestFeedAdapter extends AbsFeedAdapter {
 
     @Override
     protected FeedViewOptions getFeedViewOptions() {
-        return new FeedViewOptions.Builder().build();
+        return new FeedViewOptions.Builder()
+                .build();
     }
 
     public void setItems(@NonNull ArrayList<ActivityFeedGroup> items) {
