@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -104,11 +103,11 @@ public class MusicPreviewCardView extends CardView implements MediaControls {
         mIndex = index;
     }
 
-    public void setImage(ImageProvider provider, Pair<String, Integer> urlAndErrorResId) {
-        if(urlAndErrorResId.first != null)
-            provider.displayListImage(urlAndErrorResId.first, mArtistImage);
+    public void setImage(ImageProvider provider, String imageUrl, int errorImageResId) {
+        if(imageUrl != null && provider != null)
+            provider.displayListImage(imageUrl, mArtistImage, errorImageResId);
         else
-            mArtistImage.setImageResource(urlAndErrorResId.second);
+            mArtistImage.setImageResource(errorImageResId);
     }
 
     public void setText(String title, String subtitle) {

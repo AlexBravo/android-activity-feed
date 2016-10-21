@@ -1,20 +1,24 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
 import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
+import com.bandsintown.activityfeed.viewholders.MusicPreviewCardView;
 
 import me.saket.bettermovementmethod.BetterLinkMovementMethod;
 
-public class GroupTextPostView extends AbsFeedItemGroupView {
+public class GroupTextPostView extends AbsFeedItemGroupView implements AudioControlsGroup {
 
 	private TextView mMessage;
 	private ImageView mImage;
+	private MusicPreviewCardView mMusicPreviewCardView;
 
 	public GroupTextPostView(Context context) {
 		super(context);
@@ -32,6 +36,7 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 	protected void initLayout() {
 		mMessage = (TextView) findViewById(R.id.figtp_message);
 		mImage = (ImageView) findViewById(R.id.figtp_image);
+		mMusicPreviewCardView = (MusicPreviewCardView) findViewById(R.id.figtp_music_preview_view);
 	}
 
 	@Override
@@ -71,4 +76,19 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 			mMessage.setMovementMethod(null);
 	}
 
+	public void setUpAudioControls(@DrawableRes int imageResId, String title, String subtitle) {
+		mMusicPreviewCardView.setImage(null, null, imageResId);
+		mMusicPreviewCardView.setText(title, subtitle);
+	}
+
+	public void setUpAudioControls(ImageProvider imageProvider, String imageUrl, String title, String subtitle) {
+		mMusicPreviewCardView.setImage(imageProvider, imageUrl, R.drawable.placeholder_artist_small_square);
+		mMusicPreviewCardView.setText(title, subtitle);
+	}
+
+	@Override
+	public void setAudioPlayerStateAtIndex(int index, int state) {
+		if(index == 0 && mMusicPreviewCardView != null)
+			mMusicPreviewCardView.setMediaControlsState(state);
+	}
 }

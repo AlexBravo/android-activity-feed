@@ -21,6 +21,9 @@ public class SpotifyPreviewLinkProcessor implements AudioPreviewLinkProcessor {
     @CheckResult
     @Override
     public AudioPreviewInfo process(String text) {
+        if(text == null)
+            return null;
+
         Matcher matcher = mPattern.matcher(text);
 
         String urlFound = null;

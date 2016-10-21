@@ -18,6 +18,7 @@ import com.bandsintown.activityfeed.audio.OnAudioStateChangeListener;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
+import com.bandsintown.activityfeed.interfaces.Recycleable;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
@@ -29,7 +30,8 @@ import java.util.ArrayList;
 /**
  * Created by rjaylward on 4/6/16 for Bandsintown
  */
-public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHolder implements OnItemClickOfTypeAtIndex, OnAudioStateChangeListener {
+public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHolder implements OnItemClickOfTypeAtIndex,
+        OnAudioStateChangeListener, Recycleable {
 
     private GroupFeedItemMiniList mView;
     private ArrayList<? extends FeedItemInterface> mFeedItems;
@@ -168,6 +170,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
         }
     }
 
+    @Override
     public void recycle() {
         AudioStateManager.getInstance().removeListener(this);
     }

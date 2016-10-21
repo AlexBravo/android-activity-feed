@@ -6,10 +6,18 @@ package com.bandsintown.activityfeed.objects;
 
 public class AudioPreviewInfo {
 
+    private static final String DIVIDER = ":";
+
     private String mId;
     private String mType;
     private String mSource;
     private String mUrlInfoWasGeneratedFrom;
+
+    private String mMediaUri;
+
+    public AudioPreviewInfo(String mediaUri) {
+        mMediaUri = mediaUri;
+    }
 
     private AudioPreviewInfo(Builder builder) {
         mId = builder.mId;
@@ -19,19 +27,47 @@ public class AudioPreviewInfo {
     }
 
     public String getId() {
+        if(mId == null)
+            splitMediaUri();
+
         return mId;
     }
 
     public String getType() {
+        if(mType == null)
+            splitMediaUri();
+
         return mType;
     }
 
     public String getSource() {
+        if(mSource == null)
+            splitMediaUri();
+
         return mSource;
     }
 
     public String getUrlInfoWasGeneratedFrom() {
         return mUrlInfoWasGeneratedFrom;
+    }
+
+    public String toMediaUri() {
+        if(mMediaUri == null && mSource != null && mType != null && mId != null)
+            mMediaUri = mSource + DIVIDER + mType + DIVIDER + mId;
+
+        return mMediaUri;
+    }
+
+    private void splitMediaUri() {
+        if(mMediaUri != null) {
+            String[] split = mMediaUri.split(":");
+            if(split.length == 3) {
+                mSource = split[0];
+                mType = split[1];
+                mId = split[2];
+            }
+        }
+
     }
 
     public static final class Builder {

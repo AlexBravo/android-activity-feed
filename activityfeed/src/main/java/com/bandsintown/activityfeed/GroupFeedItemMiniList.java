@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
 import com.bandsintown.activityfeed.util.Logger;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by rjaylward on 4/6/16 for Bandsintown
  */
-public class GroupFeedItemMiniList extends AbsFeedItemGroupView {
+public class GroupFeedItemMiniList extends AbsFeedItemGroupView implements AudioControlsGroup {
 
     private ArrayList<GroupFeedItemMiniListItem> mListItems = new ArrayList<>();
     private LinearLayout mLinearLayout;

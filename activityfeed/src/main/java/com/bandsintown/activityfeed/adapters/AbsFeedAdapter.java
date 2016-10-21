@@ -38,6 +38,7 @@ import com.bandsintown.activityfeed.decoration.FeedSpacingDecoration;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
+import com.bandsintown.activityfeed.interfaces.Recycleable;
 import com.bandsintown.activityfeed.objects.ActivityFeedEntry;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
@@ -78,6 +79,7 @@ import java.util.List;
 /**
  * Created by rjaylward on 5/2/16 for Bandsintown
  */
+@SuppressWarnings("WeakerAccess")
 public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnAudioStateChangeListener {
 
     protected AppCompatActivity mActivity;
@@ -351,8 +353,8 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     public void onViewRecycled(RecyclerView.ViewHolder holder) {
         super.onViewRecycled(holder);
 
-        if(holder instanceof GroupListensFeedItemViewHolder) {
-            ((GroupListensFeedItemViewHolder) holder).recycle();
+        if(holder instanceof Recycleable) {
+            ((Recycleable) holder).recycle();
         }
     }
 

@@ -267,6 +267,11 @@ public class FeedActivity extends NaviAppCompatActivity {
         public void onGroupClicked(FeedGroupInterface item, int index, int subIndex, int requestCode) {
 
         }
+
+        @Override
+        public boolean onLinkClicked(String url) {
+            return false;
+        }
     };
 
 }
