@@ -22,6 +22,9 @@ import com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper;
 
 import java.util.Collections;
 
+import static com.bandsintown.activityfeed.interfaces.RecyclingAudioPreviewHelper.IMAGE_CLICK;
+import static com.bandsintown.activityfeed.interfaces.RecyclingAudioPreviewHelper.ITEM_CLICK;
+
 public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder implements Recycleable {
 
 	private GroupTextPostView mGroupTextPostView;
@@ -85,6 +88,8 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 
 		mAudioPreviewHelper = new RecyclingPreviewViewHelper(Collections.singletonList(audioInfo),
 				group, mTransportControls, mGroupTextPostView, getAdapterPosition(), previewBodyClickListener);
+
+		mGroupTextPostView.getMusicPreviewCardView().setOnClickOfTypeAtListener(mAudioPreviewHelper, ITEM_CLICK, IMAGE_CLICK);
 
 		String title = audioInfo.getSource().toUpperCase();
 		String subtitle = audioInfo.getUrlInfoWasGeneratedFrom();

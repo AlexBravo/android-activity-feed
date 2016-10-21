@@ -85,6 +85,10 @@ public class GroupTextPostView extends AbsFeedItemGroupView implements AudioCont
 		mMusicPreviewCardView.setText(title, subtitle);
 	}
 
+	public MusicPreviewCardView getMusicPreviewCardView() {
+		return mMusicPreviewCardView;
+	}
+
 	public void setUpAudioControls(ImageProvider imageProvider, String imageUrl, String title, String subtitle) {
 		mMusicPreviewCardView.setImage(imageProvider, imageUrl, R.drawable.placeholder_artist_small_square);
 		mMusicPreviewCardView.setText(title, subtitle);
