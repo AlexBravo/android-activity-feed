@@ -1,7 +1,6 @@
 package com.bandsintown.activityfeed.viewholders;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.widget.CardView;
@@ -59,8 +58,6 @@ public class MusicPreviewCardView extends CardView implements MediaControls {
 
         setBackgroundResource(R.drawable.clickable_listitem);
         setClickable(true);
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
-            setElevation(getResources().getDimension(R.dimen.list_item_elevation));
 
         mPlay.setOnClickListener(new OnClickListener() {
 

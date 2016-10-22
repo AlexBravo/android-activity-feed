@@ -1,5 +1,6 @@
 package com.bandsintown.activityfeed.viewholders;
 
+import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -7,19 +8,35 @@ import android.widget.TextView;
 import com.bandsintown.activityfeed.FeedItemSingleMessageWithTaggedEvent;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
+import com.bandsintown.activityfeed.audio.AudioStateItem;
+import com.bandsintown.activityfeed.audio.AudioStateManager;
+import com.bandsintown.activityfeed.audio.OnAudioStateChangeListener;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
+import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
+import com.bandsintown.activityfeed.interfaces.Recycleable;
+import com.bandsintown.activityfeed.objects.AudioPreviewInfo;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
+import com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper;
 
-public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityFeedSingleViewHolder {
+import java.util.Collections;
+
+import static com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper.IMAGE_CLICK;
+import static com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper.ITEM_CLICK;
+
+public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityFeedSingleViewHolder
+		implements Recycleable, OnAudioStateChangeListener {
 
 	private FeedItemSingleMessageWithTaggedEvent mItem;
+	private RecyclingPreviewViewHelper mAudioPreviewHelper;
+	private MediaControllerCompat.TransportControls mTransportControls;
 
 	public FeedItemMessageWIthTaggedEventSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(activity, options, itemView);
 		mItem = (FeedItemSingleMessageWithTaggedEvent) mView;
+		mTransportControls = activity.getSupportMediaController().getTransportControls();
 	}
 
 	@Override
@@ -33,10 +50,16 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 		if(imageUrl != null)
 			mItem.setImage(mActivity, imageUrl, isUserPostedImage);
 
-		if(feedItem.getObject().getPost() != null && feedItem.getObject().getPost().getMessage() != null)
+		if(feedItem.getObject().getPost() != null && feedItem.getObject().getPost().getMessage() != null) {
 			mItem.setUserMessage(feedItem.getObject().getPost().getMessage());
-		else
+			AudioPreviewInfo audioPreviewInfo = mOptions.getLinkProcessor().process(feedItem.getObject().getPost().getMessage());
+			if(audioPreviewInfo != null)
+				setUpAudioPreview(mItem.getMusicPreviewCardView(), audioPreviewInfo, feedItem, router);
+		}
+		else {
 			mItem.hideUserMessageView();
+			mItem.getMusicPreviewCardView().setVisibility(View.GONE);
+		}
 
 		if(feedItem.getObject().hasImageOverlayTitleAndDesc()) {
 			mItem.showTextSection();
@@ -75,5 +98,41 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 			});
 
 		//TODO second click listener for event if the click intent above is for the image preview
+	}
+
+	private void setUpAudioPreview(MusicPreviewCardView previewCardView, AudioPreviewInfo audioInfo,
+								   FeedItemInterface itemInterface, final IntentRouter router) {
+
+		previewCardView.setVisibility(View.VISIBLE);
+		OnItemClickAtIndex<AudioPreviewInfo> previewBodyClickListener = new OnItemClickAtIndex<AudioPreviewInfo>() {
+
+			@Override
+			public void onItemClick(AudioPreviewInfo item, int index) {
+				//this means the user clicked on the body of the preview instead of the
+				if(item.getUrlInfoWasGeneratedFrom() != null)
+					router.onLinkClicked(item.getUrlInfoWasGeneratedFrom());
+			}
+		};
+
+		mAudioPreviewHelper = new RecyclingPreviewViewHelper(Collections.singletonList(audioInfo),
+				itemInterface, mTransportControls, mItem, getAdapterPosition(), previewBodyClickListener);
+
+		mItem.getMusicPreviewCardView().setOnClickOfTypeAtListener(mAudioPreviewHelper, ITEM_CLICK, IMAGE_CLICK);
+
+		String title = audioInfo.getSource().toUpperCase();
+		String subtitle = audioInfo.getUrlInfoWasGeneratedFrom();
+
+		previewCardView.setImage(null, null, R.drawable.placeholder_artist_small_square);
+		previewCardView.setText(title, subtitle);
+	}
+
+	@Override
+	public void recycle() {
+		AudioStateManager.getInstance().removeListener(this);
+	}
+
+	@Override
+	public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem currentItem) {
+		mAudioPreviewHelper.onAudioStateChanged(previousItem, currentItem);
 	}
 }

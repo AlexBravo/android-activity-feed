@@ -10,14 +10,16 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
 import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Logger;
+import com.bandsintown.activityfeed.viewholders.MusicPreviewCardView;
 
 import me.saket.bettermovementmethod.BetterLinkMovementMethod;
 
-public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView {
+public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView implements AudioControlsGroup {
 
 	protected TextView mMessage;
 
@@ -26,6 +28,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 	protected TextView mTitle;
 	protected TextView mDescription;
 	protected View mEventImageTextSection;
+	protected MusicPreviewCardView mMusicPreviewCardView;
 
 	protected SizeEstimate mEstimate;
 
@@ -65,6 +68,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 	@Override
 	protected void initLayout() {
 		mImageSection = findViewById(R.id.fir_event_section);
+		mMusicPreviewCardView = (MusicPreviewCardView) findViewById(R.id.fir_music_preview_view);
 		mEventImageView = (ImageView) findViewById(R.id.afibi_event_image);
 		mTitle = (TextView) findViewById(R.id.afibi_title);
 		mDescription = (TextView) findViewById(R.id.afibi_desc);
@@ -114,6 +118,10 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 		}
 	}
 
+	public MusicPreviewCardView getMusicPreviewCardView() {
+		return mMusicPreviewCardView;
+	}
+
 	public void setObjectTitle(String title) {
 		if(FeedUtil.stringHasContent(title)) {
 			mTitle.setText(title);
@@ -135,6 +143,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	public void hideUserMessageView() {
 		mMessage.setVisibility(GONE);
+		mMusicPreviewCardView.setVisibility(GONE);
 	}
 
 	public void setOnImageClickListener(View.OnClickListener listener) {
@@ -165,4 +174,9 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 		}
 	}
 
+	@Override
+	public void setAudioPlayerStateAtIndex(int index, int state) {
+		if(index == 0 && mMusicPreviewCardView != null)
+			mMusicPreviewCardView.setMediaControlsState(state);
+	}
 }

@@ -21,6 +21,16 @@
 			android:textColorLink="@color/bit_teal"
             android:visibility="gone"/>
 
+        <com.bandsintown.activityfeed.viewholders.MusicPreviewCardView
+            android:id="@+id/fir_music_preview_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:visibility="gone"/>
+
         <include
             layout="@layout/aaf_widget_big_image_for_feed_item"
             android:id="@+id/fir_event_section"/>

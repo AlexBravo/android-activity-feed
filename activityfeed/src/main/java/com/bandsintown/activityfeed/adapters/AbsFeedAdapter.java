@@ -337,15 +337,16 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                             position == mItems.size() - 1, mOnGroupLikeListener, mOnItemOrLoadMoreListener, mRouter);
                 else
                     Logger.exception(new Exception("holder not found for group item with verb: " + verb));
-
-                if(holder instanceof GroupListensFeedItemViewHolder) {
-                    mIndexOfItemsWithMediaControls.add(position);
-                    ((GroupListensFeedItemViewHolder) holder).syncPlaybackState();
-                }
-
             } catch(Exception e) {
                 Logger.exception(e);
             }
+        }
+
+        if(holder instanceof OnAudioStateChangeListener) {
+            mIndexOfItemsWithMediaControls.add(position);
+            ((OnAudioStateChangeListener) holder).onAudioStateChanged(
+                    AudioStateManager.getInstance().getPrevious(), AudioStateManager.getInstance().getCurrent()
+            );
         }
     }
 
@@ -366,8 +367,10 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             boolean updateLikeStatus = payloads.contains(UPDATE_LIKE_STATUS);
 
             if(checkAllForListens || onlyCheckListens) {
-                if(holder instanceof GroupListensFeedItemViewHolder) {
-                    ((GroupListensFeedItemViewHolder) holder).syncPlaybackState();
+                if(holder instanceof OnAudioStateChangeListener) {
+                    ((OnAudioStateChangeListener) holder).onAudioStateChanged(
+                            AudioStateManager.getInstance().getPrevious(), AudioStateManager.getInstance().getCurrent()
+                    );
                     if(checkAllForListens)
                         mIndexOfItemsWithMediaControls.add(position); //somehow mIndexOfItemsWithMediaControls gets cleared and we have to add them all back
                 }

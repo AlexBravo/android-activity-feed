@@ -9,6 +9,9 @@ import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.GroupTextPostView;
 import com.bandsintown.activityfeed.R;
+import com.bandsintown.activityfeed.audio.AudioStateItem;
+import com.bandsintown.activityfeed.audio.AudioStateManager;
+import com.bandsintown.activityfeed.audio.OnAudioStateChangeListener;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndex;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
@@ -22,10 +25,10 @@ import com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper;
 
 import java.util.Collections;
 
-import static com.bandsintown.activityfeed.interfaces.RecyclingAudioPreviewHelper.IMAGE_CLICK;
-import static com.bandsintown.activityfeed.interfaces.RecyclingAudioPreviewHelper.ITEM_CLICK;
+import static com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper.IMAGE_CLICK;
+import static com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper.ITEM_CLICK;
 
-public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder implements Recycleable {
+public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder implements Recycleable, OnAudioStateChangeListener {
 
 	private GroupTextPostView mGroupTextPostView;
 	private MediaControllerCompat.TransportControls mTransportControls;
@@ -71,11 +74,11 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 	}
 
 	private void hideAudioPreview() {
-		mGroupTextPostView.setMusicPreviewCardViewVisible(false);
+		mGroupTextPostView.getMusicPreviewCardView().setVisibility(View.GONE);
 	}
 
 	private void setUpAudioPreview(AudioPreviewInfo audioInfo, FeedGroupInterface group, final IntentRouter router) {
-		mGroupTextPostView.setMusicPreviewCardViewVisible(true);
+		mGroupTextPostView.getMusicPreviewCardView().setVisibility(View.VISIBLE);
 		OnItemClickAtIndex<AudioPreviewInfo> previewBodyClickListener = new OnItemClickAtIndex<AudioPreviewInfo>() {
 
 			@Override
@@ -94,13 +97,18 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 		String title = audioInfo.getSource().toUpperCase();
 		String subtitle = audioInfo.getUrlInfoWasGeneratedFrom();
 
-		mGroupTextPostView.setUpAudioControls(R.drawable.placeholder_artist_small_square, title, subtitle);
+		mGroupTextPostView.getMusicPreviewCardView().setText(title, subtitle);
+		mGroupTextPostView.getMusicPreviewCardView().setImage(null, null, R.drawable.placeholder_artist_small_square);
 	}
 
 	@Override
 	public void recycle() {
-		if(mAudioPreviewHelper != null)
-			mAudioPreviewHelper.recycle();
+		AudioStateManager.getInstance().removeListener(this);
 	}
 
+	@Override
+	public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem currentItem) {
+		if(mAudioPreviewHelper != null)
+			mAudioPreviewHelper.onAudioStateChanged(previousItem, currentItem);
+	}
 }

@@ -10,19 +10,23 @@ import com.bandsintown.activityfeed.audio.AudioStateItem;
 import com.bandsintown.activityfeed.audio.AudioStateManager;
 import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndex;
-import com.bandsintown.activityfeed.interfaces.RecyclingAudioPreviewHelper;
+import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
 import com.bandsintown.activityfeed.util.Logger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by rjaylward on 10/19/16
  */
 
-public class RecyclingPreviewViewHelper extends RecyclingAudioPreviewHelper {
+public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
 
-    private FeedGroupInterface mGroup;
+    public static final int ITEM_CLICK = 0;
+    public static final int IMAGE_CLICK = 1;
+
+    private String mGroupId;
     private List<? extends FeedItemInterface> mFeedItems;
     private MediaControllerCompat.TransportControls mTransportControls;
     private OnItemClickAtIndex<AudioPreviewInfo> mAudioPreviewInfoOnItemClickListener;
@@ -33,11 +37,22 @@ public class RecyclingPreviewViewHelper extends RecyclingAudioPreviewHelper {
     public RecyclingPreviewViewHelper(List<AudioPreviewInfo> audioPreviewInfoList, FeedGroupInterface group, MediaControllerCompat.TransportControls transportControls,
                                       AudioControlsGroup view, int adapterPosition, OnItemClickAtIndex<AudioPreviewInfo> onAudioItemClicked) {
         mAudioPreviewInfoList = audioPreviewInfoList;
-        mGroup = group;
+        mGroupId = group.getGroupId();
         mFeedItems = group.getActivities();
         mAudioPreviewInfoOnItemClickListener = onAudioItemClicked;
         mTransportControls = transportControls;
         mView = view;
+        mAdapterPosition = adapterPosition;
+    }
+
+    public RecyclingPreviewViewHelper(List<AudioPreviewInfo> audioPreviewInfoList, FeedItemInterface feedItemInterface, MediaControllerCompat.TransportControls transportControls,
+                                      AudioControlsGroup view, int adapterPosition, OnItemClickAtIndex<AudioPreviewInfo> onAudioItemClicked) {
+        mAudioPreviewInfoList = audioPreviewInfoList;
+        mFeedItems = Collections.singletonList(feedItemInterface);
+        mAudioPreviewInfoOnItemClickListener = onAudioItemClicked;
+        mTransportControls = transportControls;
+        mView = view;
+        mGroupId = null;
         mAdapterPosition = adapterPosition;
     }
 
@@ -57,7 +72,7 @@ public class RecyclingPreviewViewHelper extends RecyclingAudioPreviewHelper {
 
                     AudioStateManager.getInstance().setCurrent(new AudioStateItem.Builder()
                             .feedId(mFeedItems.get(index).getId())
-                            .groupId(mGroup.getGroupId())
+                            .groupId(mGroupId)
                             .knownIndex(mAdapterPosition)
                             .mediaPlayerState(-1) //state will get set through the transport controls
                             .build(), false);
@@ -90,14 +105,11 @@ public class RecyclingPreviewViewHelper extends RecyclingAudioPreviewHelper {
         }
     }
 
-    @Override
-    public void syncPlaybackState() {
-        AudioStateItem item = AudioStateManager.getInstance().getCurrent();
-
+    public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem item) {
         if(item != null) {
             if(item.getActivityFeedItemId() > 0) {
-                for(int i = 0; i < mGroup.getActivities().size(); i++) {
-                    if(mGroup.getActivities().get(i).getId() == item.getActivityFeedItemId())
+                for(int i = 0; i < mFeedItems.size(); i++) {
+                    if(mFeedItems.get(i).getId() == item.getActivityFeedItemId())
                         mView.setAudioPlayerStateAtIndex(i, item.getState());
                     else
                         mView.setAudioPlayerStateAtIndex(i, PlaybackStateCompat.STATE_STOPPED);
@@ -105,10 +117,9 @@ public class RecyclingPreviewViewHelper extends RecyclingAudioPreviewHelper {
             }
         }
         else {
-            for(int i = 0; i < mGroup.getActivities().size(); i++) {
+            for(int i = 0; i < mFeedItems.size(); i++) {
                 mView.setAudioPlayerStateAtIndex(i, PlaybackStateCompat.STATE_STOPPED);
             }
         }
     }
-
 }

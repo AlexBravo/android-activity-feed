@@ -150,9 +150,13 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
         }
     }
 
-    public void syncPlaybackState() {
-        AudioStateItem item = AudioStateManager.getInstance().getCurrent();
+    @Override
+    public void recycle() {
+        AudioStateManager.getInstance().removeListener(this);
+    }
 
+    @Override
+    public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem item) {
         if(item != null) {
             if(item.getActivityFeedItemId() > 0) {
                 for(int i = 0; i < mGroup.getActivities().size(); i++) {
@@ -168,15 +172,5 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                 mView.setAudioPlayerStateAtIndex(i, PlaybackStateCompat.STATE_STOPPED);
             }
         }
-    }
-
-    @Override
-    public void recycle() {
-        AudioStateManager.getInstance().removeListener(this);
-    }
-
-    @Override
-    public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem currentItem) {
-        syncPlaybackState();
     }
 }

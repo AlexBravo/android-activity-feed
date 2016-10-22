@@ -1,7 +1,6 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
@@ -76,22 +75,8 @@ public class GroupTextPostView extends AbsFeedItemGroupView implements AudioCont
 			mMessage.setMovementMethod(null);
 	}
 
-	public void setMusicPreviewCardViewVisible(boolean visible) {
-		mMusicPreviewCardView.setVisibility(visible ? VISIBLE : GONE);
-	}
-
-	public void setUpAudioControls(@DrawableRes int imageResId, String title, String subtitle) {
-		mMusicPreviewCardView.setImage(null, null, imageResId);
-		mMusicPreviewCardView.setText(title, subtitle);
-	}
-
 	public MusicPreviewCardView getMusicPreviewCardView() {
 		return mMusicPreviewCardView;
-	}
-
-	public void setUpAudioControls(ImageProvider imageProvider, String imageUrl, String title, String subtitle) {
-		mMusicPreviewCardView.setImage(imageProvider, imageUrl, R.drawable.placeholder_artist_small_square);
-		mMusicPreviewCardView.setText(title, subtitle);
 	}
 
 	@Override
