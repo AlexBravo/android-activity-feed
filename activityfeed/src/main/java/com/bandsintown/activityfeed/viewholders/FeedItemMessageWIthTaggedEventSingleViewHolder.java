@@ -133,6 +133,7 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 
 	@Override
 	public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem currentItem) {
-		mAudioPreviewHelper.onAudioStateChanged(previousItem, currentItem);
+		if(mAudioPreviewHelper != null)
+			mAudioPreviewHelper.onAudioStateChanged(previousItem, currentItem);
 	}
 }
