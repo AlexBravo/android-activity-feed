@@ -55,6 +55,8 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 			AudioPreviewInfo audioPreviewInfo = mOptions.getLinkProcessor().process(feedItem.getObject().getPost().getMessage());
 			if(audioPreviewInfo != null)
 				setUpAudioPreview(mItem.getMusicPreviewCardView(), audioPreviewInfo, feedItem, router);
+			else
+				mItem.getMusicPreviewCardView().setVisibility(View.GONE);
 		}
 		else {
 			mItem.hideUserMessageView();
