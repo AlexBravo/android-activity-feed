@@ -2,12 +2,14 @@ package com.bandsintown.activityfeed.viewholders;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedItemSinglePost;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 
@@ -22,7 +24,7 @@ public class PostFeedItemSingleViewHolder extends AbsActivityFeedSingleViewHolde
 
 	@Override
 	public void buildItem(FeedItemInterface feedItem, boolean lastItem, OnLikeClickedListener<FeedItemInterface> onLikeClickListener,
-						  OnFeedMenuItemAdapterClickListener feedMenuItemAdapterClickListener, IntentRouter router) {
+						  OnFeedMenuItemAdapterClickListener feedMenuItemAdapterClickListener, final IntentRouter router) {
 		super.buildItem(feedItem, lastItem, onLikeClickListener, feedMenuItemAdapterClickListener, router);
 
 		mItem.setMessage(feedItem.getObject().getPost().getMessage());
@@ -33,7 +35,13 @@ public class PostFeedItemSingleViewHolder extends AbsActivityFeedSingleViewHolde
 		else
 			mItem.setImageGone();
 
-		mItem.setMessageLinksClickable(feedItem.getActor().getArtist() != null);
+		mItem.setMessageLinksClickable(feedItem.getActor().getArtist() != null, new OnLinkClickListener() {
+
+			@Override
+			public boolean onClick(TextView textView, String url) {
+				return router.onLinkClicked(url);
+			}
+		});
 	}
 
 }

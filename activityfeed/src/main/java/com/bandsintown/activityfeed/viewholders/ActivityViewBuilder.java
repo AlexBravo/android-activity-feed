@@ -179,14 +179,20 @@ public class ActivityViewBuilder {
         return item;
     }
 
-    private FeedItemSinglePost buildFeedItemPost(FeedItemInterface activityFeedItem, IntentRouter router) {
+    private FeedItemSinglePost buildFeedItemPost(FeedItemInterface activityFeedItem, final IntentRouter router) {
         FeedItemSinglePost post = null;
 
         if(activityFeedItem.getObject() != null && activityFeedItem.getObject().getPost() != null) {
             post = new FeedItemSinglePost(mActivity, mAverageImageSizeEstimate);
             post.setMessage(activityFeedItem.getObject().getPost().getMessage());
 
-            post.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0);
+            post.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0, new OnLinkClickListener() {
+
+                @Override
+                public boolean onClick(TextView textView, String url) {
+                    return router.onLinkClicked(url);
+                }
+            });
 
             if(activityFeedItem.getObject().getPost().getMediaId() > 0)
                 post.setImage(String.format(FeedValues.BIT_MEDIA_IMAGE_URL, activityFeedItem.getObject().getPost().getMediaId()));

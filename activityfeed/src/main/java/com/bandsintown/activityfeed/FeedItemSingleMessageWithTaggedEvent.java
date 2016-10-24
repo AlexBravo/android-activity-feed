@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
 import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
@@ -169,8 +170,10 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	public void setMessageLinksClickable(boolean clickable, @Nullable OnLinkClickListener listener) {
 		if(clickable) {
-			BetterLinkMovementMethod linkify = BetterLinkMovementMethod.linkify(Linkify.ALL, mMessage);
-			linkify.setOnLinkClickListener(listener);
+			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
+			method.setOnLinkClickListener(listener);
+			mMessage.setMovementMethod(method);
+			Linkify.addLinks(mMessage, Linkify.ALL);
 		}
 	}
 
