@@ -58,7 +58,7 @@ public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
 
     @Override
     public void onItemClick(int type, int index, Bundle bundle) {
-        Logger.log("Click", index, "item?", type == ITEM_CLICK, "image?", type == IMAGE_CLICK);
+        Logger.log("RecyclingPreviewViewHelper", "Click", index, "item?", type == ITEM_CLICK, "image?", type == IMAGE_CLICK);
 
         switch(type) {
             case ITEM_CLICK:
@@ -76,6 +76,9 @@ public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
                             .knownIndex(mAdapterPosition)
                             .mediaPlayerState(-1) //state will get set through the transport controls
                             .build(), false);
+
+                    if(mTransportControls == null)
+                        return;
 
                     switch(playbackState) {
                         case PlaybackStateCompat.STATE_PLAYING:

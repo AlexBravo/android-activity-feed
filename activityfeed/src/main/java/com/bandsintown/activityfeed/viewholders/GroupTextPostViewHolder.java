@@ -48,14 +48,16 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 		FeedItemInterface firstItem = group.getActivities().get(0);
 
 		mGroupTextPostView.setMessage(firstItem.getObject().getPost().getMessage());
-		AudioPreviewInfo audioInfo = mOptions.getLinkProcessor().process(firstItem.getObject().getPost().getMessage());
+		AudioPreviewInfo audioInfo = mOptions.getLinkProcessor()
+				.process(firstItem.getObject().getPost().getMessage());
 		if(audioInfo != null)
 			setUpAudioPreview(audioInfo, group, router);
 		else
 			hideAudioPreview();
 
 		if(firstItem.getObject().getPost().getMediaId() > 0)
-			mGroupTextPostView.setImage(mContext, String.format(FeedValues.BIT_MEDIA_IMAGE_URL, firstItem.getObject().getPost().getMediaId()));
+			mGroupTextPostView.setImage(mContext, String.format(FeedValues.BIT_MEDIA_IMAGE_URL,
+					firstItem.getObject().getPost().getMediaId()));
 		else
 			mGroupTextPostView.setImageGone();
 
@@ -92,13 +94,15 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 		mAudioPreviewHelper = new RecyclingPreviewViewHelper(Collections.singletonList(audioInfo),
 				group, mTransportControls, mGroupTextPostView, getAdapterPosition(), previewBodyClickListener);
 
-		mGroupTextPostView.getMusicPreviewCardView().setOnClickOfTypeAtListener(mAudioPreviewHelper, ITEM_CLICK, IMAGE_CLICK);
+		mGroupTextPostView.getMusicPreviewCardView()
+				.setOnClickOfTypeAtListener(mAudioPreviewHelper, ITEM_CLICK, IMAGE_CLICK);
 
 		String title = audioInfo.getSource().toUpperCase();
 		String subtitle = audioInfo.getUrlInfoWasGeneratedFrom();
 
 		mGroupTextPostView.getMusicPreviewCardView().setText(title, subtitle);
-		mGroupTextPostView.getMusicPreviewCardView().setImage(null, null, R.drawable.placeholder_artist_small_square);
+		mGroupTextPostView.getMusicPreviewCardView()
+				.setImage(null, null, R.drawable.placeholder_artist_small_square);
 	}
 
 	@Override

@@ -16,12 +16,15 @@ import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.audio.MediaControls;
 import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
+import com.bandsintown.activityfeed.util.Logger;
 
 /**
  * Created by rjaylward on 10/19/16
  */
 
 public class MusicPreviewCardView extends CardView implements MediaControls {
+
+    private static final String TAG = MusicPreviewCardView.class.getSimpleName();
 
     public MusicPreviewCardView(Context context) {
         this(context, null);
@@ -63,6 +66,7 @@ public class MusicPreviewCardView extends CardView implements MediaControls {
 
             @Override
             public void onClick(View v) {
+                Logger.log(TAG, "onPlayClick", mIndex);
                 if(mListener != null)
                     mListener.onItemClick(mImageClick, mIndex, getMediaInfoBundle());
             }
@@ -73,6 +77,7 @@ public class MusicPreviewCardView extends CardView implements MediaControls {
 
             @Override
             public void onClick(View v) {
+                Logger.log(TAG, "onArtistImageClick", mIndex);
                 if(mListener != null)
                     mListener.onItemClick(mImageClick, mIndex, null);
             }
@@ -83,6 +88,7 @@ public class MusicPreviewCardView extends CardView implements MediaControls {
 
             @Override
             public void onClick(View v) {
+                Logger.log(TAG, "onMainBodyClick", mIndex);
                 if(mListener != null)
                     mListener.onItemClick(mMainClick, mIndex, null);
             }

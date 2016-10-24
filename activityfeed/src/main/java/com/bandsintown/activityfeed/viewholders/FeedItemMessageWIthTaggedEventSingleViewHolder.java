@@ -36,7 +36,9 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 	public FeedItemMessageWIthTaggedEventSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(activity, options, itemView);
 		mItem = (FeedItemSingleMessageWithTaggedEvent) mView;
-		mTransportControls = activity.getSupportMediaController().getTransportControls();
+
+		if(activity.getSupportMediaController() != null)
+			mTransportControls = activity.getSupportMediaController().getTransportControls();
 	}
 
 	@Override

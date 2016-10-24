@@ -270,6 +270,7 @@ public class FeedActivity extends NaviAppCompatActivity {
 
         @Override
         public boolean onLinkClicked(String url) {
+            Logger.log(FeedActivity.class.getSimpleName(), "On Link Clicked", url);
             return false;
         }
     };
