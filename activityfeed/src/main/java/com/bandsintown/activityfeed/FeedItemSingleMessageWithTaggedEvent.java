@@ -18,8 +18,6 @@ import com.bandsintown.activityfeed.util.FeedUtil;
 import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.activityfeed.viewholders.MusicPreviewCardView;
 
-import me.saket.bettermovementmethod.BetterLinkMovementMethod;
-
 public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView implements AudioControlsGroup {
 
 	protected TextView mMessage;
@@ -170,9 +168,9 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	public void setMessageLinksClickable(boolean clickable, @Nullable OnLinkClickListener listener) {
 		if(clickable) {
-			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
-			method.setOnLinkClickListener(listener);
-			mMessage.setMovementMethod(method);
+//			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
+//			method.setOnLinkClickListener(listener);
+//			mMessage.setMovementMethod(method);
 			Linkify.addLinks(mMessage, Linkify.ALL);
 		}
 	}

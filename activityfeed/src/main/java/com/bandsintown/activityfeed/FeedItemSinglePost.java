@@ -11,8 +11,6 @@ import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
 
-import me.saket.bettermovementmethod.BetterLinkMovementMethod;
-
 public class FeedItemSinglePost extends AbsFeedItemSingleView {
 
 	private ImageView mImage;
@@ -85,9 +83,9 @@ public class FeedItemSinglePost extends AbsFeedItemSingleView {
 
 	public void setMessageLinksClickable(boolean clickable, @Nullable OnLinkClickListener listener) {
 		if(clickable) {
-			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
-			method.setOnLinkClickListener(listener);
-			mMessage.setMovementMethod(method);
+//			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
+//			method.setOnLinkClickListener(listener);
+//			mMessage.setMovementMethod(method);
 			Linkify.addLinks(mMessage, Linkify.ALL);
 		}
 	}
