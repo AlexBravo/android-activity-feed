@@ -126,7 +126,7 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 		String title = audioInfo.getSource().toUpperCase();
 		String subtitle = audioInfo.getUrlInfoWasGeneratedFrom();
 
-		previewCardView.setImage(null, null, R.drawable.placeholder_artist_small_square);
+		previewCardView.setImage(null, null, R.drawable.spotify_icon_with_black_background);
 		previewCardView.setText(title, subtitle);
 	}
 
