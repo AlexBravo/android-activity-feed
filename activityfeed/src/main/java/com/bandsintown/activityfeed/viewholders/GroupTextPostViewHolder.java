@@ -102,7 +102,7 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 
 		mGroupTextPostView.getMusicPreviewCardView().setText(title, subtitle);
 		mGroupTextPostView.getMusicPreviewCardView()
-				.setImage(null, null, R.drawable.placeholder_artist_small_square);
+				.setImage(null, null, R.drawable.spotify_icon_with_black_background);
 	}
 
 	@Override
