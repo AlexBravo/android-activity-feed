@@ -93,7 +93,7 @@ public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
                             AudioPreviewInfo audioPreviewInfo = mAudioPreviewInfoList.get(index);
                             if(audioPreviewInfo != null) {
                                 mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
-                                mTransportControls.playFromSearch(audioPreviewInfo.toMediaUri(), bundle);
+                                mTransportControls.playFromSearch(audioPreviewInfo.toMediaUri(), mediaInfoBundle);
                             } else if(mFeedItems.get(index).getObject().getSpotifyUri() != null) {
                                 mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
                                 mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
