@@ -1,7 +1,7 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
-import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
@@ -11,6 +11,8 @@ import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
 import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.viewholders.MusicPreviewCardView;
+
+import me.saket.bettermovementmethod.BetterLinkMovementMethod;
 
 public class GroupTextPostView extends AbsFeedItemGroupView implements AudioControlsGroup {
 
@@ -66,10 +68,12 @@ public class GroupTextPostView extends AbsFeedItemGroupView implements AudioCont
 	}
 
 	public void setMessageLinksClickable(boolean clickable, OnLinkClickListener linkClickListener) {
-//		BetterLinkMovementMethod betterLinkMovementMethod = BetterLinkMovementMethod.newInstance();
-//		betterLinkMovementMethod.setOnLinkClickListener(linkClickListener);
-		if(clickable)
-			mMessage.setMovementMethod(new LinkMovementMethod());
+		if(clickable) {
+			BetterLinkMovementMethod betterLinkMovementMethod = BetterLinkMovementMethod.newInstance();
+			betterLinkMovementMethod.setOnLinkClickListener(linkClickListener);
+			mMessage.setMovementMethod(betterLinkMovementMethod);
+			Linkify.addLinks(mMessage, Linkify.ALL);
+		}
 		else
 			mMessage.setMovementMethod(null);
 	}

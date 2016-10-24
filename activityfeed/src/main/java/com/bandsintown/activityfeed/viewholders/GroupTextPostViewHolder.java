@@ -61,7 +61,7 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 		else
 			mGroupTextPostView.setImageGone();
 
-		if(group.getGroupActor().getArtist() != null) {
+		if(group.getGroupActor().getArtistId() > 0) {
 			mGroupTextPostView.setMessageLinksClickable(true, new OnLinkClickListener() {
 
 				@Override

@@ -89,7 +89,7 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 
 		});
 
-		if(feedItem.getActor().getArtist() != null)
+		if(feedItem.getActor().getArtist() == null)
 			mItem.setMessageLinksClickable(false, null);
 		else
 			mItem.setMessageLinksClickable(true, new OnLinkClickListener() {
