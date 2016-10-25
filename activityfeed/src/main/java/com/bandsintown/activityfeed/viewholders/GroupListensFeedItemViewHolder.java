@@ -1,7 +1,6 @@
 package com.bandsintown.activityfeed.viewholders;
 
 import android.os.Bundle;
-import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
@@ -37,7 +36,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
     private ArrayList<? extends FeedItemInterface> mFeedItems;
     private FeedGroupInterface mGroup;
     private OnItemClickAtIndexAtSubIndex<FeedGroupInterface> mOnItemClickAtIndex;
-    private MediaControllerCompat.TransportControls mTransportControls;
+    private IntentRouter mIntentRouter;
 
     private static final int ITEM_CLICK = 0;
     private static final int IMAGE_CLICK = 1;
@@ -46,13 +45,13 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
         super(activity, options, itemView);
 
         mView = (GroupFeedItemMiniList) itemView;
-        mTransportControls = activity.getSupportMediaController().getTransportControls();
     }
 
     @Override
     public void buildItem(final FeedGroupInterface feedGroup, boolean lastItem, OnLikeClickedListener<FeedGroupInterface> onLikeClickListener,
                           OnItemClickAtIndexAtSubIndex<FeedGroupInterface> itemOrViewMoreListener, IntentRouter router) {
         super.buildItem(feedGroup, lastItem, onLikeClickListener, itemOrViewMoreListener, router);
+        mIntentRouter = router;
         mOnItemClickAtIndex = itemOrViewMoreListener;
         mGroup = feedGroup;
         mFeedItems = feedGroup.getActivities();
@@ -128,7 +127,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
 
                         switch(playbackState) {
                             case PlaybackStateCompat.STATE_PLAYING:
-                                mTransportControls.pause();
+                                mIntentRouter.pausePreview();
                                 break;
                             case PlaybackStateCompat.STATE_BUFFERING:
                             case PlaybackStateCompat.STATE_CONNECTING:
@@ -138,11 +137,11 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                                 mediaInfoBundle.putString(FeedValues.SOURCE, FeedValues.SPOTIFY);
                                 if(mFeedItems.get(index).getObject().getSpotifyUri() != null) {
                                     mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
-                                    mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
+                                    mIntentRouter.playPreviewFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
                                 }
                                 else {
                                     mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.ARTIST_NAME);
-                                    mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), mediaInfoBundle);
+                                    mIntentRouter.playPreviewFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), mediaInfoBundle);
                                 }
                         }
                     }

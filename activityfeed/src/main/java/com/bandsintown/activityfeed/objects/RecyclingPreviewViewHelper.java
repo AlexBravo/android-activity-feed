@@ -1,7 +1,6 @@
 package com.bandsintown.activityfeed.objects;
 
 import android.os.Bundle;
-import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 
 import com.bandsintown.activityfeed.FeedValues;
@@ -28,29 +27,29 @@ public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
 
     private String mGroupId;
     private List<? extends FeedItemInterface> mFeedItems;
-    private MediaControllerCompat.TransportControls mTransportControls;
+    private IntentRouter mIntentRouter;
     private OnItemClickAtIndex<AudioPreviewInfo> mAudioPreviewInfoOnItemClickListener;
     private List<AudioPreviewInfo> mAudioPreviewInfoList = new ArrayList<>();
     private AudioControlsGroup mView;
     private int mAdapterPosition;
 
-    public RecyclingPreviewViewHelper(List<AudioPreviewInfo> audioPreviewInfoList, FeedGroupInterface group, MediaControllerCompat.TransportControls transportControls,
+    public RecyclingPreviewViewHelper(List<AudioPreviewInfo> audioPreviewInfoList, FeedGroupInterface group, IntentRouter intentRouter,
                                       AudioControlsGroup view, int adapterPosition, OnItemClickAtIndex<AudioPreviewInfo> onAudioItemClicked) {
         mAudioPreviewInfoList = audioPreviewInfoList;
         mGroupId = group.getGroupId();
         mFeedItems = group.getActivities();
         mAudioPreviewInfoOnItemClickListener = onAudioItemClicked;
-        mTransportControls = transportControls;
+        mIntentRouter = intentRouter;
         mView = view;
         mAdapterPosition = adapterPosition;
     }
 
-    public RecyclingPreviewViewHelper(List<AudioPreviewInfo> audioPreviewInfoList, FeedItemInterface feedItemInterface, MediaControllerCompat.TransportControls transportControls,
+    public RecyclingPreviewViewHelper(List<AudioPreviewInfo> audioPreviewInfoList, FeedItemInterface feedItemInterface, IntentRouter intentRouter,
                                       AudioControlsGroup view, int adapterPosition, OnItemClickAtIndex<AudioPreviewInfo> onAudioItemClicked) {
         mAudioPreviewInfoList = audioPreviewInfoList;
         mFeedItems = Collections.singletonList(feedItemInterface);
         mAudioPreviewInfoOnItemClickListener = onAudioItemClicked;
-        mTransportControls = transportControls;
+        mIntentRouter = intentRouter;
         mView = view;
         mGroupId = null;
         mAdapterPosition = adapterPosition;
@@ -77,15 +76,15 @@ public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
                             .mediaPlayerState(-1) //state will get set through the transport controls
                             .build(), false);
 
-                    if(mTransportControls == null) {
+                    if(mIntentRouter == null) {
                         Logger.exception(new Exception(RecyclingPreviewViewHelper.class.getSimpleName()
-                                + ": Transport controls are null"));
+                                + ": IntentRouter is null"));
                         return;
                     }
 
                     switch(playbackState) {
                         case PlaybackStateCompat.STATE_PLAYING:
-                            mTransportControls.pause();
+                            mIntentRouter.pausePreview();
                             break;
                         case PlaybackStateCompat.STATE_BUFFERING:
                         case PlaybackStateCompat.STATE_CONNECTING:
@@ -96,14 +95,14 @@ public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
                             AudioPreviewInfo audioPreviewInfo = mAudioPreviewInfoList.get(index);
                             if(audioPreviewInfo != null) {
                                 mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
-                                mTransportControls.playFromSearch(audioPreviewInfo.toMediaUri(), mediaInfoBundle);
+                                mIntentRouter.playPreviewFromSearch(audioPreviewInfo.toMediaUri(), mediaInfoBundle);
                             } else if(mFeedItems.get(index).getObject().getSpotifyUri() != null) {
                                 mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
-                                mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
+                                mIntentRouter.playPreviewFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
                             }
                             else {
                                 mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.ARTIST_NAME);
-                                mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), mediaInfoBundle);
+                                mIntentRouter.playPreviewFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), mediaInfoBundle);
                             }
                     }
                 }

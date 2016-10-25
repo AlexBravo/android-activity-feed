@@ -273,6 +273,26 @@ public class FeedActivity extends NaviAppCompatActivity {
             Logger.log(FeedActivity.class.getSimpleName(), "On Link Clicked", url);
             return false;
         }
+
+        @Override
+        public void playPreviewFromSearch(String search, Bundle bundle) {
+            try {
+                FeedActivity.this.getSupportMediaController().getTransportControls().playFromSearch(search, bundle);
+            }
+            catch(Exception e) {
+                Logger.exception(e, false);
+            }
+        }
+
+        @Override
+        public void pausePreview() {
+            try {
+                FeedActivity.this.getSupportMediaController().getTransportControls().pause();
+            }
+            catch(Exception e) {
+                Logger.exception(e, false);
+            }
+        }
     };
 
 }

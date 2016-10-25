@@ -119,7 +119,7 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 		};
 
 		mAudioPreviewHelper = new RecyclingPreviewViewHelper(Collections.singletonList(audioInfo),
-				itemInterface, mTransportControls, mItem, getAdapterPosition(), previewBodyClickListener);
+				itemInterface, router, mItem, getAdapterPosition(), previewBodyClickListener);
 
 		mItem.getMusicPreviewCardView().setOnClickOfTypeAtListener(mAudioPreviewHelper, ITEM_CLICK, IMAGE_CLICK);
 

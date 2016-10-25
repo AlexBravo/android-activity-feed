@@ -92,7 +92,7 @@ public class GroupTextPostViewHolder extends AbsActivityFeedGroupViewHolder impl
 		};
 
 		mAudioPreviewHelper = new RecyclingPreviewViewHelper(Collections.singletonList(audioInfo),
-				group, mTransportControls, mGroupTextPostView, getAdapterPosition(), previewBodyClickListener);
+				group, router, mGroupTextPostView, getAdapterPosition(), previewBodyClickListener);
 
 		mGroupTextPostView.getMusicPreviewCardView()
 				.setOnClickOfTypeAtListener(mAudioPreviewHelper, ITEM_CLICK, IMAGE_CLICK);
