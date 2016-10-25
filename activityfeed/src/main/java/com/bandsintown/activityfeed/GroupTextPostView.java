@@ -69,13 +69,11 @@ public class GroupTextPostView extends AbsFeedItemGroupView implements AudioCont
 
 	public void setMessageLinksClickable(boolean clickable, OnLinkClickListener linkClickListener) {
 		if(clickable) {
-			BetterLinkMovementMethod betterLinkMovementMethod = BetterLinkMovementMethod.newInstance();
-			betterLinkMovementMethod.setOnLinkClickListener(linkClickListener);
-			mMessage.setMovementMethod(betterLinkMovementMethod);
+			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
+			method.setOnLinkClickListener(linkClickListener);
+			mMessage.setMovementMethod(method);
 			Linkify.addLinks(mMessage, Linkify.ALL);
 		}
-		else
-			mMessage.setMovementMethod(null);
 	}
 
 	public MusicPreviewCardView getMusicPreviewCardView() {

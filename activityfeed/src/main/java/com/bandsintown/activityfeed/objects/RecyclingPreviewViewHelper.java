@@ -77,8 +77,11 @@ public class RecyclingPreviewViewHelper implements OnItemClickOfTypeAtIndex {
                             .mediaPlayerState(-1) //state will get set through the transport controls
                             .build(), false);
 
-                    if(mTransportControls == null)
+                    if(mTransportControls == null) {
+                        Logger.exception(new Exception(RecyclingPreviewViewHelper.class.getSimpleName()
+                                + ": Transport controls are null"));
                         return;
+                    }
 
                     switch(playbackState) {
                         case PlaybackStateCompat.STATE_PLAYING:
