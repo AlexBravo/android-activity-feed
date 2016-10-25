@@ -1,6 +1,5 @@
 package com.bandsintown.activityfeed.viewholders;
 
-import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -31,14 +30,10 @@ public class FeedItemMessageWIthTaggedEventSingleViewHolder extends AbsActivityF
 
 	private FeedItemSingleMessageWithTaggedEvent mItem;
 	private RecyclingPreviewViewHelper mAudioPreviewHelper;
-	private MediaControllerCompat.TransportControls mTransportControls;
 
 	public FeedItemMessageWIthTaggedEventSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(activity, options, itemView);
 		mItem = (FeedItemSingleMessageWithTaggedEvent) mView;
-
-		if(activity.getSupportMediaController() != null)
-			mTransportControls = activity.getSupportMediaController().getTransportControls();
 	}
 
 	@Override

@@ -23,6 +23,16 @@
             android:textIsSelectable="true"
             android:visibility="gone"/>
 
+        <com.bandsintown.activityfeed.viewholders.MusicPreviewCardView
+            android:id="@+id/fir_music_preview_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:visibility="gone"/>
+
         <ImageView
             android:id="@+id/fir_image"
             android:layout_width="match_parent"

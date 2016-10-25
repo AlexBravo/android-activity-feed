@@ -162,6 +162,7 @@ public class FeedItemSingleMessageWithTaggedEvent extends AbsFeedItemSingleView 
 
 	public void hideTextSection() {
 		mEventImageTextSection.setVisibility(GONE);
+		mMusicPreviewCardView.setVisibility(GONE);
 	}
 
 	public void showTextSection() {
