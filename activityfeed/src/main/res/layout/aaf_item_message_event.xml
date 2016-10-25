@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
 			android:textColorLink="@color/bit_teal"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:textIsSelectable="true"/>
 
         <com.bandsintown.activityfeed.viewholders.MusicPreviewCardView
             android:id="@+id/fir_music_preview_view"
