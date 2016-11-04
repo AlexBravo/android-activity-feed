@@ -36,4 +36,7 @@ public interface IntentRouter {
     void playPreviewFromSearch(String search, Bundle bundle);
 
     void pausePreview();
+
+    void onUntrackClicked(FeedItemInterface feedItemInterface);
+
 }

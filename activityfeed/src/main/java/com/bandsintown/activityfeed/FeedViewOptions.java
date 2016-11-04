@@ -13,14 +13,18 @@ public class FeedViewOptions {
     private boolean mEnableDeleting;
     private boolean mEnableCommentButton;
     private AudioPreviewLinkProcessor mAudioPreviewLinkProcessor;
+    private boolean mEnableUntracking;
 
     private FeedViewOptions(boolean enableLiking, boolean enableReporting, boolean enableDeleting,
-                            boolean enableCommentButton, AudioPreviewLinkProcessor processor) {
+                            boolean enableCommentButton, AudioPreviewLinkProcessor processor, boolean enableUntracking) {
+
+
         mEnableLiking = enableLiking;
         mEnableReporting = enableReporting;
         mEnableDeleting = enableDeleting;
         mEnableCommentButton = enableCommentButton;
         mAudioPreviewLinkProcessor = processor;
+        mEnableUntracking = enableUntracking;
     }
 
     public boolean isEnableLiking() {
@@ -43,11 +47,16 @@ public class FeedViewOptions {
         return mAudioPreviewLinkProcessor;
     }
 
+    public boolean isEnableUntracking() {
+        return mEnableUntracking;
+    }
+
     public static class Builder {
         private boolean mLikingEnabled = true;
         private boolean mReportingEnabled = true;
         private boolean mDeletingEnabled = true;
         private boolean mCommentingEnabled = true;
+        private boolean mUntrackingEnabled = true;
 
         private AudioPreviewLinkProcessor mAudioPreviewLinkProcessor = new SpotifyPreviewLinkProcessor();
 
@@ -76,9 +85,14 @@ public class FeedViewOptions {
             return this;
         }
 
+        public Builder untracking(boolean isEnabled) {
+            mUntrackingEnabled = isEnabled;
+            return this;
+        }
+
         public FeedViewOptions build() {
             return new FeedViewOptions(mLikingEnabled, mReportingEnabled, mDeletingEnabled,
-                    mCommentingEnabled, mAudioPreviewLinkProcessor);
+                    mCommentingEnabled, mAudioPreviewLinkProcessor, mUntrackingEnabled);
         }
     }
 

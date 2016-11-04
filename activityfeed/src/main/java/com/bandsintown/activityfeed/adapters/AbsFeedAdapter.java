@@ -299,6 +299,11 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             openFlagFeedItemActivity(feedId);
         }
 
+        @Override
+        public void onUntrackClick(FeedItemInterface feedItem, int adapterPosition) {
+            handleUntrack(feedItem);
+        }
+
     };
 
     protected OnItemClickAtIndexAtSubIndex<FeedGroupInterface> mOnItemOrLoadMoreListener = new OnItemClickAtIndexAtSubIndex<FeedGroupInterface>() {
@@ -571,4 +576,9 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             }
         }
     }
+
+    private void handleUntrack(FeedItemInterface feedItemInterface) {
+        mRouter.onUntrackClicked(feedItemInterface);
+    }
+
 }

@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
+import com.bandsintown.kahlo.Print;
 
 public class FeedItemSingleFooterView extends RelativeLayout {
 
@@ -21,6 +21,8 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 
 	private MenuItem mReportItem;
 	private MenuItem mDeleteItem;
+	private MenuItem mUntrackItem;
+
 	private OnFeedFooterMenuClickListener mFeedMenuListener;
 	private OnFeedFooterMenuButtonClickListener mFeedMenuButtonClickListener;
 
@@ -51,6 +53,9 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 
 		mReportItem = popupMenu.getMenu().getItem(0);
 		mDeleteItem = popupMenu.getMenu().getItem(1);
+		mUntrackItem = popupMenu.getMenu().getItem(2);
+
+		Print.log("footer view has loaded 3 items");
 
 		menuButton.setOnClickListener(new OnClickListener() {
 
@@ -73,8 +78,10 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 		if(options != null) {
 			mComment.setVisibility(mComment.getVisibility() == VISIBLE && options.isCommentingEnabled() ? VISIBLE : GONE);
 			mLikeButton.setVisibility(mLikeButton.getVisibility() == VISIBLE && options.isEnableLiking() ? VISIBLE : GONE);
+
 			mReportItem.setVisible(mReportItem.isVisible() && options.isEnableReporting());
 			mDeleteItem.setVisible(mDeleteItem.isVisible() && options.isEnableDeleting());
+			mUntrackItem.setVisible(mUntrackItem.isVisible() && options.isEnableUntracking());
 		}
 	}
 
@@ -142,6 +149,13 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 			mDeleteItem.setVisible(false);
 		}
 
+		if(feedItem.getVerb().equals(FeedValues.VERB_MESSAGE_RSVPS) || (feedItem.getVerb().equals(FeedValues.VERB_USER_POST) && feedItem.getObject().getEventStub() != null))
+			mUntrackItem.setVisible(false);
+		else
+			mUntrackItem.setVisible(true);
+
+		Print.log("untrack visibility", mUntrackItem.isVisible());
+
 		//Set comment button if necessary
 		if(feedItem.getObject().getEventStub() != null) {
 			mComment.setVisibility(VISIBLE);
@@ -168,6 +182,7 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 			}
 
 		});
+
 		mDeleteItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 
 			@Override
@@ -176,6 +191,18 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 					mFeedMenuListener.onDeleteClick(feedItem.getId());
 
 				return true;
+			}
+
+		});
+
+		mUntrackItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+
+			@Override
+			public boolean onMenuItemClick(MenuItem menuItem) {
+				if(mFeedMenuListener != null)
+					mFeedMenuListener.onUntrackClick(feedItem);
+
+				return false;
 			}
 
 		});
@@ -189,6 +216,7 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 
 		void onReportClick(int feedId);
 		void onDeleteClick(int feedId);
+		void onUntrackClick(FeedItemInterface feedItem);
 
 	}
 
@@ -199,4 +227,5 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 	public interface OnFeedFooterMenuButtonClickListener {
 		void onMenuButtonClick();
 	}
+
 }
