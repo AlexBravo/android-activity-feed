@@ -38,6 +38,7 @@ import com.bandsintown.activityfeed.decoration.FeedSpacingDecoration;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
+import com.bandsintown.activityfeed.interfaces.Recycleable;
 import com.bandsintown.activityfeed.objects.ActivityFeedEntry;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
@@ -78,6 +79,7 @@ import java.util.List;
 /**
  * Created by rjaylward on 5/2/16 for Bandsintown
  */
+@SuppressWarnings("WeakerAccess")
 public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnAudioStateChangeListener {
 
     protected AppCompatActivity mActivity;
@@ -184,7 +186,7 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                     super.onPlaybackStateChanged(state);
 
                     //The current item should be set already, this will just set the correct state
-                    try {
+                    try { //TODO... check this
                         if(AudioStateManager.getInstance().getCurrent() != null)
                             AudioStateManager.getInstance().getCurrent().setState(state.getState(), true);
                     }
@@ -297,6 +299,11 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             openFlagFeedItemActivity(feedId);
         }
 
+        @Override
+        public void onUntrackClick(FeedItemInterface feedItem, int adapterPosition) {
+            handleUntrack(feedItem);
+        }
+
     };
 
     protected OnItemClickAtIndexAtSubIndex<FeedGroupInterface> mOnItemOrLoadMoreListener = new OnItemClickAtIndexAtSubIndex<FeedGroupInterface>() {
@@ -335,15 +342,16 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
                             position == mItems.size() - 1, mOnGroupLikeListener, mOnItemOrLoadMoreListener, mRouter);
                 else
                     Logger.exception(new Exception("holder not found for group item with verb: " + verb));
-
-                if(holder instanceof GroupListensFeedItemViewHolder) {
-                    mIndexOfItemsWithMediaControls.add(position);
-                    ((GroupListensFeedItemViewHolder) holder).syncPlaybackState();
-                }
-
             } catch(Exception e) {
                 Logger.exception(e);
             }
+        }
+
+        if(holder instanceof OnAudioStateChangeListener) {
+            mIndexOfItemsWithMediaControls.add(position);
+            ((OnAudioStateChangeListener) holder).onAudioStateChanged(
+                    AudioStateManager.getInstance().getPrevious(), AudioStateManager.getInstance().getCurrent()
+            );
         }
     }
 
@@ -351,8 +359,8 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     public void onViewRecycled(RecyclerView.ViewHolder holder) {
         super.onViewRecycled(holder);
 
-        if(holder instanceof GroupListensFeedItemViewHolder) {
-            ((GroupListensFeedItemViewHolder) holder).recycle();
+        if(holder instanceof Recycleable) {
+            ((Recycleable) holder).recycle();
         }
     }
 
@@ -363,10 +371,11 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             boolean onlyCheckListens = payloads.contains(CHECK_LISTEN_ITEMS_ONLY);
             boolean updateLikeStatus = payloads.contains(UPDATE_LIKE_STATUS);
 
-
             if(checkAllForListens || onlyCheckListens) {
-                if(holder instanceof GroupListensFeedItemViewHolder) {
-                    ((GroupListensFeedItemViewHolder) holder).syncPlaybackState();
+                if(holder instanceof OnAudioStateChangeListener) {
+                    ((OnAudioStateChangeListener) holder).onAudioStateChanged(
+                            AudioStateManager.getInstance().getPrevious(), AudioStateManager.getInstance().getCurrent()
+                    );
                     if(checkAllForListens)
                         mIndexOfItemsWithMediaControls.add(position); //somehow mIndexOfItemsWithMediaControls gets cleared and we have to add them all back
                 }
@@ -567,4 +576,9 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             }
         }
     }
+
+    private void handleUntrack(FeedItemInterface feedItemInterface) {
+        mRouter.onUntrackClicked(feedItemInterface);
+    }
+
 }

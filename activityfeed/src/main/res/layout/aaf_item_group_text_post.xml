@@ -13,6 +13,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_margin="12dp"
+		android:textIsSelectable="true"
 		android:visibility="gone"/>
 
 	<ImageView
@@ -22,6 +23,15 @@
 		android:adjustViewBounds="true"
 		android:scaleType="centerCrop"
 		android:visibility="gone"/>
+
+	<com.bandsintown.activityfeed.viewholders.MusicPreviewCardView
+		android:id="@+id/figtp_music_preview_view"
+		android:layout_width="match_parent"
+		android:layout_height="56dp"
+		android:layout_marginLeft="12dp"
+		android:layout_marginRight="12dp"
+		android:layout_marginTop="6dp"
+		android:layout_marginBottom="6dp"/>
 
 	<com.bandsintown.activityfeed.FeedItemGroupFooterView
 		android:layout_width="match_parent"

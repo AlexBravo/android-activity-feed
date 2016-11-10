@@ -8,13 +8,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
+import com.bandsintown.activityfeed.viewholders.MusicPreviewCardView;
 
-public class FeedItemSinglePost extends AbsFeedItemSingleView {
+import me.saket.bettermovementmethod.BetterLinkMovementMethod;
+
+public class FeedItemSinglePost extends AbsFeedItemSingleView implements AudioControlsGroup {
 
 	private ImageView mImage;
 	private TextView mMessage;
 	protected SizeEstimate mEstimate;
+	protected MusicPreviewCardView mMusicPreviewCardView;
 
 	public FeedItemSinglePost(Context context, @Nullable SizeEstimate imageViewSize) {
 		super(context);
@@ -45,6 +51,7 @@ public class FeedItemSinglePost extends AbsFeedItemSingleView {
 	protected void initLayout() {
 		mImage = (ImageView) findViewById(R.id.fir_image);
 		mMessage = (TextView) findViewById(R.id.fir_message);
+		mMusicPreviewCardView = (MusicPreviewCardView) findViewById(R.id.fir_music_preview_view);
 	}
 
 	@Override
@@ -80,9 +87,23 @@ public class FeedItemSinglePost extends AbsFeedItemSingleView {
 			mMessage.setVisibility(GONE);
 	}
 
-	public void setMessageLinksClickable(boolean clickable) {
-		if(clickable)
+	public void setMessageLinksClickable(boolean clickable, @Nullable OnLinkClickListener listener) {
+		if(clickable) {
+			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
+			method.setOnLinkClickListener(listener);
+			mMessage.setMovementMethod(method);
 			Linkify.addLinks(mMessage, Linkify.ALL);
+		}
+	}
+
+	public MusicPreviewCardView getMusicPreviewCardView() {
+		return mMusicPreviewCardView;
+	}
+
+	@Override
+	public void setAudioPlayerStateAtIndex(int index, int state) {
+		if(index == 0 && mMusicPreviewCardView != null)
+			mMusicPreviewCardView.setMediaControlsState(state);
 	}
 
 }

@@ -1,18 +1,24 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
-import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
+import com.bandsintown.activityfeed.viewholders.MusicPreviewCardView;
 
-public class GroupTextPostView extends AbsFeedItemGroupView {
+import me.saket.bettermovementmethod.BetterLinkMovementMethod;
+
+public class GroupTextPostView extends AbsFeedItemGroupView implements AudioControlsGroup {
 
 	private TextView mMessage;
 	private ImageView mImage;
+	private MusicPreviewCardView mMusicPreviewCardView;
 
 	public GroupTextPostView(Context context) {
 		super(context);
@@ -30,6 +36,7 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 	protected void initLayout() {
 		mMessage = (TextView) findViewById(R.id.figtp_message);
 		mImage = (ImageView) findViewById(R.id.figtp_image);
+		mMusicPreviewCardView = (MusicPreviewCardView) findViewById(R.id.figtp_music_preview_view);
 	}
 
 	@Override
@@ -60,11 +67,22 @@ public class GroupTextPostView extends AbsFeedItemGroupView {
 			mMessage.setVisibility(GONE);
 	}
 
-	public void setMessageLinksClickable(boolean clickable) {
-		if(clickable)
-			mMessage.setMovementMethod(new LinkMovementMethod());
-		else
-			mMessage.setMovementMethod(null);
+	public void setMessageLinksClickable(boolean clickable, OnLinkClickListener linkClickListener) {
+		if(clickable) {
+			BetterLinkMovementMethod method = BetterLinkMovementMethod.newInstance();
+			method.setOnLinkClickListener(linkClickListener);
+			mMessage.setMovementMethod(method);
+			Linkify.addLinks(mMessage, Linkify.ALL);
+		}
 	}
 
+	public MusicPreviewCardView getMusicPreviewCardView() {
+		return mMusicPreviewCardView;
+	}
+
+	@Override
+	public void setAudioPlayerStateAtIndex(int index, int state) {
+		if(index == 0 && mMusicPreviewCardView != null)
+			mMusicPreviewCardView.setMediaControlsState(state);
+	}
 }

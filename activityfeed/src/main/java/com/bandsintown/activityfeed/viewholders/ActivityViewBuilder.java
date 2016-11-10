@@ -9,6 +9,7 @@ import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bandsintown.activityfeed.AbsFeedItemSingleView;
@@ -25,6 +26,7 @@ import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.image.ImageProvider;
+import com.bandsintown.activityfeed.interfaces.OnLinkClickListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.objects.IntentRouter;
@@ -177,14 +179,20 @@ public class ActivityViewBuilder {
         return item;
     }
 
-    private FeedItemSinglePost buildFeedItemPost(FeedItemInterface activityFeedItem, IntentRouter router) {
+    private FeedItemSinglePost buildFeedItemPost(FeedItemInterface activityFeedItem, final IntentRouter router) {
         FeedItemSinglePost post = null;
 
         if(activityFeedItem.getObject() != null && activityFeedItem.getObject().getPost() != null) {
             post = new FeedItemSinglePost(mActivity, mAverageImageSizeEstimate);
             post.setMessage(activityFeedItem.getObject().getPost().getMessage());
 
-            post.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0);
+            post.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0, new OnLinkClickListener() {
+
+                @Override
+                public boolean onClick(TextView textView, String url) {
+                    return router.onLinkClicked(url);
+                }
+            });
 
             if(activityFeedItem.getObject().getPost().getMediaId() > 0)
                 post.setImage(String.format(FeedValues.BIT_MEDIA_IMAGE_URL, activityFeedItem.getObject().getPost().getMediaId()));
@@ -232,7 +240,18 @@ public class ActivityViewBuilder {
 
         });
 
-        item.setMessageLinksClickable(activityFeedItem.getActor().getArtistId() > 0);
+        if(activityFeedItem.getActor().getArtistId() > 0) {
+            item.setMessageLinksClickable(true, new OnLinkClickListener() {
+
+                @Override
+                public boolean onClick(TextView textView, String url) {
+                    return router.onLinkClicked(url);
+                }
+
+            });
+        }
+        else
+            item.setMessageLinksClickable(false, null);
 
         return item;
     }
@@ -355,6 +374,11 @@ public class ActivityViewBuilder {
                     promptToDeletePost(feedItem);
                 }
 
+                @Override
+                public void onUntrackClick(FeedItemInterface feedItem) {
+					handleUntrack(feedItem, router);
+                }
+
             });
         }
     }
@@ -438,5 +462,9 @@ public class ActivityViewBuilder {
     private void openFlagFeedItemActivity(int feedId, IntentRouter router) {
         router.onFlagFeedItem(feedId);
     }
+
+    private void handleUntrack(FeedItemInterface feedItemInterface, IntentRouter router) {
+		router.onUntrackClicked(feedItemInterface);
+	}
 
 }

@@ -14,4 +14,10 @@
         app:showAsAction="never"
         android:visible="false"/>
 
+	<item
+		android:title="@string/untrack"
+		android:id="@+id/mfi_untrack_artist"
+		app:showAsAction="never"
+		android:visible="false"/>
+
 </menu>

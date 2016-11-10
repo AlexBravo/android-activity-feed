@@ -1,5 +1,7 @@
 package com.bandsintown.activityfeed.objects;
 
+import android.os.Bundle;
+
 public interface IntentRouter {
 
     void onHeaderClicked(FeedItemInterface feedItem);
@@ -24,4 +26,17 @@ public interface IntentRouter {
      */
     //Start for result
     void onGroupClicked(FeedGroupInterface item, int index, int subIndex, int requestCode);
+
+    /**
+     * @param url the url that was clicked on
+     * @return true if link has been handled, false if we want the framework to handle it.
+     */
+    boolean onLinkClicked(String url);
+
+    void playPreviewFromSearch(String search, Bundle bundle);
+
+    void pausePreview();
+
+    void onUntrackClicked(FeedItemInterface feedItemInterface);
+
 }

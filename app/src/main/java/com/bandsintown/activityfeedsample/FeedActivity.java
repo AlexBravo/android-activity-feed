@@ -22,6 +22,7 @@ import com.bandsintown.activityfeedsample.objects.ArtistStub;
 import com.bandsintown.activityfeedsample.objects.EventStub;
 import com.bandsintown.activityfeedsample.objects.User;
 import com.bandsintown.activityfeedsample.objects.VenueStub;
+import com.bandsintown.kahlo.Print;
 import com.google.gson.JsonObject;
 import com.trello.navi.component.support.NaviAppCompatActivity;
 
@@ -83,7 +84,7 @@ public class FeedActivity extends NaviAppCompatActivity {
 
     private void loadAdapter() {
         FeedApi api = Api.create();
-        api.getArtistActivities(Api.ARTIST_ID, null, null).enqueue(new Callback<FeedResponse>() {
+        api.getActivities(null, null).enqueue(new Callback<FeedResponse>() {
 
             @Override
             public void onResponse(Call<FeedResponse> call, Response<FeedResponse> response) {
@@ -267,6 +268,37 @@ public class FeedActivity extends NaviAppCompatActivity {
         public void onGroupClicked(FeedGroupInterface item, int index, int subIndex, int requestCode) {
 
         }
+
+        @Override
+        public boolean onLinkClicked(String url) {
+            Logger.log(FeedActivity.class.getSimpleName(), "On Link Clicked", url);
+            return false;
+        }
+
+        @Override
+        public void playPreviewFromSearch(String search, Bundle bundle) {
+            try {
+                FeedActivity.this.getSupportMediaController().getTransportControls().playFromSearch(search, bundle);
+            }
+            catch(Exception e) {
+                Logger.exception(e, false);
+            }
+        }
+
+        @Override
+        public void pausePreview() {
+            try {
+                FeedActivity.this.getSupportMediaController().getTransportControls().pause();
+            }
+            catch(Exception e) {
+                Logger.exception(e, false);
+            }
+        }
+
+        public void onUntrackClicked(FeedItemInterface feedItemInterface) {
+			Print.log("untrack was clicked");
+		}
+
     };
 
 }

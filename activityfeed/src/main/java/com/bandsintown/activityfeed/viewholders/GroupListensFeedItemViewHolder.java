@@ -1,7 +1,6 @@
 package com.bandsintown.activityfeed.viewholders;
 
 import android.os.Bundle;
-import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
@@ -18,6 +17,7 @@ import com.bandsintown.activityfeed.audio.OnAudioStateChangeListener;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
+import com.bandsintown.activityfeed.interfaces.Recycleable;
 import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
@@ -29,13 +29,14 @@ import java.util.ArrayList;
 /**
  * Created by rjaylward on 4/6/16 for Bandsintown
  */
-public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHolder implements OnItemClickOfTypeAtIndex, OnAudioStateChangeListener {
+public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHolder implements OnItemClickOfTypeAtIndex,
+        OnAudioStateChangeListener, Recycleable {
 
     private GroupFeedItemMiniList mView;
     private ArrayList<? extends FeedItemInterface> mFeedItems;
     private FeedGroupInterface mGroup;
     private OnItemClickAtIndexAtSubIndex<FeedGroupInterface> mOnItemClickAtIndex;
-    private MediaControllerCompat.TransportControls mTransportControls;
+    private IntentRouter mIntentRouter;
 
     private static final int ITEM_CLICK = 0;
     private static final int IMAGE_CLICK = 1;
@@ -44,13 +45,13 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
         super(activity, options, itemView);
 
         mView = (GroupFeedItemMiniList) itemView;
-        mTransportControls = activity.getSupportMediaController().getTransportControls();
     }
 
     @Override
     public void buildItem(final FeedGroupInterface feedGroup, boolean lastItem, OnLikeClickedListener<FeedGroupInterface> onLikeClickListener,
                           OnItemClickAtIndexAtSubIndex<FeedGroupInterface> itemOrViewMoreListener, IntentRouter router) {
         super.buildItem(feedGroup, lastItem, onLikeClickListener, itemOrViewMoreListener, router);
+        mIntentRouter = router;
         mOnItemClickAtIndex = itemOrViewMoreListener;
         mGroup = feedGroup;
         mFeedItems = feedGroup.getActivities();
@@ -126,7 +127,7 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
 
                         switch(playbackState) {
                             case PlaybackStateCompat.STATE_PLAYING:
-                                mTransportControls.pause();
+                                mIntentRouter.pausePreview();
                                 break;
                             case PlaybackStateCompat.STATE_BUFFERING:
                             case PlaybackStateCompat.STATE_CONNECTING:
@@ -136,11 +137,11 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                                 mediaInfoBundle.putString(FeedValues.SOURCE, FeedValues.SPOTIFY);
                                 if(mFeedItems.get(index).getObject().getSpotifyUri() != null) {
                                     mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.SPOTIFY_URI);
-                                    mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
+                                    mIntentRouter.playPreviewFromSearch(mFeedItems.get(index).getObject().getSpotifyUri(), mediaInfoBundle);
                                 }
                                 else {
                                     mediaInfoBundle.putString(FeedValues.TYPE, FeedValues.ARTIST_NAME);
-                                    mTransportControls.playFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), mediaInfoBundle);
+                                    mIntentRouter.playPreviewFromSearch(mFeedItems.get(index).getObject().getArtistStub().getName(), mediaInfoBundle);
                                 }
                         }
                     }
@@ -148,9 +149,13 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
         }
     }
 
-    public void syncPlaybackState() {
-        AudioStateItem item = AudioStateManager.getInstance().getCurrent();
+    @Override
+    public void recycle() {
+        AudioStateManager.getInstance().removeListener(this);
+    }
 
+    @Override
+    public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem item) {
         if(item != null) {
             if(item.getActivityFeedItemId() > 0) {
                 for(int i = 0; i < mGroup.getActivities().size(); i++) {
@@ -166,14 +171,5 @@ public class GroupListensFeedItemViewHolder extends AbsActivityFeedGroupViewHold
                 mView.setAudioPlayerStateAtIndex(i, PlaybackStateCompat.STATE_STOPPED);
             }
         }
-    }
-
-    public void recycle() {
-        AudioStateManager.getInstance().removeListener(this);
-    }
-
-    @Override
-    public void onAudioStateChanged(AudioStateItem previousItem, AudioStateItem currentItem) {
-        syncPlaybackState();
     }
 }
