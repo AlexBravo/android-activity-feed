@@ -92,6 +92,7 @@ public class FeedValues {
     public static final String VERB_ARTIST_POST = "artist_post";
     public static final String VERB_WATCH_TRAILER = "watch_trailer";
     public static final String VERB_POST_TRAILER = "post_trailer";
+	public static final String VERB_INVITE = "invite";
 
     public static final String VERB_ACTIVITY_FEED_LOADING = "activity_feed_loading";
 
@@ -110,6 +111,7 @@ public class FeedValues {
     public static final int VERB_CODE_ARTIST_POST = 121;
     public static final int VERB_CODE_WATCH_TRAILER = 122;
     public static final int VERB_CODE_POST_TRAILER = 123;
+    public static final int VERB_CODE_INVITE = 124;
 
     public static final int VERB_CODE_GROUP_USER_TRACKING = 200;
     public static final int VERB_CODE_GROUP_ARTIST_TRACKING = 201;
@@ -127,6 +129,7 @@ public class FeedValues {
     public static final int VERB_CODE_GROUP_POST_TRAILER = 223;
     public static final int VERB_CODE_GROUP_ARTIST_POST_ALL_IMAGES = 224;
     public static final int VERB_CODE_GROUP_USER_POST_ALL_IMAGES = 225;
+    public static final int VERB_CODE_GROUP_INVITE = 226;
 
     public static final int VERB_CODE_UNRECOGNIZED = -1;
     public static final int VERB_CODE_ACTIVITY_FEED_LOADING = -99;
@@ -196,6 +199,7 @@ public class FeedValues {
     public static final String WATCHED_TRAILER = "watched_trailer";
     public static final String POSTED_TRAILER = "posted_trailer";
     public static final String MESSAGE_RSVPS = "message_rsvp";
+	public static final String INVITED_YOU = "invited_you";
 
     public static final int MEDIA_CONTROLS_STATE_PLAYING = 40;
     public static final int MEDIA_CONTROLS_STATE_STOPED = 41;

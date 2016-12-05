@@ -275,6 +275,8 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
             case FeedValues.VERB_CODE_LIKE :
                 return new LikedActivityViewHolder(mActivity, mOptions, new FeedItemSingleLikedActivity(mActivity),
                         new ActivityViewBuilder(mActivity, mApi, mFeedDatabase, getAverageFeedItemImageSizeEstimate()));
+            case FeedValues.VERB_CODE_INVITE :
+
             default :
                 if(FeedModule.mIsDebugMode)
                     throw new IllegalArgumentException("view type not found: " + viewType);

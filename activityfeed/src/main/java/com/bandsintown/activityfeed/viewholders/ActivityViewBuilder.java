@@ -65,6 +65,7 @@ public class ActivityViewBuilder {
                 case FeedValues.VERB_RATE:
                 case FeedValues.VERB_PROMOTE:
                 case FeedValues.VERB_MESSAGE_RSVPS:
+                case FeedValues.VERB_INVITE:
                     view = buildFeedItemMessageView(activityFeedItem, mAverageImageSizeEstimate, router);
                     break;
                 case FeedValues.VERB_USER_POST:
@@ -304,6 +305,8 @@ public class ActivityViewBuilder {
                 return mActivity.getString(R.string.description_watched_a_tour_trailer);
             case FeedValues.POSTED_TRAILER:
                 return mActivity.getString(R.string.description_posted_a_tour_trailer);
+	        case FeedValues.INVITED_YOU:
+		        return mActivity.getString(R.string.description_invited_you);
             default :
                 return null;
         }

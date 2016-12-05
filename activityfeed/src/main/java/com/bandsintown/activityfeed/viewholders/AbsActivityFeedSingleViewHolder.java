@@ -167,6 +167,8 @@ public abstract class AbsActivityFeedSingleViewHolder extends RecyclerView.ViewH
 						return mActivity.getString(R.string.description_watched_a_tour_trailer);
 					case FeedValues.POSTED_TRAILER:
 						return mActivity.getString(R.string.description_posted_a_tour_trailer);
+					case FeedValues.INVITED_YOU:
+						return mActivity.getString(R.string.description_invited_you);
 					default:
 						return null;
 				}

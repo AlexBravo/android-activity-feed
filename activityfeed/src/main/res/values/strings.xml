@@ -493,6 +493,7 @@
     <string name="description_watched_a_tour_trailer">watched a tour trailer</string>
     <string name="description_posted_a_tour_trailer">posted a tour trailer</string>
 	<string name="description_rated_multiple_events">rated %d events</string>
+    <string name="description_invited_you">invited you</string>
 
     <string name="post_was_shared">Your post was shared!</string>
     <string name="error_sharing_post">An error occurred sharing your post, try again later.</string>

@@ -205,6 +205,8 @@ public class FeedUtil {
                     return FeedValues.VERB_CODE_GROUP_WATCH_TRAILER;
                 case FeedValues.VERB_POST_TRAILER:
                     return FeedValues.VERB_CODE_GROUP_POST_TRAILER;
+	            case FeedValues.VERB_INVITE:
+		            return FeedValues.VERB_CODE_GROUP_INVITE;
                 default:
                     Logger.exception(new Exception("did not recognize: " + verb));
                     return FeedValues.VERB_CODE_UNRECOGNIZED;
@@ -244,6 +246,8 @@ public class FeedUtil {
                 return FeedValues.VERB_CODE_WATCH_TRAILER;
             case FeedValues.VERB_POST_TRAILER :
                 return FeedValues.VERB_CODE_POST_TRAILER;
+            case FeedValues.VERB_INVITE :
+                return FeedValues.VERB_CODE_INVITE;
             default :
                 Logger.exception(new Exception("did not recognize: " + verb));
                 return FeedValues.VERB_CODE_UNRECOGNIZED;
