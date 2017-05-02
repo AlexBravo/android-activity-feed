@@ -39,7 +39,6 @@
             android:id="@+id/wup_inset_image"
             android:layout_width="@dimen/user_profile_inset_image_size"
             android:layout_height="@dimen/user_profile_inset_image_size"
-            android:transitionName="@string/transition_friend_image"
             android:layout_gravity="center_horizontal"
             tools:ignore="UnusedAttribute" />
 

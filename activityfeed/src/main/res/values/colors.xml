@@ -12,7 +12,6 @@
     <color name="center_gradient">#60000000</color>
     <color name="center_descending_gradient">#2c000000</color>
     <color name="end_gradient">#8b000000</color>
-    <color name="cloud_popup_background">#9a000000</color>
     <color name="text_shadow_color">#4c4c4c</color>
     <color name="bit_button_pressed">#009D9D</color>
     <color name="breakline_color">#44b4b4b4</color>
@@ -25,25 +24,17 @@
     <color name="transparent_clickable_highlight_color">#44b1b1b1</color>
     <color name="listitem_border_color">#cacaca</color>
     <color name="activity_feed_timestamp_color">#67676767</color>
-    <color name="unselected_tab_text_color">#aaffffff</color>
     <color name="comment_section_color">#dadada</color>
     <color name="selected_tab_footer_color">#005D5D</color>
     <color name="ripple_color_for_teal_element">#44ffffff</color>
     <color name="settings_item_border">#eaeaea</color>
     <color name="light_teal_text_color">#cefbff</color>
-    <color name="login_button_color">#5547e2dc</color> <!-- was #80ffffff-->
-    <color name="login_button_pressed_color">#4447e2dc</color> <!-- was #4dffffff-->
-    <color name="login_flow_hint_color">#99ffffff</color>
     <color name="more_text_color">#959595</color>
-    <color name="checkbutton_checkbox_background">#007574</color>
     <color name="transparent_white">#aaffffff</color>
-    <color name="nav_drawer_header_background">#282828</color>
     <color name="slightly_transparent_white">#ccffffff</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#ff000000</color>
     <color name="image_background_color">#e9e9e9</color>
-    <color name="search_hint_color">#ccffffff</color>
-    <color name="tickets_green">#5CAA34</color>
     <color name="bit_teal_transparent">#3a00B4B3</color>
     <color name="share_top_and_bottom_section_color">#FAFAFA</color>
     <color name="share_top_and_bottom_section_border">#D8D8D8</color>
@@ -51,13 +42,4 @@
     <color name="clock_bubble_text_color">#065d5c</color>
     <color name="profile_background_color">#282828</color>
     <color name="transparent_black_profile_shader">#5a000000</color>
-    <color name="ticketmaster_blue">#0084CF</color>
-	<color name="ticketmaster_blue_pressed">#329cd8</color>
-	<color name="ticketmaster_blue_selected">#0076ba</color>
-	<color name="ticket_bubble_disabled">#D9DADA</color>
-	<color name="ticket_bubble_text_disabled">#8F8F8F</color>
-    <color name="showcase_background_color">#eb005d5d</color>
-    <color name="tm_receipt_email_section_background_color">#CCDCB8</color>
-    <color name="tm_receipt_email_section_dash_border_color">#529307</color>
-    <color name="tm_receipt_email_section_text_color">#243C09</color>
 </resources>

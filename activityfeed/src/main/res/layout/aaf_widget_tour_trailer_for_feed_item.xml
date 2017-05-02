@@ -16,15 +16,13 @@
         <ImageView
             android:id="@+id/wttfi_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:transitionName="@string/transition_image"/>
+            android:layout_height="match_parent"/>
 
         <LinearLayout
             android:id="@+id/wttfi_text_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:transitionName="@string/transition_gradient"
             style="@style/BigImageTextSection">
 
             <TextView

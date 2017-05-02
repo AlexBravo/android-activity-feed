@@ -1,7 +1,6 @@
 package com.bandsintown.activityfeed.viewholders;
 
 import android.support.v7.app.AppCompatActivity;
-import android.support.v8.renderscript.RenderScript;
 import android.view.View;
 
 import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
@@ -13,26 +12,15 @@ import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.FeedUser;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.activityfeed.util.Logger;
 
 public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleViewHolder {
 
 	private FeedItemSingleUserProfile mFeedItem;
 
-	private RenderScript mRenderScript;
-
 	public UserProfileFeedItemSingleViewHolder(AppCompatActivity activity, FeedViewOptions options, View itemView) {
 		super(activity, options, itemView);
 
 		mFeedItem = (FeedItemSingleUserProfile) itemView;
-
-		try {
-			mRenderScript = RenderScript.create(mActivity.getApplicationContext());
-		}
-		catch(Exception e) {
-			Logger.log("Renderscript Exception");
-			Logger.exception(e);
-		}
 	}
 
 	@Override
@@ -55,7 +43,7 @@ public class UserProfileFeedItemSingleViewHolder extends AbsActivityFeedSingleVi
 		else
 			imageUri = null;
 
-		mFeedItem.setImages(mRenderScript, imageUri, userPicSize);
+		mFeedItem.setImages(imageUri, userPicSize);
 
 		mFeedItem.setImagesClickListener(new View.OnClickListener() {
 

@@ -1,69 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <plurals name="friends">
-        <item quantity="one">%s friend</item>
-        <item quantity="other">%s friends</item>
-    </plurals>
-
-    <plurals name="others">
-        <item quantity="one">%s other</item>
-        <item quantity="other">%s others</item>
-    </plurals>
-
-    <plurals name="rsvps">
-        <item quantity="one">%s RSVP</item>
-        <item quantity="other">%s RSVPs</item>
-    </plurals>
-
-    <plurals name="upcoming_events">
-        <item quantity="one">%s Upcoming Event</item>
-        <item quantity="other">%s Upcoming Events</item>
-    </plurals>
-
     <plurals name="like_count">
         <item quantity="one">%s like</item>
         <item quantity="other">%s likes</item>
     </plurals>
 
-    <plurals name="tickets_count">
-        <item quantity="one">%s Ticket</item>
-        <item quantity="other">%s Tickets</item>
-    </plurals>
-
-	<plurals name="tickets">
-		<item quantity="one">ticket</item>
-		<item quantity="other">tickets</item>
-	</plurals>
-
-    <plurals name="seats">
-        <item quantity="one">Seat</item>
-        <item quantity="other">Seats</item>
-    </plurals>
-
-    <plurals name="delete_payment_method_count">
-        <item quantity="one">Delete %s payment method</item>
-        <item quantity="other">Delete %s payment methods</item>
-    </plurals>
-
-    <plurals name="incorrect_cvv">
-        <item quantity="one">Incorrect CVV, you have %s attempt remaining before this card is deleted</item>
-        <item quantity="other">Incorrect CVV, you have %s attempts remaining before this card is deleted</item>
-    </plurals>
-
     <plurals name="artists_count">
         <item quantity="one">%s artist</item>
         <item quantity="other">%s artists</item>
-    </plurals>
-
-	<plurals name="events">
-		<item quantity="one">%s event</item>
-		<item quantity="other">%s events</item>
-	</plurals>
-
-    <plurals name="fans">
-        <item quantity="one">%s fan</item>
-        <item quantity="other">%s fans</item>
     </plurals>
 
 </resources>

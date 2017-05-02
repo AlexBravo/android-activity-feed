@@ -107,12 +107,6 @@
     <!-- Dimensions for artist event list -->
     <!--<dimen name="artist_event_list_header_margin">16dp</dimen>-->
 
-    <!--Dimensions for find contacts install pages-->
-    <dimen name="find_contacts_icon_size">80dp</dimen>
-    <dimen name="find_contacts_icon_margin">16dp</dimen>
-    <dimen name="find_contacts_layout_margin">32dp</dimen>
-    <dimen name="find_contacts_icon_and_button_divide_margin">60dp</dimen>
-
     <dimen name="add_friends_image_size">64dp</dimen>
 
     <dimen name="track_artist_grid_image_size">120dp</dimen>

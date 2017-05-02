@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v8.renderscript.RenderScript;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,15 +149,6 @@ public class ActivityViewBuilder {
 
     private FeedItemSingleUserProfile buildFeedItemUserProfile(FeedItemInterface activityFeedItem, IntentRouter router) {
         FeedItemSingleUserProfile item = new FeedItemSingleUserProfile(mActivity);
-        RenderScript renderScript = null;
-
-        try {
-            renderScript = RenderScript.create(mActivity.getApplicationContext());
-        }
-        catch(Exception e) {
-            Logger.log("Renderscript Exception");
-            Logger.exception(e);
-        }
 
         FeedUser objectUser = activityFeedItem.getObject().getUser();
 
@@ -175,7 +165,7 @@ public class ActivityViewBuilder {
         else
             imageUri = null;
 
-        item.setImages(renderScript, imageUri, userPicSize);
+        item.setImages(imageUri, userPicSize);
 
         return item;
     }

@@ -9,9 +9,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
-import com.bandsintown.kahlo.Print;
+import com.bandsintown.activityfeed.util.Logger;
 
 public class FeedItemSingleFooterView extends RelativeLayout {
 
@@ -55,7 +56,7 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 		mDeleteItem = popupMenu.getMenu().getItem(1);
 		mUntrackItem = popupMenu.getMenu().getItem(2);
 
-		Print.log("footer view has loaded 3 items");
+		Logger.log("footer view has loaded 3 items");
 
 		menuButton.setOnClickListener(new OnClickListener() {
 
@@ -154,7 +155,7 @@ public class FeedItemSingleFooterView extends RelativeLayout {
 		else
 			mUntrackItem.setVisible(true);
 
-		Print.log("untrack visibility", mUntrackItem.isVisible());
+		Logger.log("untrack visibility", mUntrackItem.isVisible());
 
 		//Set comment button if necessary
 		if(feedItem.getObject().getEventStub() != null) {

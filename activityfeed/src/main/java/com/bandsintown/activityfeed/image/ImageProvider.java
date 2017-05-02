@@ -3,14 +3,19 @@ package com.bandsintown.activityfeed.image;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
-import android.support.v8.renderscript.RenderScript;
 import android.widget.ImageView;
 
 import com.bandsintown.activityfeed.R;
-import com.bandsintown.kahlo.BitmapTransformer;
+import com.bandsintown.activityfeed.util.Logger;
 import com.bandsintown.kahlo.image.callback.BitImageCallback;
 import com.bandsintown.kahlo.image.provider.Kahlo;
 import com.bandsintown.kahlo.image.transformation.BitTransformation;
@@ -55,17 +60,17 @@ public class ImageProvider {
                 .placeholderResId(R.drawable.transparent_box);
     }
 
-    public static Kahlo.Displayer activityFeedBlurImageDisplayer(Context context, RenderScript rs, ImageView iv) {
+    public static Kahlo.Displayer activityFeedBlurImageDisplayer(Context context, ImageView iv) {
         return Kahlo.with(context)
                 .config(Bitmap.Config.ARGB_8888)
                 .placeholderResId(R.drawable.transparent_box)
-                .addTransformation(new BlurTransformation(context, rs, iv));
+                .addTransformation(new BlurTransformation(context, iv));
     }
 
-    public static Kahlo.Displayer blurImageDisplayer(Context context, RenderScript rs, ImageView iv) {
+    public static Kahlo.Displayer blurImageDisplayer(Context context, ImageView iv) {
         return Kahlo.with(context)
                 .config(Bitmap.Config.ARGB_8888)
-                .addTransformation(new BlurTransformation(context, rs, iv));
+                .addTransformation(new BlurTransformation(context, iv));
     }
 
     public static Kahlo.Displayer cloudCardImageDisplayer(Context context) {
@@ -230,13 +235,44 @@ public class ImageProvider {
         displayer.callback(listener).source(imageUri).display(iv);
     }
 
-    public void displayBlurImageInActivityFeed(String imageUri, final ImageView iv, RenderScript renderScript, int width, int height) {
+    public void displayBlurImageInActivityFeed(String imageUri, final ImageView iv, int width, int height) {
         displayImage(imageUri, iv, width, height, null, new FadeInCallback(imageUri, iv),
-                activityFeedBlurImageDisplayer(iv.getContext(), renderScript, iv));
+                activityFeedBlurImageDisplayer(iv.getContext(), iv));
     }
 
     public void systemDisplayPersonImage(int resId, ImageView iv) {
         Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), resId);
-        iv.setImageBitmap(BitmapTransformer.getRoundBitmap(bitmap));
+        iv.setImageBitmap(getRoundBitmap(bitmap));
+    }
+
+    public static Bitmap getRoundBitmap(Bitmap bitmap) {
+        if(bitmap != null) {
+            Logger.log("Bitmap Recycled?", bitmap.isRecycled(), bitmap);
+
+            int dimen = Math.min(bitmap.getWidth(), bitmap.getHeight());
+            int xDiff = Math.max((bitmap.getWidth() - dimen) / 2, 0);
+            int cornerRadius = Math.max(90, dimen / 2);
+
+            Bitmap output = Bitmap.createBitmap(dimen, dimen, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(output);
+
+            int color = 0xff424242;
+            Paint paint = new Paint();
+            Rect rect = new Rect(0, 0, dimen, dimen);
+            RectF rectF = new RectF(rect);
+
+            paint.setAntiAlias(true);
+            canvas.drawARGB(0, 0, 0, 0);
+            paint.setColor(color);
+            canvas.drawRoundRect(rectF, (float) cornerRadius, (float) cornerRadius, paint);
+
+            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+            canvas.drawBitmap(bitmap, -xDiff, 0, paint);
+
+//		bitmap.recycle(); not sure why it wont let us do this...
+            return output;
+        }
+        else
+            return null;
     }
 }

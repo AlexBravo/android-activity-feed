@@ -1,7 +1,6 @@
 package com.bandsintown.activityfeed;
 
 import android.content.Context;
-import android.support.v8.renderscript.RenderScript;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -47,7 +46,7 @@ public class FeedItemSingleUserProfile extends AbsFeedItemSingleView {
 		mName.setText(name);
 	}
 
-	public void setImages(final RenderScript renderScript, final String imageUri, float size) {
+	public void setImages(final String imageUri, float size) {
 		if(imageUri != null && mHeight == 0 && mWidth == 0) {
 			mBackgroundProfileImage.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
@@ -56,7 +55,7 @@ public class FeedItemSingleUserProfile extends AbsFeedItemSingleView {
 					mHeight = mBackgroundProfileImage.getHeight();
 					mWidth = mBackgroundProfileImage.getWidth();
 
-					ImageProvider.getInstance(getContext()).displayBlurImageInActivityFeed(imageUri, mBackgroundProfileImage, renderScript, mWidth, mHeight);
+					ImageProvider.getInstance(getContext()).displayBlurImageInActivityFeed(imageUri, mBackgroundProfileImage, mWidth, mHeight);
 					mBackgroundProfileImage.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 				}
 
@@ -64,7 +63,7 @@ public class FeedItemSingleUserProfile extends AbsFeedItemSingleView {
 			ImageProvider.getInstance(getContext()).displayPersonImage(imageUri, mInsetProfileImage, size, size);
 		}
 		else if(imageUri != null) {
-			ImageProvider.getInstance(getContext()).displayBlurImageInActivityFeed(imageUri, mBackgroundProfileImage, renderScript, mWidth, mHeight);
+			ImageProvider.getInstance(getContext()).displayBlurImageInActivityFeed(imageUri, mBackgroundProfileImage, mWidth, mHeight);
 			ImageProvider.getInstance(getContext()).displayPersonImage(imageUri, mInsetProfileImage, size, size);
 		}
 		else {
