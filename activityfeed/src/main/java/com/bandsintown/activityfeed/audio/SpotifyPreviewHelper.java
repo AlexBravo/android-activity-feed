@@ -1,8 +1,8 @@
 package com.bandsintown.activityfeed.audio;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.media.session.MediaSessionCompat;
@@ -33,12 +33,12 @@ import java.util.Map;
 public class SpotifyPreviewHelper {
 
     private SpotifyProvider mApiHelper;
-    private Context mApplicationContext;
 
-    MaxSizeHashMap<String, AudioTrackInfo> mNameUrlCache = new MaxSizeHashMap<>(20);
-    MaxSizeHashMap<String, AudioTrackInfo> mIdUrlCache = new MaxSizeHashMap<>(20);
+    private MaxSizeHashMap<String, AudioTrackInfo> mNameUrlCache = new MaxSizeHashMap<>(20);
+    private MaxSizeHashMap<String, AudioTrackInfo> mIdUrlCache = new MaxSizeHashMap<>(20);
 
     private MediaNotificationManager mMediaNotificationManager;
+    private String mPreviewProvidedBySpotify;
 
     private static SpotifyPreviewHelper instance;
 
@@ -55,6 +55,7 @@ public class SpotifyPreviewHelper {
         return instance;
     }
 
+    @Nullable
     public static MediaSessionCompat.Token attemptToUpdateToken() {
         if(instance != null && instance.mSession != null)
             return instance.mSession.getSessionToken();
@@ -62,6 +63,7 @@ public class SpotifyPreviewHelper {
             return null;
     }
 
+    @Nullable
     public static MediaSessionCompat attemptToGetSession() {
         if(instance != null)
             return instance.mSession;
@@ -73,13 +75,13 @@ public class SpotifyPreviewHelper {
         if(instance == null)
             instance = new SpotifyPreviewHelper(activity, api);
 
-        activity.setSupportMediaController(new MediaControllerCompat(activity, instance.mSession));
+        MediaControllerCompat.setMediaController(activity, new MediaControllerCompat(activity, instance.mSession));
     }
 
     public static void unbindMediaController(AppCompatActivity activity) {
         try {
-            if(activity.getSupportMediaController() != null)
-                activity.setSupportMediaController(null);
+            if(MediaControllerCompat.getMediaController(activity) != null)
+                MediaControllerCompat.setMediaController(activity, null);
         }
         catch(Exception e) {
             Logger.log("Unable to null out the media controller");
@@ -94,7 +96,7 @@ public class SpotifyPreviewHelper {
     }
 
     private SpotifyPreviewHelper(AppCompatActivity activity, SpotifyProvider api) {
-        mApplicationContext = activity.getApplicationContext();
+        mPreviewProvidedBySpotify = activity.getString(R.string.preview_provided_by_spotify);
         //creates a new volley context instead of holding reference to the Activity to prevent leaks
         mApiHelper = api;
 
@@ -180,7 +182,7 @@ public class SpotifyPreviewHelper {
 
                         audioItem.setUrl(response.getTracks().get(0).getPreviewUrl());
                         audioItem.setTitle(track.getName());
-                        audioItem.setDescription(mApplicationContext.getString(R.string.preview_provided_by_spotify));
+                        audioItem.setDescription(mPreviewProvidedBySpotify);
 
                         mIdUrlCache.put(id, audioItem);
                         onCompleteListener.onComplete(audioItem);
@@ -324,7 +326,7 @@ public class SpotifyPreviewHelper {
 
         mSession.setPlaybackState(stateCompat);
 
-        activity.setSupportMediaController(new MediaControllerCompat(activity, mSession));
+        MediaControllerCompat.setMediaController(activity, new MediaControllerCompat(activity, mSession));
 
         try {
             mMediaNotificationManager = new MediaNotificationManager(activity.getApplicationContext(), mSession, null);
