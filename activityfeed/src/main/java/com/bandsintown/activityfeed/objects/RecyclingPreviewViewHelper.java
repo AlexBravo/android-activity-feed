@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.media.session.PlaybackStateCompat;
 
 import com.bandsintown.activityfeed.FeedValues;
-import com.bandsintown.activityfeed.GroupFeedItemMiniListItem;
+import com.bandsintown.activityfeed.view.GroupFeedItemMiniListItem;
 import com.bandsintown.activityfeed.audio.AudioStateItem;
 import com.bandsintown.activityfeed.audio.AudioStateManager;
 import com.bandsintown.activityfeed.interfaces.AudioControlsGroup;

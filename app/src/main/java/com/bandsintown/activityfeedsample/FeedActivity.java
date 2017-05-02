@@ -22,7 +22,6 @@ import com.bandsintown.activityfeedsample.objects.ArtistStub;
 import com.bandsintown.activityfeedsample.objects.EventStub;
 import com.bandsintown.activityfeedsample.objects.User;
 import com.bandsintown.activityfeedsample.objects.VenueStub;
-import com.bandsintown.kahlo.Print;
 import com.google.gson.JsonObject;
 import com.trello.navi.component.support.NaviAppCompatActivity;
 
@@ -48,7 +47,7 @@ public class FeedActivity extends NaviAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.aaf_fragment_basic_recycler_view);
+        setContentView(R.layout.fragment_basic_recycler_view);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -296,7 +295,7 @@ public class FeedActivity extends NaviAppCompatActivity {
         }
 
         public void onUntrackClicked(FeedItemInterface feedItemInterface) {
-			Print.log("untrack was clicked");
+			Logger.log("untrack was clicked");
 		}
 
     };

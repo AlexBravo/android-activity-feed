@@ -8,7 +8,7 @@
 		android:layout_height="match_parent"
 		android:orientation="vertical">
 
-		<com.bandsintown.activityfeed.FeedItemViewHeader
+		<com.bandsintown.activityfeed.view.FeedItemViewHeader
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"/>
 
@@ -20,7 +20,7 @@
 			android:padding="4dp"
 			android:background="@drawable/liked_activity_inner_border"/>
 
-		<com.bandsintown.activityfeed.FeedItemSingleFooterView
+		<com.bandsintown.activityfeed.view.FeedItemSingleFooterView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"/>
 

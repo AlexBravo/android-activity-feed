@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<com.bandsintown.activityfeed.FeedItemViewHeader
+	<com.bandsintown.activityfeed.view.FeedItemViewHeader
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"/>
 
@@ -24,7 +24,7 @@
 		android:scaleType="centerCrop"
 		android:visibility="gone"/>
 
-	<com.bandsintown.activityfeed.viewholders.MusicPreviewCardView
+	<com.bandsintown.activityfeed.view.MusicPreviewCardView
 		android:id="@+id/figtp_music_preview_view"
 		android:layout_width="match_parent"
 		android:layout_height="56dp"
@@ -33,7 +33,7 @@
 		android:layout_marginTop="6dp"
 		android:layout_marginBottom="6dp"/>
 
-	<com.bandsintown.activityfeed.FeedItemGroupFooterView
+	<com.bandsintown.activityfeed.view.FeedItemGroupFooterView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"/>
 

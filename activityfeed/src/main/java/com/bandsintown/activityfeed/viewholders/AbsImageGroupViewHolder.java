@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bandsintown.activityfeed.FeedItemImageGroupView;
+import com.bandsintown.activityfeed.view.FeedItemImageGroupView;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnItemClickOfTypeAtIndex;

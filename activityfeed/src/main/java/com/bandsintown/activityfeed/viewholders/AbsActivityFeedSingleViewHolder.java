@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.View;
 
-import com.bandsintown.activityfeed.AbsFeedItemSingleView;
-import com.bandsintown.activityfeed.FeedItemSingleFooterView;
+import com.bandsintown.activityfeed.view.AbsFeedItemSingleView;
+import com.bandsintown.activityfeed.view.FeedItemSingleFooterView;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;

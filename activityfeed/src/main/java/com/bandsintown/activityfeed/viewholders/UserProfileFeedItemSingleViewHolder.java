@@ -3,7 +3,7 @@ package com.bandsintown.activityfeed.viewholders;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bandsintown.activityfeed.FeedItemSingleUserProfile;
+import com.bandsintown.activityfeed.view.FeedItemSingleUserProfile;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;

@@ -3,7 +3,7 @@ package com.bandsintown.activityfeed.viewholders;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bandsintown.activityfeed.FeedItemSingleWatchTrailer;
+import com.bandsintown.activityfeed.view.FeedItemSingleWatchTrailer;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;

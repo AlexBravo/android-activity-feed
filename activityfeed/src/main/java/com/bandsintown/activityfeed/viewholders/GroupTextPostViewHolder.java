@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
-import com.bandsintown.activityfeed.GroupTextPostView;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.audio.AudioStateItem;
 import com.bandsintown.activityfeed.audio.AudioStateManager;

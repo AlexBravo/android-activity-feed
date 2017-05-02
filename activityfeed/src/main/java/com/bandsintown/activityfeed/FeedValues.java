@@ -5,8 +5,6 @@ package com.bandsintown.activityfeed;
  */
 public class FeedValues {
 
-    public static final String INSTANT_RUN_FIELD_INDICATOR = "$";
-
     //Time periods
     public static final long ONE_MIN_MILLIS = 1000 * 60;
     public static final long FIVE_MIN_MILLIS = ONE_MIN_MILLIS * 5;
@@ -15,9 +13,6 @@ public class FeedValues {
     public static final long ONE_WEEK_MILLIS = ONE_DAY_MILLIS * 7;
     public static final long FOUR_WEEKS_MILLIS = ONE_WEEK_MILLIS * 4;
     public static final long ONE_YEAR_MILLIS = ONE_DAY_MILLIS * 365;
-
-    //Expiration times
-    public static final long ACTIVITY_FEED_EXPIRATION_TIME = FeedValues.ONE_HOUR_MILLIS;
 
     //Date format strings
     public static final String DATE_FORMAT_CALENDAR_DAY = "MM/dd/yy";
@@ -38,32 +33,7 @@ public class FeedValues {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //TESTING
-    public static final String IS_TEST = "is_test";
-    public static final String TEST_CREDENTIALS = "test_credentials";
-
     public static final int REQUEST_CODE_VIEW_GROUP_FEED = 30;
-    public static final String USER_ID = "user_id";
-
-    //Friend status
-    public static final int FRIEND_FRIENDED = 1;
-    public static final int FRIEND_ROW_DOESNT_EXIST = 2;
-    public static final int FRIEND_UNFRIENDED = 3;
-    public static final int FRIEND_BLOCKED = 4;
-
-    //Artist tracking status
-    public static final int ARTIST_TRACKED = 1;
-    public static final int ARTIST_ROW_DOESNT_EXIST = 2;
-    public static final int ARTIST_UNTRACKED = 3;
-    public static final int ARTIST_BLOCKED = 4;
-
-    //Event rsvp status
-    public static final int ATTENDEE_STATUS_ATTENDING = 1;
-    public static final int ATTENDEE_STATUS_MAYBE = 2;
-    public static final int ATTENDEE_STATUS_DOESNT_EXIST = 3;
-    public static final int ATTENDEE_STATUS_DECLINED = 4;
-
-    public static final String TEMPLATE_NAME = "android";
 
     //Image URLs
     public static final String BIT_MEDIA_IMAGE_URL = "http://photos.bandsintown.com/large/%s.jpeg";
@@ -73,9 +43,6 @@ public class FeedValues {
     public static final String VIDEO_BASE_URL = "https://s3.amazonaws.com/bit-artist-videos/%s.mp4";
     public static final String VIDEO_PREVIEW_BASE_URL = "http://s3.amazonaws.com/bit-artist-videos/%s.jpeg";
 
-    //Reflection
-    public static final String TABLE_NAME = "TABLE_NAME";
-    public static final String CONTENT = "CONTENT";
 
     //Verbs
     public static final String VERB_USER_TRACKING = "user_tracking";
@@ -134,48 +101,7 @@ public class FeedValues {
     public static final int VERB_CODE_UNRECOGNIZED = -1;
     public static final int VERB_CODE_ACTIVITY_FEED_LOADING = -99;
 
-    public static final String IN_ACTIVITY = "in_activity";
-
-    public static final String CATEGORY_ARTIST = "artist";
-    public static final String CATEGORY_FRIENDS = "friends";
-    public static final String CATEGORY_NONE = "none";
-    public static final String CATEGORY_USER = "user";
-    public static final String CATEGORY_ME = "me";
-
-    //Activity list names
-    public static final String MY_ACTIVITY_FEED = "my_activity_feed";
-    public static final String USERS_ACTIVITIES = "users_activities";
-    public static final String NOTIFICATIONS = "notifications";
-    public static final String EVENT_ACTIVITIES = "event_activities";
-
-    public static final int ACTIVITY_FEED_LIMIT = 50;
-
-    //RSVP status strings
-    public static final String RSVP_STATUS_ATTENDING = "attending";
-    public static final String RSVP_STATUS_MAYBE = "maybe";
-    public static final String RSVP_STATUS_DECLINED = "declined";
-
-    //Activity feed API tasks
-    public static final int LOAD_MORE = 0;
-    public static final int CLEAR_REFRESH = 1;
-    public static final int UPDATE = 2;
-
-    public static final String ACTIVITY_FEED_TASK = "activity_feed_task";
-
     public static final int SNACKBAR_SHORT_DURATION = 1500;
-
-    //Api Response flags
-    public static final String CLEAR_LIST = "clear_list";
-
-    //Invite Friends Button Fade In Time
-    public static final int BUTTON_FADE_IN_DURATION = 300;
-
-    // FAKE FIELD NAMES
-    public static final String HAS_MORE_ACTIVITIES = "has_more_activities";
-
-    public static final String BUNDLE = "bundle";
-
-//	public static final int DISTANCE_SCROLLED_BEFORE_HIDE_FAB = 15;
 
     //Activity feed description keys
     public static final String TRACKED = "tracked";
@@ -201,14 +127,9 @@ public class FeedValues {
     public static final String MESSAGE_RSVPS = "message_rsvp";
 	public static final String INVITED_YOU = "invited_you";
 
-    public static final int MEDIA_CONTROLS_STATE_PLAYING = 40;
-    public static final int MEDIA_CONTROLS_STATE_STOPED = 41;
-    public static final int MEDIA_CONTROLS_STATE_PAUSED = 42;
-    public static final int MEDIA_CONTROLS_STATE_LOADING = 43;
 
     public static final String GOOGLE_MAPS_STATIC_URL_TEMPLATE = "http://maps.google.com/maps/api/staticmap?center=%s,%s&zoom=9&size=%sx%s&sensor=false";
 
-    public static final String SCROLL_TO_COMMENTS = "scroll_to_comments";
     public static final String ACTIVITY_FEED_GROUP = "activity_feed_group";
 
     public static final String TYPE = "type";

@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.bandsintown.activityfeed.FeedItemSinglePost;
+import com.bandsintown.activityfeed.view.FeedItemSinglePost;
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
@@ -20,6 +20,7 @@ import com.bandsintown.activityfeed.objects.AudioPreviewInfo;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.objects.RecyclingPreviewViewHelper;
+import com.bandsintown.activityfeed.view.MusicPreviewCardView;
 
 import java.util.Collections;
 

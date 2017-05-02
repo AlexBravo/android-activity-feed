@@ -3,7 +3,7 @@ package com.bandsintown.activityfeed.viewholders;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bandsintown.activityfeed.FeedItemPlayMyCityView;
+import com.bandsintown.activityfeed.view.FeedItemPlayMyCityView;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;

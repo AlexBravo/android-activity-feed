@@ -8,8 +8,6 @@ import android.view.View;
 
 import com.bandsintown.activityfeed.FeedValues;
 import com.bandsintown.activityfeed.FeedViewOptions;
-import com.bandsintown.activityfeed.GroupFeedItemMiniList;
-import com.bandsintown.activityfeed.GroupFeedItemMiniListItem;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.audio.AudioStateItem;
 import com.bandsintown.activityfeed.audio.AudioStateManager;
@@ -22,6 +20,8 @@ import com.bandsintown.activityfeed.objects.FeedGroupInterface;
 import com.bandsintown.activityfeed.objects.FeedItemInterface;
 import com.bandsintown.activityfeed.objects.IntentRouter;
 import com.bandsintown.activityfeed.util.Logger;
+import com.bandsintown.activityfeed.view.GroupFeedItemMiniList;
+import com.bandsintown.activityfeed.view.GroupFeedItemMiniListItem;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;

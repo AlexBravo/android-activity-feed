@@ -3,8 +3,8 @@ package com.bandsintown.activityfeed.viewholders;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bandsintown.activityfeed.AbsFeedItemSingleView;
-import com.bandsintown.activityfeed.FeedItemSingleLikedActivity;
+import com.bandsintown.activityfeed.view.AbsFeedItemSingleView;
+import com.bandsintown.activityfeed.view.FeedItemSingleLikedActivity;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.interfaces.OnFeedMenuItemAdapterClickListener;
 import com.bandsintown.activityfeed.interfaces.OnLikeClickedListener;

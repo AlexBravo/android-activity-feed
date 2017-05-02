@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<com.bandsintown.activityfeed.FeedItemViewHeader
+	<com.bandsintown.activityfeed.view.FeedItemViewHeader
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"/>
 
@@ -12,7 +12,7 @@
 		layout="@layout/aaf_widget_big_image_for_feed_item"
 		android:id="@+id/figea_image_section"/>
 
-	<com.bandsintown.activityfeed.FeedItemGroupFooterView
+	<com.bandsintown.activityfeed.view.FeedItemGroupFooterView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"/>
 

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:minHeight="100dp">
 
-    <com.bandsintown.activityfeed.FeedItemViewHeader
+    <com.bandsintown.activityfeed.view.FeedItemViewHeader
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -17,7 +17,7 @@
         android:orientation="vertical">
     </LinearLayout>
 
-    <com.bandsintown.activityfeed.FeedItemGroupFooterView
+    <com.bandsintown.activityfeed.view.FeedItemGroupFooterView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

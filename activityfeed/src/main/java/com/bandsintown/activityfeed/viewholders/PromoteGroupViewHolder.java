@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.bandsintown.activityfeed.EventAnnouncementGroupView;
+import com.bandsintown.activityfeed.view.EventAnnouncementGroupView;
 import com.bandsintown.activityfeed.FeedViewOptions;
 import com.bandsintown.activityfeed.R;
 import com.bandsintown.activityfeed.interfaces.OnItemClickAtIndexAtSubIndex;

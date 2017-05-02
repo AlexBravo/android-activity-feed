@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.bandsintown.activityfeed.FeedItemViewHeader
+        <com.bandsintown.activityfeed.view.FeedItemViewHeader
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -22,7 +22,7 @@
             android:visibility="gone"
             android:textIsSelectable="true"/>
 
-        <com.bandsintown.activityfeed.viewholders.MusicPreviewCardView
+        <com.bandsintown.activityfeed.view.MusicPreviewCardView
             android:id="@+id/fir_music_preview_view"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -36,7 +36,7 @@
             layout="@layout/aaf_widget_big_image_for_feed_item"
             android:id="@+id/fir_event_section"/>
 
-        <com.bandsintown.activityfeed.FeedItemSingleFooterView
+        <com.bandsintown.activityfeed.view.FeedItemSingleFooterView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
