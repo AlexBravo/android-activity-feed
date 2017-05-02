@@ -3,13 +3,11 @@ package com.bandsintown.activityfeed;
 import android.content.Context;
 import android.graphics.Point;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bandsintown.activityfeed.image.ImageProvider;
 import com.bandsintown.activityfeed.objects.SizeEstimate;
-import com.bandsintown.activityfeed.util.Logger;
+import com.bandsintown.activityfeed.util.FeedImageLoader;
 
 /**
  * Created by rjaylward on 12/10/15 for Bandsintown
@@ -52,34 +50,46 @@ public class FeedItemSingleWatchTrailer extends AbsFeedItemSingleView {
     public void setImage(final String url) {
         // this helps display the correct size image, but also make sure that it is only done once
 
-        if(mHeight == 0 && mWidth == 0) {
+//        if(mHeight == 0 && mWidth == 0) {
+//
+//            mGuess = mEstimate.getEstimate();
+//
+//            if(mGuess.x > 0 && mGuess.y > 0)
+//                ImageProvider.getInstance(getContext()).displayBigImage(url, mTourImage, mGuess.x, mGuess.y,
+//                        ImageProvider.activityFeedImageDisplayer(getContext()));
+//
+//            mTourImage.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//
+//                @Override
+//                public void onGlobalLayout() {
+//                    mHeight = mTourImage.getHeight();
+//                    mWidth = mTourImage.getWidth();
+//                    mTourImage.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//
+//                    if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
+//                        //depending on screen density the estimate can be slightly off but still acceptable
+//                        Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
+//                        setImage(url);
+//                    }
+//                }
+//
+//            });
+//        }
+//        else
+//            ImageProvider.getInstance(getContext()).displayBigImage(url, mTourImage, mWidth, mHeight,
+//                    ImageProvider.activityFeedImageDisplayer(getContext()));
 
-            mGuess = mEstimate.getEstimate();
+        mGuess = mEstimate.getEstimate();
+        FeedImageLoader.load(getContext(), mTourImage, url, mWidth, mHeight, mGuess, new FeedImageLoader.OnHeightAndWidthSetListener() {
 
-            if(mGuess.x > 0 && mGuess.y > 0)
-                ImageProvider.getInstance(getContext()).displayBigImage(url, mTourImage, mGuess.x, mGuess.y,
-                        ImageProvider.activityFeedImageDisplayer(getContext()));
+            @Override
+            public void onWidthAndHeightChanged(int width, int height) {
+                //if setImage gets called again we will have these values already
+                mHeight = height;
+                mWidth = width;
+            }
 
-            mTourImage.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-
-                @Override
-                public void onGlobalLayout() {
-                    mHeight = mTourImage.getHeight();
-                    mWidth = mTourImage.getWidth();
-                    mTourImage.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                    if(Math.abs(mGuess.y - mHeight) > HEIGHT_ERROR_MARGIN || Math.abs(mGuess.x - mWidth) > WIDTH_ERROR_MARGIN) {
-                        //depending on screen density the estimate can be slightly off but still acceptable
-                        Logger.log("Guesses", mGuess.y, mGuess.x, "Actual", mHeight, mWidth, url);
-                        setImage(url);
-                    }
-                }
-
-            });
-        }
-        else
-            ImageProvider.getInstance(getContext()).displayBigImage(url, mTourImage, mWidth, mHeight,
-                    ImageProvider.activityFeedImageDisplayer(getContext()));
+        });
     }
 
     public void setObjectTitle(String title) {

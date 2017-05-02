@@ -66,6 +66,7 @@ import com.bandsintown.activityfeed.viewholders.RsvpGroupViewHolder;
 import com.bandsintown.activityfeed.viewholders.SimpleViewHolder;
 import com.bandsintown.activityfeed.viewholders.UserProfileFeedItemSingleViewHolder;
 import com.bandsintown.activityfeed.viewholders.WatchTrailerFeedItemSingleViewHolder;
+import com.bandsintown.kahlo.Print;
 import com.google.gson.JsonObject;
 import com.trello.navi.Event;
 import com.trello.navi.Listener;
@@ -318,27 +319,28 @@ public abstract class AbsFeedAdapter extends RecyclerView.Adapter implements OnA
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         //Some items, like loading items, won't have an entry. Just ignore them
-        if(mItems.get(position).getEntry() == null)
+        ActivityFeedEntry entry = mItems.get(position).getEntry();
+        if(entry == null)
             return;
 
-        String verb = mItems.get(position).getEntry().getVerb();
-        Logger.log("item", mItems.get(position).getEntry().getType().name(), verb);
+        String verb = entry.getVerb();
+        Logger.log("item", entry.getType().name(), verb);
 
-        if(mItems.get(position).getEntry().getType() == ActivityFeedEntry.Type.ITEM) {
+        if(entry.getType() == ActivityFeedEntry.Type.ITEM) {
             try {
                 if(holder instanceof AbsActivityFeedSingleViewHolder)
-                    ((AbsActivityFeedSingleViewHolder) holder).buildItem((FeedItemInterface) mItems.get(position).getEntry(),
+                    ((AbsActivityFeedSingleViewHolder) holder).buildItem((FeedItemInterface) entry,
                             position == mItems.size() - 1, mOnLikeClickListener, mOnFeedMenuItemClickListener, mRouter);
-//				else
-//					Print.exception(new Exception("holder not found for group item with verb: " + verb));
+				else
+					Print.exception(new Exception("holder not found for group item with verb: " + verb));
             } catch(Exception e) {
                 Logger.exception(e);
             }
         }
-        else if(mItems.get(position).getEntry().getType() == ActivityFeedEntry.Type.GROUP) {
+        else if(entry.getType() == ActivityFeedEntry.Type.GROUP) {
             try {
                 if(holder instanceof AbsActivityFeedGroupViewHolder)
-                    ((AbsActivityFeedGroupViewHolder) holder).buildItem((FeedGroupInterface) mItems.get(position).getEntry(),
+                    ((AbsActivityFeedGroupViewHolder) holder).buildItem((FeedGroupInterface) entry,
                             position == mItems.size() - 1, mOnGroupLikeListener, mOnItemOrLoadMoreListener, mRouter);
                 else
                     Logger.exception(new Exception("holder not found for group item with verb: " + verb));
